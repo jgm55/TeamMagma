@@ -47,14 +47,16 @@ public class VillageController : MonoBehaviour {
 				forgetCounter = 0;
 			}
 		}
+		// Interacting with the lake
 		if(lake != null){
 			if(lake.GetComponent<LakeScript>().isFilled){
 				houseCounter += Time.deltaTime;
 				if(houseCount < maxHouses && state == VillageState.WORSHIPPING 
 				   && houseCounter > makeHouseSeconds){
 					houseCounter = 0;
+					Debug.Log("About to make house");
 					// make new House
-					//makeNewHouse(lake, houses);
+					makeNewHouse(lake);
 				}
 			} else if(lake.GetComponent<LakeScript>().isFilling && state == VillageState.NUETRAL){
 				state = VillageState.WORSHIPPING;
@@ -94,7 +96,7 @@ public class VillageController : MonoBehaviour {
 		}
 	}
 
-	private void makeNewHouse(GameObject lake, GameObject[] houses){
+	private void makeNewHouse(GameObject lake){
 		bool generate = true;
 		Debug.Log ("Making new House");
 
@@ -105,12 +107,13 @@ public class VillageController : MonoBehaviour {
 			Vector2 newPos = new Vector2(lake.transform.position.x + x, lake.transform.position.y + y);
 			house.transform.position = newPos;
 			generate = false;
-
-			foreach(GameObject h in houses){
+			Debug.Log("Trying to generate");
+			//TODO figure out why this freezes the program and fix it so houses do not stack
+			/*foreach(GameObject h in houses){
 				if(testPoint(house,h)){
 					generate = true;
 				}
-			}
+			}*/
 		}
 		GameObject newHouse = (GameObject)Instantiate (house);
 		Debug.Log ("Done making house");
@@ -126,14 +129,19 @@ public class VillageController : MonoBehaviour {
 		//right of it
 		if(house.transform.position.x > existingHouse.transform.position.x + existingHouse.transform.localScale.x){
 			return true;
-		} else {
-
 		}
 		// Below it
 		if(house.transform.position.y < existingHouse.transform.position.y - existingHouse.transform.localScale.y){
 			return true;
-		} else {
-			return false;
 		}
+		//to the left of it
+		if(house.transform.position.x + existingHouse.transform.localScale.x > existingHouse.transform.position.x){
+			return true;
+		}
+		// Above it
+		if(house.transform.position.y - existingHouse.transform.localScale.y > existingHouse.transform.position.y){
+			return true;
+		}
+		return false;
 	}
 }
