@@ -46,14 +46,16 @@ public class AccelControl : MonoBehaviour {
 		timeLava -= Time.deltaTime;
 		if ( timeLava < 0 )
 		{
-			GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraControl>().Reset();
+
 			GameObject.FindGameObjectWithTag("volcano").GetComponent<VolcanoController>().instantiated = false;
+			GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraControl>().Reset();
 			Component[] components = this.GetComponentsInParent<Component>();
 			for(int i=0; i< components.Length;i++){
 				if(!(components[i] is TrailRenderer)){
 					Destroy(components[i]);
 				}
 			}
+
 		}
 
 	}

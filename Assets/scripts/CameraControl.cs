@@ -22,15 +22,14 @@ public class CameraControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		state = CameraState.NUETRAL;
-		if(myPlay != null){
+		
+		// zoom in and follow the lava head
+		if(GameObject.FindGameObjectWithTag("volcano").GetComponent<VolcanoController>().instantiated){
 			camera.orthographicSize = 5;
 			transform.position = myPlay.position + myPos;
 			state = CameraState.FOLLOWING;
-		}
-		if(state == CameraState.NUETRAL){
-			camera.orthographicSize = 15;
-			transform.position.Set(-0.7f,-2.44f, -15f);
+		} else {
+			Reset();
 		}
 		/*
 		if(Input.GetMouseButtonUp(0) && !lastTouchPos.Equals(new Vector3(0,0,0))){
@@ -65,7 +64,10 @@ public class CameraControl : MonoBehaviour {
 	}
 
 	public void Reset(){
-		this.transform.position = GameObject.FindGameObjectWithTag("volcano").transform.position + myPos;
+		//this.transform.position = GameObject.FindGameObjectWithTag("volcano").transform.position + myPos;
 		myPlay = null;
+		state = CameraState.NUETRAL;
+		camera.orthographicSize = 15;
+		transform.position = new Vector3(-0.7f,-2.44f, -15f);
 	}
 }
