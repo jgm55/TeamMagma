@@ -28,7 +28,7 @@ public class VolcanoController : MonoBehaviour {
 			//Application.LoadLevel(0);
 		}
 		if(worship + startingWorship <= 0f){
-			Application.Quit();
+			//Application.Quit();
 		}
 	}
 

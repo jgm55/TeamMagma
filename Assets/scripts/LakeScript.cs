@@ -28,7 +28,6 @@ public class LakeScript : MonoBehaviour {
 				GetComponent<SpriteRenderer>().sprite = lakeFills[lakeIndex];
 			}
 			counter += Time.deltaTime;
-
 		}
 	}
 
