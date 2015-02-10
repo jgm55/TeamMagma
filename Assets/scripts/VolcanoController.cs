@@ -6,8 +6,10 @@ public class VolcanoController : MonoBehaviour {
 	public Transform toInstantiate;
 	public bool instantiated = false;
 
-	private float worship = 50.0f;
-	public float lavaUsage = 10;
+	public float startingWorship = 50.0f;
+	public float worship = 0;
+	public float lavaUsage = 20;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -15,10 +17,17 @@ public class VolcanoController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		float devotion = 0;
+		VillageController[] villages = FindObjectsOfType<VillageController> ();
+		foreach(VillageController village in villages){
+			devotion += village.devotion;
+		}
+		worship = devotion + startingWorship;
+
 		if (Input.GetMouseButtonDown (0)){
 			//Application.LoadLevel(0);
 		}
-		if(worship <= 0f){
+		if(worship + startingWorship <= 0f){
 			Application.Quit();
 		}
 	}
@@ -28,7 +37,7 @@ public class VolcanoController : MonoBehaviour {
 			Object lava = Instantiate (toInstantiate);
 			CameraControl.myPlay = (Transform)lava;
 			instantiated = true;
-			worship -= lavaUsage;
+			startingWorship -= lavaUsage;
 		}
 	}
 

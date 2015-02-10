@@ -4,7 +4,7 @@ using System.Collections;
 
 public class DevotionTracker : MonoBehaviour {
 
-	private int devotion = 0;
+	private float devotion = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -13,11 +13,7 @@ public class DevotionTracker : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		devotion = 0;
-		VillageController[] villages = FindObjectsOfType<VillageController> ();
-		foreach(VillageController village in villages){
-			devotion += village.devotion;
-		}
+		devotion = GameObject.FindGameObjectWithTag ("volcano").GetComponent<VolcanoController> ().worship;
 	}
 
 	void OnGUI(){
