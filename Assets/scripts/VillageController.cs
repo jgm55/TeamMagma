@@ -7,12 +7,16 @@ public class VillageController : MonoBehaviour {
 	public GameObject lake;
 	public GameObject[] houses;
 	public GameObject house;
+	public GameObject positiveWorship;
+	public GameObject negativeWorship;
 
 	public int devotion = 0;
 	int devotionRateBad = 4;
 	int devotionRateGood = 1;
 	int forgetDevotion = 60;
 	int maxHouses = 6;
+	float radiusNear = 6.0f;
+	int MAX_ENCOUNTER = 2;
 
 	private float forgetCounter = 0;
 	private float devotionCounter = 0;
@@ -34,12 +38,26 @@ public class VillageController : MonoBehaviour {
 		if(state != VillageState.NUETRAL){
 			devotionCounter += Time.deltaTime;
 			forgetCounter += Time.deltaTime;
+		} else {
+			positiveWorship.renderer.enabled = false;
+			negativeWorship.renderer.enabled = false;
+		}
+		if(state == VillageState.BURNING){
+			negativeWorship.renderer.enabled = true;
+		} else if(state == VillageState.WORSHIPPING){
+			positiveWorship.renderer.enabled = true;
 		}
 		int houseCount = 0;
 		for(int i=0; i < houses.Length; i++){
 			houseCount++;
 			if(houses[i] == null){
-				houseCount--;
+				cleanUpHouses();
+				// burn other house
+				if(houses.Length !=0){
+					houses[Random.Range(0,houses.Length)].GetComponent<HouseScript>().isburning = true;
+				}
+				Update();
+				return;
 			}
 			else if(timesEncounter < 1 && houses[i].GetComponent<HouseScript>().isburning){
 				state = VillageState.BURNING;
@@ -94,6 +112,27 @@ public class VillageController : MonoBehaviour {
 				state = VillageState.NUETRAL;
 			}
 		}
+
+		//interact with lava flow
+		GameObject lavaHead = GameObject.FindGameObjectWithTag ("lava");
+		if(lavaHead != null){
+			if(nearby(lavaHead.transform.position, radiusNear)){
+				if(state != VillageState.NUETRAL){
+					timesEncounter++;
+					timesEncounter = Mathf.Min(timesEncounter, MAX_ENCOUNTER);
+					forgetCounter = 0;
+				}
+			}
+		}
+	}
+
+	private bool nearby(Vector3 lavaPos, float radius){
+		if(transform.position.x + radius > lavaPos.x && transform.position.x - radius < lavaPos.x){
+			if(transform.position.y + radius > lavaPos.y && transform.position.y - radius < lavaPos.y){
+				return true;
+			}
+		}
+		return false;
 	}
 
 	private void makeNewHouse(GameObject lake){
@@ -144,4 +183,22 @@ public class VillageController : MonoBehaviour {
 		}
 		return false;
 	}
+
+	/**
+	 * 
+	 */
+	public void cleanUpHouses(){
+		int houseCount = 0;
+		GameObject[] newHouses = new GameObject[houses.Length-1];
+		for(int i=0; i < houses.Length; i++){
+			if(houses[i] != null){
+				newHouses[houseCount] = houses[i];
+			} else { 
+				houseCount--;
+			}
+			houseCount++;
+		}
+		houses = newHouses;
+	}
+
 }

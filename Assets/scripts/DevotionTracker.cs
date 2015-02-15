@@ -13,8 +13,7 @@ public class DevotionTracker : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-		devotion = GameObject.FindGameObjectWithTag ("volcano").GetComponent<VolcanoController> ().worship;
+		devotion = GameObject.FindGameObjectWithTag ("volcano").GetComponent<VolcanoController> ().devotion;
 	}
 
 	void OnGUI(){

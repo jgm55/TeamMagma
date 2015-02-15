@@ -7,13 +7,16 @@ public class CameraControl : MonoBehaviour {
 	Vector3 myPos = new Vector3(0,-2,-15);
 	public static Transform myPlay;
 	private bool isZoomed = false;
+	float SPIN_TIME = .5f;
 	//int zoom = 5; int normal = 10; float smooth = 5; 
 	//Vector3 zoom = new Vector3(0,0,-10), normal = new Vector3(0,0,100);
 	private Vector3 lastTouchPos = new Vector3(0,0,0);
 	// Use this for initialization
 	float doubleClickDelay = .5f;
 	float lastDown = -2.0f;
-
+	private float totalMoved = 0f;
+	private float spinCount = 0;
+	private float angle=0f;
 	public CameraState state = CameraState.NUETRAL;
 
 	void Start () {
@@ -31,19 +34,31 @@ public class CameraControl : MonoBehaviour {
 		} else {
 			Reset();
 		}
-		/*
-		if(Input.GetMouseButtonUp(0) && !lastTouchPos.Equals(new Vector3(0,0,0))){
-			float z = myPos.z;
-			float x = (transform.position.x + lastTouchPos.x - Input.mousePosition.x) / Mathf.Abs(z) / camera.orthographicSize;
-			float y = (transform.position.y + lastTouchPos.y - Input.mousePosition.y) / Mathf.Abs(z) / camera.orthographicSize;
-			//transform.position = new Vector3(x,y,z);
+
+
+		if(myPlay == null && Input.GetMouseButtonUp(0) && !lastTouchPos.Equals(new Vector3(0,0,0))){
+			angle = Vector3.Angle(lastTouchPos, Input.mousePosition);
+			if(lastTouchPos.x > Input.mousePosition.x){
+				angle *= -1;
+			}
+		}
+
+		if(angle != 0f){
+			if(spinCount >= SPIN_TIME){
+				spinCount = 0f;
+				angle = 0f;
+			} else {
+				GameObject level = GameObject.FindGameObjectWithTag("level");
+				level.transform.RotateAround(level.transform.position,new Vector3(0,0,1), Time.deltaTime * angle * 1/SPIN_TIME);
+				spinCount += Time.deltaTime;
+			}
 		}
 		if (Input.GetMouseButtonDown (0)) {
 			//if(Input.GetMouseButtonDown(1)){
 			//}
 			lastTouchPos = Input.mousePosition;
 			//double tap to zoom
-			if(state != CameraState.FOLLOWING){
+			/*if(state != CameraState.FOLLOWING){
 				if(Time.time - lastDown < doubleClickDelay){
 					lastDown = -2.0f;
 					isZoomed = !isZoomed;
@@ -59,8 +74,8 @@ public class CameraControl : MonoBehaviour {
 					lastDown = Time.time;
 
 				}
-			}
-		}*/
+			}*/
+		}
 	}
 
 	public void Reset(){

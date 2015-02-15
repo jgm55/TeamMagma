@@ -8,7 +8,11 @@ public class VolcanoController : MonoBehaviour {
 
 	public float startingWorship = 50.0f;
 	public float worship = 0;
+	public float devotion = 0f;
 	public float lavaUsage = 20;
+	public float decreaseDevotion = 1.0f;
+	int DecreaseCount = 4;
+	private float counter = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -17,11 +21,16 @@ public class VolcanoController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		float devotion = 0;
+		devotion = 0;
 		VillageController[] villages = FindObjectsOfType<VillageController> ();
 		foreach(VillageController village in villages){
 			devotion += village.devotion;
 		}
+		if(counter >= DecreaseCount){
+			startingWorship -= decreaseDevotion;
+			counter = 0;
+		}
+		counter += Time.deltaTime;
 		worship = devotion + startingWorship;
 
 		if (Input.GetMouseButtonDown (0)){
