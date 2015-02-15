@@ -86,9 +86,6 @@ public class VillageController : MonoBehaviour {
 		}
 
 
-		//TODO add in if nearby then up timesEncounter and reset forgetCounter
-
-
 		if(devotionCounter > devotionIncrement ){
 			devotionCounter = 0;
 			Debug.Log("OMG ITS DEVOTION UPDATE");
@@ -113,7 +110,7 @@ public class VillageController : MonoBehaviour {
 			}
 		}
 
-		//interact with lava flow
+		//interact with lava flow nearby
 		GameObject lavaHead = GameObject.FindGameObjectWithTag ("lava");
 		if(lavaHead != null){
 			if(nearby(lavaHead.transform.position, radiusNear)){
