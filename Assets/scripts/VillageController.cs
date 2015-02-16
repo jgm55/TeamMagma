@@ -9,6 +9,7 @@ public class VillageController : MonoBehaviour {
 	public GameObject house;
 	public GameObject positiveWorship;
 	public GameObject negativeWorship;
+	public GameObject alertBubble;
 
 	public int devotion = 0;
 	int devotionRateBad = 4;
@@ -42,6 +43,8 @@ public class VillageController : MonoBehaviour {
 			positiveWorship.renderer.enabled = false;
 			negativeWorship.renderer.enabled = false;
 		}
+		alertBubble.renderer.enabled = false;
+
 		if(state == VillageState.BURNING){
 			negativeWorship.renderer.enabled = true;
 		} else if(state == VillageState.WORSHIPPING){
@@ -111,10 +114,12 @@ public class VillageController : MonoBehaviour {
 		}
 
 		//interact with lava flow nearby
+		//NOTE: This only works when max_encounter is 2
 		GameObject lavaHead = GameObject.FindGameObjectWithTag ("lava");
 		if(lavaHead != null){
 			if(nearby(lavaHead.transform.position, radiusNear)){
 				if(state != VillageState.NUETRAL){
+					alertBubble.renderer.enabled = true;
 					timesEncounter++;
 					timesEncounter = Mathf.Min(timesEncounter, MAX_ENCOUNTER);
 					forgetCounter = 0;
