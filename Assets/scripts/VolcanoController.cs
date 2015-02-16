@@ -113,6 +113,8 @@ public class VolcanoController : MonoBehaviour {
 		if (!instantiated) {
 			Object lava = Instantiate (toInstantiate);
 			CameraControl.myPlay = (Transform)lava;
+			//TODO Add this to heirarchy
+			//GameObject.FindGameObjectWithTag ("level").;
 			instantiated = true;
 			startingWorship -= lavaUsage;
 			draining = true;

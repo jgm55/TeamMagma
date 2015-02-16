@@ -36,7 +36,7 @@ public class DevotionTracker : MonoBehaviour {
 		//Text text = GetComponent<Text>();
 		//text.text = "Score: " + devotion.ToString();
 		GUIStyle style = new GUIStyle();
-		style.fontSize = 30;
+		style.fontSize = 20;
 		GUI.Label(scoreRect, "Score: " + devotion.ToString(), style);
 	}
 }
