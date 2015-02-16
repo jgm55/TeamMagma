@@ -25,7 +25,8 @@ public class DevotionTracker : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		devotion = GameObject.FindGameObjectWithTag ("volcano").GetComponent<VolcanoController> ().devotion;
+		VolcanoController volcano = GameObject.FindGameObjectWithTag ("volcano").GetComponent<VolcanoController> ();
+		devotion = volcano.goodDevotion + volcano.badDevotion;
 	}
 
 
@@ -34,6 +35,8 @@ public class DevotionTracker : MonoBehaviour {
 		//GUI.BeginGroup(scoreRect);
 		//Text text = GetComponent<Text>();
 		//text.text = "Score: " + devotion.ToString();
-		GUI.Label(scoreRect, "Score: " + devotion.ToString());
+		GUIStyle style = new GUIStyle();
+		style.fontSize = 30;
+		GUI.Label(scoreRect, "Score: " + devotion.ToString(), style);
 	}
 }

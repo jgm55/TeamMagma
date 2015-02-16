@@ -719,7 +719,8 @@ MonoBehaviour:
   positiveWorship: {fileID: 1049749142}
   negativeWorship: {fileID: 1159034114}
   alertBubble: {fileID: 1973432997}
-  devotion: 0
+  goodDevotion: 0
+  badDevotion: 0
 --- !u!1 &444535412
 GameObject:
   m_ObjectHideFlags: 0
@@ -1019,7 +1020,8 @@ MonoBehaviour:
   positiveWorship: {fileID: 1861201369}
   negativeWorship: {fileID: 1362590478}
   alertBubble: {fileID: 2000648426}
-  devotion: 0
+  goodDevotion: 0
+  badDevotion: 0
 --- !u!1 &485268433
 GameObject:
   m_ObjectHideFlags: 0
@@ -1076,7 +1078,8 @@ MonoBehaviour:
   positiveWorship: {fileID: 1443136771}
   negativeWorship: {fileID: 1165539524}
   alertBubble: {fileID: 1312243640}
-  devotion: 0
+  goodDevotion: 0
+  badDevotion: 0
 --- !u!1 &493561201
 GameObject:
   m_ObjectHideFlags: 0
@@ -1202,9 +1205,13 @@ MonoBehaviour:
   instantiated: 0
   startingWorship: 50
   worship: 50
-  devotion: 0
+  goodDevotion: 0
+  badDevotion: 0
   lavaUsage: 25
   decreaseDevotion: 1
+  mehVolcano: {fileID: 21300000, guid: 40ffb5c937874144a8c8e44647e943dc, type: 3}
+  happyVolcano: {fileID: 21300000, guid: eaa579aebc54bcd40b692f638595c38e, type: 3}
+  angryVolcano: {fileID: 21300000, guid: 2a2b2d84fd6989042a10ee953cc552e6, type: 3}
   devotionTexture: {fileID: 2800000, guid: 66fe51c8e24be68498d0b8059c7b5297, type: 3}
   emptyTex: {fileID: 0}
   fullTex: {fileID: 0}
@@ -1387,7 +1394,8 @@ MonoBehaviour:
   positiveWorship: {fileID: 1071925982}
   negativeWorship: {fileID: 865656218}
   alertBubble: {fileID: 1098760148}
-  devotion: 0
+  goodDevotion: 0
+  badDevotion: 0
 --- !u!1 &600937392
 GameObject:
   m_ObjectHideFlags: 0
@@ -1974,7 +1982,8 @@ MonoBehaviour:
   positiveWorship: {fileID: 950905395}
   negativeWorship: {fileID: 988386614}
   alertBubble: {fileID: 8864304}
-  devotion: 0
+  goodDevotion: 0
+  badDevotion: 0
 --- !u!1 &922466414
 GameObject:
   m_ObjectHideFlags: 0
@@ -3559,7 +3568,8 @@ MonoBehaviour:
   positiveWorship: {fileID: 600937392}
   negativeWorship: {fileID: 1011782268}
   alertBubble: {fileID: 1696364060}
-  devotion: 0
+  goodDevotion: 0
+  badDevotion: 0
 --- !u!4 &1308275387
 Transform:
   m_ObjectHideFlags: 0
@@ -4045,7 +4055,8 @@ MonoBehaviour:
   positiveWorship: {fileID: 1607552018}
   negativeWorship: {fileID: 1261143042}
   alertBubble: {fileID: 866322021}
-  devotion: 0
+  goodDevotion: 0
+  badDevotion: 0
 --- !u!1 &1588556810
 GameObject:
   m_ObjectHideFlags: 0
@@ -5264,7 +5275,8 @@ MonoBehaviour:
   positiveWorship: {fileID: 993121588}
   negativeWorship: {fileID: 1915195300}
   alertBubble: {fileID: 1648718687}
-  devotion: 0
+  goodDevotion: 0
+  badDevotion: 0
 --- !u!4 &2015407647
 Transform:
   m_ObjectHideFlags: 0

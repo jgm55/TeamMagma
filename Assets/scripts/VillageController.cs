@@ -11,7 +11,8 @@ public class VillageController : MonoBehaviour {
 	public GameObject negativeWorship;
 	public GameObject alertBubble;
 
-	public int devotion = 0;
+	public int goodDevotion = 0;
+	public int badDevotion = 0;
 	int devotionRateBad = 4;
 	int devotionRateGood = 1;
 	int forgetDevotion = 60;
@@ -97,10 +98,10 @@ public class VillageController : MonoBehaviour {
 			devotionCounter = 0;
 			Debug.Log("OMG ITS DEVOTION UPDATE");
 			if(state == VillageState.BURNING){
-				devotion += devotionRateBad * houseCount * timesEncounter;
+				badDevotion += devotionRateBad * houseCount * timesEncounter;
 			}
 			else if(state == VillageState.WORSHIPPING){
-				devotion += devotionRateGood * houseCount * timesEncounter;
+				goodDevotion += devotionRateGood * houseCount * timesEncounter;
 			} else{
 				Debug.Log("ERROR: THIS IS BAD");
 			}

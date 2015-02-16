@@ -8,12 +8,26 @@ public class VolcanoController : MonoBehaviour {
 
 	public float startingWorship = 50.0f;
 	public float worship = 0;
-	public float devotion = 0f;
+	public float goodDevotion = 0f;
+	public float badDevotion = 0f;
 	public float lavaUsage = 20;
 	public float decreaseDevotion = 1.0f;
+
+	public Sprite mehVolcano;
+	public Sprite happyVolcano;
+	public Sprite angryVolcano;
+
+	//float goodRatio = 1.2f;
+	//float badRatio = 1.2f;
+	float badDevotionLower = 40f;
+	float goodDevotionLower = 40f;
+
 	int DecreaseCount = 4;
 	private float counter = 0;
 	int MAX_WORSHIP = 100;
+	float drainTime = 1f;
+	float drainCounter = 0;
+	bool draining = false;
 
 	public Texture devotionTexture;
 	Vector2 resolution;
@@ -35,17 +49,23 @@ public class VolcanoController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		devotion = 0;
+		if(!draining){
+			drainCounter = 0;
+		}
+		goodDevotion = 0;
+		badDevotion = 0;
+
 		VillageController[] villages = FindObjectsOfType<VillageController> ();
 		foreach(VillageController village in villages){
-			devotion += village.devotion;
+			goodDevotion += village.goodDevotion;
+			badDevotion += village.badDevotion;
 		}
 		if(counter >= DecreaseCount){
 			startingWorship -= decreaseDevotion;
 			counter = 0;
 		}
 		counter += Time.deltaTime;
-		worship = devotion + startingWorship;
+		worship = goodDevotion + badDevotion + startingWorship;
 
 		if (Input.GetMouseButtonDown (0)){
 			//Application.LoadLevel(0);
@@ -61,9 +81,32 @@ public class VolcanoController : MonoBehaviour {
 			//Application.LoadLevel();
 		}
 
+		SpriteRenderer spriteRender = GetComponent<SpriteRenderer>();
+		if(goodDevotion - badDevotion > goodDevotionLower){
+			spriteRender.sprite = happyVolcano;
+		} else if(badDevotion - goodDevotion > badDevotionLower){
+			spriteRender.sprite = angryVolcano;
+		} else {
+			spriteRender.sprite = mehVolcano;
+		}
+
+		/*if(draining){
+			drainCounter+=Time.deltaTime;
+			if(drainCounter >= drainTime){
+				drainCounter = drainTime;
+				draining = false;
+			}
+			float barHeight = devotionBarRect.height - (devotionBarRect.height * (worship / MAX_WORSHIP)
+			                                            + Mathf.Min((int)(lavaUsage * 1/drainCounter), worship + lavaUsage));
+			devotionBarCurrentRect = new Rect(devotionBarRect.x,barHeight,
+			                                  devotionBarRect.width, devotionBarRect.height);
+		//} else {
+		*/
+		//TODO look at this later
 		float barHeight = devotionBarRect.height - (devotionBarRect.height * (worship / MAX_WORSHIP));
 		devotionBarCurrentRect = new Rect(devotionBarRect.x,barHeight,
 		                                  devotionBarRect.width, devotionBarRect.height);
+		//}
 	}
 
 	void OnMouseDown(){
@@ -72,6 +115,7 @@ public class VolcanoController : MonoBehaviour {
 			CameraControl.myPlay = (Transform)lava;
 			instantiated = true;
 			startingWorship -= lavaUsage;
+			draining = true;
 		}
 	}
 
@@ -80,17 +124,9 @@ public class VolcanoController : MonoBehaviour {
 	public Texture2D fullTex;
 
 	void OnGUI(){
-		//draw the background:
-		//GUI.BeginGroup(new Rect(pos.x, pos.y, pos.x + size.x, pos.y));
-		//GUI.Box(new Rect(0,0, size.x, size.y), emptyTex);
+
 		GUI.BeginGroup (devotionBarRect);
 		GUI.DrawTexture(devotionBarCurrentRect,devotionTexture);
-
 		GUI.EndGroup();
-		//draw the filled-in part:
-		//GUI.BeginGroup(new Rect(0,0, worship, size.y));
-		//GUI.Box(new Rect(0,0, worship, size.y), fullTex);
-		//GUI.EndGroup();
-		//GUI.EndGroup();
 	}
 }
