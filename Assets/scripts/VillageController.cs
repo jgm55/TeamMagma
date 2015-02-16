@@ -115,9 +115,9 @@ public class VillageController : MonoBehaviour {
 
 		//interact with lava flow nearby
 		//NOTE: This only works when max_encounter is 2
-		GameObject lavaHead = GameObject.FindGameObjectWithTag ("lava");
+		Transform lavaHead = CameraControl.myPlay;
 		if(lavaHead != null){
-			if(nearby(lavaHead.transform.position, radiusNear)){
+			if(nearby(lavaHead.position, radiusNear)){
 				if(state != VillageState.NUETRAL){
 					alertBubble.renderer.enabled = true;
 					timesEncounter++;
@@ -142,7 +142,7 @@ public class VillageController : MonoBehaviour {
 		Debug.Log ("Making new House");
 
 		while(generate){
-			Vector3 lakePos = lake.transform.position;
+			//Vector3 lakePos = lake.transform.position;
 			float x = Random.Range (0f, lake.transform.localScale.x);
 			float y = Random.Range (0f, lake.transform.localScale.y);
 			Vector2 newPos = new Vector2(lake.transform.position.x + x, lake.transform.position.y + y);

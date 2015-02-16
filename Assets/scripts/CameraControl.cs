@@ -6,15 +6,15 @@ public class CameraControl : MonoBehaviour {
 
 	Vector3 myPos = new Vector3(0,-2,-15);
 	public static Transform myPlay;
-	private bool isZoomed = false;
+//	private bool isZoomed = false;
 	float SPIN_TIME = .5f;
 	//int zoom = 5; int normal = 10; float smooth = 5; 
 	//Vector3 zoom = new Vector3(0,0,-10), normal = new Vector3(0,0,100);
 	private Vector3 lastTouchPos = new Vector3(0,0,0);
 	// Use this for initialization
-	float doubleClickDelay = .5f;
-	float lastDown = -2.0f;
-	private float totalMoved = 0f;
+//	float doubleClickDelay = .5f;
+//	float lastDown = -2.0f;
+//	private float totalMoved = 0f;
 	private float spinCount = 0;
 	private float angle=0f;
 	public CameraState state = CameraState.NUETRAL;
