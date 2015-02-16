@@ -1168,6 +1168,7 @@ GameObject:
   - 212: {fileID: 500470650}
   - 114: {fileID: 500470649}
   - 61: {fileID: 500470648}
+  - 114: {fileID: 500470652}
   m_Layer: 0
   m_Name: Volcano
   m_TagString: volcano
@@ -1241,6 +1242,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!114 &500470652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 500470647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4524e246afcd674b87bd7d1e9fbbc89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &530957652
 GameObject:
   m_ObjectHideFlags: 0
@@ -5580,6 +5592,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2119836149}
   - 212: {fileID: 2119836148}
+  - 114: {fileID: 2119836150}
   m_Layer: 0
   m_Name: stripe
   m_TagString: level
@@ -5629,3 +5642,14 @@ Transform:
   - {fileID: 916014844}
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!114 &2119836150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2119836147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4524e246afcd674b87bd7d1e9fbbc89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

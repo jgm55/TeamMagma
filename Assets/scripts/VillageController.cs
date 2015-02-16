@@ -36,6 +36,10 @@ public class VillageController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(houses.Length == 0){
+			state = VillageState.NUETRAL;
+		}
+
 		if(state != VillageState.NUETRAL){
 			devotionCounter += Time.deltaTime;
 			forgetCounter += Time.deltaTime;

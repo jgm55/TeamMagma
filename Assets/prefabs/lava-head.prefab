@@ -170,7 +170,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  timeLava: 20
+  timeLava: 15
 --- !u!212 &21262316
 SpriteRenderer:
   m_ObjectHideFlags: 1
