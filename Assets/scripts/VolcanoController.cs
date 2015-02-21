@@ -3,7 +3,7 @@ using System.Collections;
 
 public class VolcanoController : MonoBehaviour {
 
-	public Transform toInstantiate;
+	public GameObject toInstantiate;
 	public bool instantiated = false;
 
 	public float startingWorship = 50.0f;
@@ -25,8 +25,8 @@ public class VolcanoController : MonoBehaviour {
 	int DecreaseCount = 4;
 	private float counter = 0;
 	int MAX_WORSHIP = 100;
-	float drainTime = 1f;
-	float drainCounter = 0;
+//	float drainTime = 1f;
+//	float drainCounter = 0;
 	bool draining = false;
 
 	public Texture devotionTexture;
@@ -50,7 +50,7 @@ public class VolcanoController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(!draining){
-			drainCounter = 0;
+//			drainCounter = 0;
 		}
 		goodDevotion = 0;
 		badDevotion = 0;
@@ -111,10 +111,11 @@ public class VolcanoController : MonoBehaviour {
 
 	void OnMouseDown(){
 		if (!instantiated) {
-			Object lava = Instantiate (toInstantiate);
-			CameraControl.myPlay = (Transform)lava;
+			GameObject lava = ((Transform)(Instantiate (toInstantiate))).gameObject;
+			CameraControl.myPlay = lava;
 			//TODO Add this to heirarchy
-			//GameObject.FindGameObjectWithTag ("level").;
+			GameObject level = GameObject.FindGameObjectWithTag ("level");
+			lava.transform.parent = level.transform;
 			instantiated = true;
 			startingWorship -= lavaUsage;
 			draining = true;

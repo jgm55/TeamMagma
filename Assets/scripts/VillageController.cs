@@ -10,6 +10,8 @@ public class VillageController : MonoBehaviour {
 	public GameObject positiveWorship;
 	public GameObject negativeWorship;
 	public GameObject alertBubble;
+	public GameObject doublePositiveWorship;
+	public GameObject doubleNegativeWorship;
 
 	public int goodDevotion = 0;
 	public int badDevotion = 0;
@@ -47,13 +49,24 @@ public class VillageController : MonoBehaviour {
 		} else {
 			positiveWorship.renderer.enabled = false;
 			negativeWorship.renderer.enabled = false;
+			doublePositiveWorship.renderer.enabled = false;
+			doubleNegativeWorship.renderer.enabled = false;
+			
 		}
 		alertBubble.renderer.enabled = false;
 
 		if(state == VillageState.BURNING){
-			negativeWorship.renderer.enabled = true;
+			if(timesEncounter > 1){
+				doubleNegativeWorship.renderer.enabled = true;
+			} else {
+				negativeWorship.renderer.enabled = true;
+			}
 		} else if(state == VillageState.WORSHIPPING){
-			positiveWorship.renderer.enabled = true;
+			if(timesEncounter > 1){
+				doublePositiveWorship.renderer.enabled = true;
+			} else {
+				positiveWorship.renderer.enabled = true;
+			}
 		}
 		int houseCount = 0;
 		for(int i=0; i < houses.Length; i++){
@@ -120,9 +133,9 @@ public class VillageController : MonoBehaviour {
 
 		//interact with lava flow nearby
 		//NOTE: This only works when max_encounter is 2
-		Transform lavaHead = CameraControl.myPlay;
+		GameObject lavaHead = CameraControl.myPlay;
 		if(lavaHead != null){
-			if(nearby(lavaHead.position, radiusNear)){
+			if(nearby(lavaHead.transform.position, radiusNear)){
 				if(state != VillageState.NUETRAL){
 					alertBubble.renderer.enabled = true;
 					timesEncounter++;

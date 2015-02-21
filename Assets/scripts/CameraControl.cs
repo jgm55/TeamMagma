@@ -5,7 +5,7 @@ public class CameraControl : MonoBehaviour {
 	public enum CameraState{NUETRAL, FOLLOWING};
 
 	Vector3 myPos = new Vector3(0,-2,-15);
-	public static Transform myPlay;
+	public static GameObject myPlay;
 //	private bool isZoomed = false;
 	float SPIN_TIME = .5f;
 	//int zoom = 5; int normal = 10; float smooth = 5; 
@@ -29,7 +29,7 @@ public class CameraControl : MonoBehaviour {
 		// zoom in and follow the lava head
 		if(GameObject.FindGameObjectWithTag("volcano").GetComponent<VolcanoController>().instantiated){
 			camera.orthographicSize = 5;
-			transform.position = myPlay.position + myPos;
+			transform.position = myPlay.transform.position + myPos;
 			state = CameraState.FOLLOWING;
 		} else {
 			Reset();
