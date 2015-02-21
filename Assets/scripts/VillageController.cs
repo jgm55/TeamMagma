@@ -84,6 +84,10 @@ public class VillageController : MonoBehaviour {
 				state = VillageState.BURNING;
 				timesEncounter = 1;
 				forgetCounter = 0;
+			} else if(state == VillageState.WORSHIPPING){
+				houses[i].GetComponent<HouseScript>().isWorshipping = true;
+			} else {
+				houses[i].GetComponent<HouseScript>().isWorshipping = false;
 			}
 		}
 		// Interacting with the lake
