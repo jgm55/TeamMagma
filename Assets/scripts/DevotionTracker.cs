@@ -9,7 +9,7 @@ public class DevotionTracker : MonoBehaviour {
 	float resx;
 	float resy;
 	Rect scoreRect;
-	Vector2 scoreSize = new Vector2(100,30);
+	Vector2 scoreSize = new Vector2(140,30);
 	Vector2 scorePos;
 
 	// Use this for initialization

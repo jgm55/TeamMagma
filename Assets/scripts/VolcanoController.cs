@@ -111,7 +111,9 @@ public class VolcanoController : MonoBehaviour {
 
 	void OnMouseDown(){
 		if (!instantiated) {
-			GameObject lava = ((Transform)(Instantiate (toInstantiate))).gameObject;
+			Debug.Log("instantiating lava");
+			Transform t = ((Transform)(Instantiate (toInstantiate)));
+			GameObject lava = t.gameObject;
 			CameraControl.myPlay = lava;
 			//TODO Add this to heirarchy
 			GameObject level = GameObject.FindGameObjectWithTag ("level");
@@ -121,10 +123,6 @@ public class VolcanoController : MonoBehaviour {
 			draining = true;
 		}
 	}
-
-//	Vector2 pos = new Vector2(Screen.width / 2 - 50, Screen.height - Screen.height / 15);
-	public Texture2D emptyTex;
-	public Texture2D fullTex;
 
 	void OnGUI(){
 
