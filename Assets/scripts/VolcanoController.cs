@@ -112,8 +112,8 @@ public class VolcanoController : MonoBehaviour {
 	void OnMouseDown(){
 		if (!instantiated) {
 			Debug.Log("instantiating lava");
-			Transform t = ((Transform)(Instantiate (toInstantiate)));
-			GameObject lava = t.gameObject;
+			//Transform t = ((Transform)(Instantiate (toInstantiate)));
+			GameObject lava = Instantiate (toInstantiate) as GameObject;
 			CameraControl.myPlay = lava;
 			//TODO Add this to heirarchy
 			GameObject level = GameObject.FindGameObjectWithTag ("level");
