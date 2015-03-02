@@ -13,3 +13,7 @@ EditorBuildSettings:
     path: Assets/Tutorial3.unity
   - enabled: 1
     path: Assets/TestMechanics.unity
+  - enabled: 1
+    path: Assets/LoseScreen.unity
+  - enabled: 1
+    path: Assets/WinScreen.unity

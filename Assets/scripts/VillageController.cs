@@ -27,10 +27,10 @@ public class VillageController : MonoBehaviour {
 	private float houseCounter = 0;
 	private int timesEncounter = 0;
 	
-	VillageState state = VillageState.NUETRAL;
+	public VillageState state = VillageState.NUETRAL;
 
-	int devotionIncrement = 10;
-	int makeHouseSeconds = 20;
+	int devotionIncrement = 5;
+	int makeHouseSeconds = 15;
 
 	// Use this for initialization
 	void Start () {
@@ -106,18 +106,23 @@ public class VillageController : MonoBehaviour {
 		if(lake != null){
 			if(lake.GetComponent<LakeScript>().isFilled){
 				houseCounter += Time.deltaTime;
-				if(houseCount < maxHouses && state == VillageState.WORSHIPPING 
-				   && houseCounter > makeHouseSeconds){
+				if(state == VillageState.NUETRAL && houseCount > 0){
+					state = VillageState.WORSHIPPING;
+					timesEncounter = 1;
+					forgetCounter = 0;
+				}
+				if(houseCount < maxHouses && houseCounter > makeHouseSeconds && state == VillageState.WORSHIPPING){
 					houseCounter = 0;
 					Debug.Log("About to make house");
 					// make new House
 					makeNewHouse(lake);
 				}
-			} else if(lake.GetComponent<LakeScript>().isFilling && state == VillageState.NUETRAL){
+
+			}/* else if(lake.GetComponent<LakeScript>().isFilling && state == VillageState.NUETRAL){
 				state = VillageState.WORSHIPPING;
 				timesEncounter = 1;
 				forgetCounter = 0;
-			}
+			}*/
 		} else{
 			throw new ExitGUIException();
 		}

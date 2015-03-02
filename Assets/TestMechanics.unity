@@ -954,6 +954,7 @@ MonoBehaviour:
   doubleNegativeWorship: {fileID: 2100889930}
   goodDevotion: 0
   badDevotion: 0
+  state: 1
 --- !u!1001 &1050739583
 Prefab:
   m_ObjectHideFlags: 0
@@ -1880,6 +1881,7 @@ MonoBehaviour:
   doubleNegativeWorship: {fileID: 935834262}
   goodDevotion: 0
   badDevotion: 0
+  state: 1
 --- !u!1 &1999097294
 GameObject:
   m_ObjectHideFlags: 0

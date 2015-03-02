@@ -10,7 +10,7 @@ public class VolcanoController : MonoBehaviour {
 	public float worship = 0;
 	public float goodDevotion = 0f;
 	public float badDevotion = 0f;
-	public float lavaUsage = 20;
+	public float lavaUsage = 10f;
 	public float decreaseDevotion = 1.0f;
 
 	public Sprite mehVolcano;
@@ -22,7 +22,7 @@ public class VolcanoController : MonoBehaviour {
 	float badDevotionLower = 40f;
 	float goodDevotionLower = 40f;
 
-	int DecreaseCount = 4;
+	int DecreaseCount = 10;
 	private float counter = 0;
 	int MAX_WORSHIP = 100;
 //	float drainTime = 1f;
@@ -52,6 +52,7 @@ public class VolcanoController : MonoBehaviour {
 		if(!draining){
 //			drainCounter = 0;
 		}
+
 		goodDevotion = 0;
 		badDevotion = 0;
 
@@ -64,21 +65,19 @@ public class VolcanoController : MonoBehaviour {
 			startingWorship -= decreaseDevotion;
 			counter = 0;
 		}
-		counter += Time.deltaTime;
-		worship = goodDevotion + badDevotion + startingWorship;
-
-		if (Input.GetMouseButtonDown (0)){
-			//Application.LoadLevel(0);
+		if(!instantiated){
+			counter += Time.deltaTime;
+			worship = goodDevotion + badDevotion + startingWorship;
 		}
-
 		// Game Over
 		if(worship + startingWorship <= 0f){
 			//Application.Quit();
+			Application.LoadLevel("LoseScreen");
 		}
 
 		//Game Win
 		if(MAX_WORSHIP < worship + startingWorship){
-			//Application.LoadLevel();
+			Application.LoadLevel("WinScreen");
 		}
 
 		SpriteRenderer spriteRender = GetComponent<SpriteRenderer>();
