@@ -15,9 +15,9 @@ public class VillageController : MonoBehaviour {
 
 	public int goodDevotion = 0;
 	public int badDevotion = 0;
-	int devotionRateBad = 4;
+	int devotionRateBad = 3;
 	int devotionRateGood = 1;
-	int forgetDevotion = 60;
+	int forgetDevotion = 30;
 	int maxHouses = 6;
 	float radiusNear = 6.0f;
 	int MAX_ENCOUNTER = 2;
@@ -46,26 +46,38 @@ public class VillageController : MonoBehaviour {
 		if(state != VillageState.NUETRAL){
 			devotionCounter += Time.deltaTime;
 			forgetCounter += Time.deltaTime;
-		} else {
+		} //else {
 			positiveWorship.renderer.enabled = false;
 			negativeWorship.renderer.enabled = false;
 			doublePositiveWorship.renderer.enabled = false;
 			doubleNegativeWorship.renderer.enabled = false;
 			
-		}
+		//}
 		alertBubble.renderer.enabled = false;
 
 		if(state == VillageState.BURNING){
 			if(timesEncounter > 1){
 				doubleNegativeWorship.renderer.enabled = true;
+				Color c = doubleNegativeWorship.renderer.material.color;
+				c.a = devotionCounter / devotionIncrement;
+				doubleNegativeWorship.renderer.material.color = c;
 			} else {
 				negativeWorship.renderer.enabled = true;
+				Color c = negativeWorship.renderer.material.color;
+				c.a = devotionCounter / devotionIncrement;
+				negativeWorship.renderer.material.color = c;
 			}
 		} else if(state == VillageState.WORSHIPPING){
 			if(timesEncounter > 1){
 				doublePositiveWorship.renderer.enabled = true;
+				Color c = doublePositiveWorship.renderer.material.color;
+				c.a = devotionCounter / devotionIncrement;
+				doublePositiveWorship.renderer.material.color = c;
 			} else {
 				positiveWorship.renderer.enabled = true;
+				Color c = positiveWorship.renderer.material.color;
+				c.a = devotionCounter / devotionIncrement;
+				positiveWorship.renderer.material.color = c;
 			}
 		}
 		int houseCount = 0;
@@ -181,6 +193,7 @@ public class VillageController : MonoBehaviour {
 		GameObject newHouse = (GameObject)Instantiate (house);
 		Debug.Log ("Done making house");
 
+		newHouse.transform.parent = this.transform;
 		GameObject[] moreHouses = new GameObject[houses.Length + 1];
 		houses.CopyTo(moreHouses,0);
 		houses = moreHouses;
