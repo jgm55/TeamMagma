@@ -21,6 +21,7 @@ public class HouseScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(isburning){
+			isWorshipping = false;
 			GetComponent<SpriteRenderer>().sprite = burningSprites[animCounter];
 			if(counter >= burnTime){
 				Destroy(this.gameObject);
