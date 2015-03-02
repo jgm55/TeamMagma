@@ -39,4 +39,12 @@ public class DevotionTracker : MonoBehaviour {
 		style.fontSize = 20;
 		GUI.Label(scoreRect, "Score: " + devotion.ToString(), style);
 	}
+
+
+	void OnTriggerExit2D(Collider2D other){
+		Destroy(other.gameObject);
+		GameObject.FindGameObjectWithTag("volcano").GetComponent<VolcanoController>().instantiated = false;
+		GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraControl>().Reset();
+	}
+
 }
