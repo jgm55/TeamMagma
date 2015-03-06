@@ -10,6 +10,12 @@ public class LakeScript : MonoBehaviour {
 	private float lakeChangeSeconds;
 	public Sprite[] lakeFills;
 	private int lakeIndex = 0;
+
+	float startVelocity = 1.2f;
+
+	float startDrag = 1;
+	float lakeDrag = 2;
+
 	// Use this for initialization
 	void Start () {
 		lakeChangeSeconds = fillTime / (float)lakeFills.Length ;
@@ -33,11 +39,18 @@ public class LakeScript : MonoBehaviour {
 
 	void OnTriggerExit2D(Collider2D other){
 		isFilling = false;
+		other.gameObject.rigidbody2D.drag = startDrag;
+		AccelControl script = other.GetComponent<AccelControl>();
+		script.maxVelocity = startVelocity;
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
 		if(!isFilled){
 			isFilling = true;
+			other.gameObject.rigidbody2D.drag = lakeDrag;
+			AccelControl script = other.GetComponent<AccelControl>();
+			startVelocity = script.maxVelocity;
+			script.maxVelocity = startVelocity / 2;
 		}
 	}
 }

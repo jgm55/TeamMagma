@@ -33,9 +33,27 @@ public class VillageController : MonoBehaviour {
 	int devotionIncrement = 5;
 	int makeHouseSeconds = 15;
 
+
+	public float textCounter = 0f;
+	float textSeconds = .5f;
+	float pointsGained = 0f;
+	bool updatedDevotion = false;
+
+	Vector2 resolution;
+	float resx;
+	float resy;
+	Rect pointsRect;
+	Vector2 pointsSize = new Vector2(30,30);
+	Vector2 pointsPos;
+
 	// Use this for initialization
 	void Start () {
-		
+		pointsPos = new Vector2(this.transform.position.x + 2.1f, this.transform.position.y + 2.1f);
+		resolution = new Vector2(Screen.width, Screen.height);
+		resx = resolution.x/1280.0f; // 1280 is the x value of the working resolution
+		resy = resolution.y/800.0f; // 800 is the y value of the working resolution
+		pointsRect = new Rect(pointsPos.x*resx,pointsPos.y*resy,pointsSize.x*resx,pointsSize.y*resy);
+
 	}
 	
 	// Update is called once per frame
@@ -133,14 +151,24 @@ public class VillageController : MonoBehaviour {
 		}
 
 
+		if(updatedDevotion){
+			textCounter+=Time.deltaTime;
+		}
+		if(textCounter > textSeconds){
+			textCounter = 0;
+		}
+
 		if(devotionCounter > devotionIncrement ){
 			devotionCounter = 0;
+			updatedDevotion = true;
 			Debug.Log("OMG ITS DEVOTION UPDATE");
 			if(state == VillageState.BURNING){
-				badDevotion += devotionRateBad * houseCount * timesEncounter * burningHouses;
+				pointsGained = devotionRateBad * houseCount * timesEncounter * burningHouses;
+				badDevotion += (int)pointsGained;
 			}
 			else if(state == VillageState.WORSHIPPING){
-				goodDevotion += devotionRateGood * houseCount * timesEncounter;
+				pointsGained = devotionRateGood * houseCount * timesEncounter;
+				goodDevotion += (int)pointsGained;
 			} else{
 				Debug.Log("ERROR: THIS IS BAD");
 			}
@@ -248,4 +276,15 @@ public class VillageController : MonoBehaviour {
 		houses = newHouses;
 	}
 
+	/*void OnGUI(){
+		if(textCounter <= textSeconds && textCounter!=0){
+			updatedDevotion = false;
+			GUIStyle style = new GUIStyle();
+			style.fontSize = 18;
+			GUIText text = new GUIText();
+			text.text = pointsGained.ToString();
+			text.transform.position = new Vector2(pointsRect.x, pointsRect.y);
+			//(pointsRect, pointsGained.ToString(), style);
+		}
+	}*/
 }

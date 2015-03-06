@@ -76,7 +76,6 @@ public class VolcanoController : MonoBehaviour {
 		worship = goodDevotion + badDevotion + startingWorship;
 
 
-
 		//Game Win
 		if(MAX_WORSHIP < worship + startingWorship){
 			Application.LoadLevel("WinScreen");
