@@ -83,6 +83,6 @@ public class CameraControl : MonoBehaviour {
 		myPlay = null;
 		state = CameraState.NUETRAL;
 		camera.orthographicSize = 15;
-		transform.position = new Vector3(-0.7f,-2.44f, -15f);
+		transform.position = new Vector3(-.96f,-.12f,-15);
 	}
 }

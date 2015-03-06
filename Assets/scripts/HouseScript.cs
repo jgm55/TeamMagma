@@ -3,7 +3,7 @@ using System.Collections;
 
 public class HouseScript : MonoBehaviour {
 
-	public float burnTime = 10;
+	float burnTime = 15;
 	public bool isburning = false;
 	public bool isWorshipping = false;
 

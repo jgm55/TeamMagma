@@ -11,7 +11,7 @@ public class AccelControl : MonoBehaviour {
 	public Vector3 dir;
 	public GUIStyle style;
 
-	public float timeLava = 30;
+	public float timeLava = 10;
 	// Use this for initialization
 	void Start () {
 

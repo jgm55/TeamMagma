@@ -6,12 +6,12 @@ public class VolcanoController : MonoBehaviour {
 	public GameObject toInstantiate;
 	public bool instantiated = false;
 
-	public float startingWorship = 50.0f;
-	public float worship = 0;
+	float startingWorship = 50.0f;
+	float worship = 0;
 	public float goodDevotion = 0f;
 	public float badDevotion = 0f;
-	public float lavaUsage = 10f;
-	public float decreaseDevotion = 1.0f;
+	float lavaUsage = 15f;
+	float decreaseDevotion = 1.0f;
 
 	public Sprite mehVolcano;
 	public Sprite happyVolcano;
@@ -19,12 +19,12 @@ public class VolcanoController : MonoBehaviour {
 
 	//float goodRatio = 1.2f;
 	//float badRatio = 1.2f;
-	float badDevotionLower = 40f;
-	float goodDevotionLower = 40f;
+	float badDevotionLower = 50f;
+	float goodDevotionLower = 50f;
 
 	int DecreaseCount = 10;
 	private float counter = 0;
-	int MAX_WORSHIP = 100;
+	int MAX_WORSHIP = 200;
 //	float drainTime = 1f;
 //	float drainCounter = 0;
 	bool draining = false;
@@ -62,18 +62,20 @@ public class VolcanoController : MonoBehaviour {
 			badDevotion += village.badDevotion;
 		}
 		if(counter >= DecreaseCount){
-			startingWorship -= decreaseDevotion;
+			//startingWorship -= decreaseDevotion;
 			counter = 0;
 		}
 		if(!instantiated){
 			counter += Time.deltaTime;
-			worship = goodDevotion + badDevotion + startingWorship;
+			// Game Over
+			if(worship + startingWorship <= 0f){
+				//Application.Quit();
+				Application.LoadLevel("LoseScreen");
+			}
 		}
-		// Game Over
-		if(worship + startingWorship <= 0f){
-			//Application.Quit();
-			Application.LoadLevel("LoseScreen");
-		}
+		worship = goodDevotion + badDevotion + startingWorship;
+
+
 
 		//Game Win
 		if(MAX_WORSHIP < worship + startingWorship){
@@ -102,7 +104,7 @@ public class VolcanoController : MonoBehaviour {
 		//} else {
 		*/
 		//TODO look at this later
-		float barHeight = devotionBarRect.height - (devotionBarRect.height * (worship / MAX_WORSHIP));
+		float barHeight = (devotionBarRect.height - (devotionBarRect.height * ((worship) / MAX_WORSHIP))) *resy;
 		devotionBarCurrentRect = new Rect(devotionBarRect.x,barHeight,
 		                                  devotionBarRect.width, devotionBarRect.height);
 		//}

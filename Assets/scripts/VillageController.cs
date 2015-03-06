@@ -15,7 +15,7 @@ public class VillageController : MonoBehaviour {
 
 	public int goodDevotion = 0;
 	public int badDevotion = 0;
-	int devotionRateBad = 3;
+	int devotionRateBad = 1;
 	int devotionRateGood = 1;
 	int forgetDevotion = 30;
 	int maxHouses = 6;
@@ -26,6 +26,7 @@ public class VillageController : MonoBehaviour {
 	private float devotionCounter = 0;
 	private float houseCounter = 0;
 	private int timesEncounter = 0;
+	private bool wasFilling = false;
 	
 	public VillageState state = VillageState.NUETRAL;
 
@@ -47,10 +48,10 @@ public class VillageController : MonoBehaviour {
 			devotionCounter += Time.deltaTime;
 			forgetCounter += Time.deltaTime;
 		} //else {
-			positiveWorship.renderer.enabled = false;
-			negativeWorship.renderer.enabled = false;
-			doublePositiveWorship.renderer.enabled = false;
-			doubleNegativeWorship.renderer.enabled = false;
+		positiveWorship.renderer.enabled = false;
+		negativeWorship.renderer.enabled = false;
+		doublePositiveWorship.renderer.enabled = false;
+		doubleNegativeWorship.renderer.enabled = false;
 			
 		//}
 		alertBubble.renderer.enabled = false;
@@ -81,12 +82,13 @@ public class VillageController : MonoBehaviour {
 			}
 		}
 		int houseCount = 0;
+		int burningHouses = 0;
 		for(int i=0; i < houses.Length; i++){
 			houseCount++;
 			if(houses[i] == null){
 				cleanUpHouses();
 				// burn other house
-				if(houses.Length !=0){
+				if(houses.Length != 0){
 					houses[Random.Range(0,houses.Length)].GetComponent<HouseScript>().isburning = true;
 				}
 				Update();
@@ -96,6 +98,8 @@ public class VillageController : MonoBehaviour {
 				state = VillageState.BURNING;
 				timesEncounter = 1;
 				forgetCounter = 0;
+			} else if(houses[i].GetComponent<HouseScript>().isburning){
+				burningHouses++;
 			} else if(state == VillageState.WORSHIPPING){
 				houses[i].GetComponent<HouseScript>().isWorshipping = true;
 			} else {
@@ -110,6 +114,10 @@ public class VillageController : MonoBehaviour {
 					state = VillageState.WORSHIPPING;
 					timesEncounter = 1;
 					forgetCounter = 0;
+				} else if(state == VillageState.NUETRAL && wasFilling){
+					state = VillageState.WORSHIPPING;
+					timesEncounter = 1;
+					forgetCounter = 0;
 				}
 				if(houseCount < maxHouses && houseCounter > makeHouseSeconds && state == VillageState.WORSHIPPING){
 					houseCounter = 0;
@@ -117,14 +125,11 @@ public class VillageController : MonoBehaviour {
 					// make new House
 					makeNewHouse(lake);
 				}
-
-			}/* else if(lake.GetComponent<LakeScript>().isFilling && state == VillageState.NUETRAL){
-				state = VillageState.WORSHIPPING;
-				timesEncounter = 1;
-				forgetCounter = 0;
-			}*/
+			}else if(lake.GetComponent<LakeScript>().isFilling && state == VillageState.NUETRAL){
+				wasFilling = true;
+			}
 		} else{
-			throw new ExitGUIException();
+			//throw new ExitGUIException();
 		}
 
 
@@ -132,7 +137,7 @@ public class VillageController : MonoBehaviour {
 			devotionCounter = 0;
 			Debug.Log("OMG ITS DEVOTION UPDATE");
 			if(state == VillageState.BURNING){
-				badDevotion += devotionRateBad * houseCount * timesEncounter;
+				badDevotion += devotionRateBad * houseCount * timesEncounter * burningHouses;
 			}
 			else if(state == VillageState.WORSHIPPING){
 				goodDevotion += devotionRateGood * houseCount * timesEncounter;
@@ -143,7 +148,6 @@ public class VillageController : MonoBehaviour {
 
 		if(forgetCounter > forgetDevotion){
 			timesEncounter-- ;
-			Debug.Log("OMG ITS HERE");
 			Debug.Log(timesEncounter);
 			timesEncounter = Mathf.Max(timesEncounter,0);
 			forgetCounter = 0;
@@ -227,9 +231,10 @@ public class VillageController : MonoBehaviour {
 	}
 
 	/**
-	 * 
+	 * Cleans up the houses and resets wasFilling
 	 */
 	public void cleanUpHouses(){
+		wasFilling = false;
 		int houseCount = 0;
 		GameObject[] newHouses = new GameObject[houses.Length-1];
 		for(int i=0; i < houses.Length; i++){
