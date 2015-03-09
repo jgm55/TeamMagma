@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 464738}
   - 212: {fileID: 21264738}
   - 114: {fileID: 11464738}
+  - 95: {fileID: 9579524}
   m_Layer: 0
   m_Name: tutorialpage_3
   m_TagString: Untagged
@@ -29,6 +30,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!95 &9579524
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164738}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5326087d8815b6b40b548880178259f9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11464738
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -40,7 +56,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a29309de7cb125a428cee055f1f0b499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevel: TestMechanics
+  nextLevel: Tutorial4
   previousLevel: Tutorial2
 --- !u!212 &21264738
 SpriteRenderer:
@@ -62,7 +78,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 068f5e6df3533084599f43472ae5f4c7, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

@@ -126,7 +126,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: de58ad73513438d42a6312a4379d3952, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b1d3aaa5ad6150b40814a5ce229d7f20, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &577856608
 Transform:
@@ -193,7 +193,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BackGroundColor: {r: .725490212, g: .831372559, b: .196078435, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -265,7 +265,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 414002, guid: af3ab78dba5840745ad10bb84c6d41e2, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: af3ab78dba5840745ad10bb84c6d41e2, type: 2}
@@ -310,6 +310,18 @@ Prefab:
     - target: {fileID: 405612, guid: 4163322ec7496b34083caa29ab863968, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2005612, guid: 4163322ec7496b34083caa29ab863968, type: 2}
+      propertyPath: m_BackGroundColor.r
+      value: .725490212
+      objectReference: {fileID: 0}
+    - target: {fileID: 2005612, guid: 4163322ec7496b34083caa29ab863968, type: 2}
+      propertyPath: m_BackGroundColor.g
+      value: .831372559
+      objectReference: {fileID: 0}
+    - target: {fileID: 2005612, guid: 4163322ec7496b34083caa29ab863968, type: 2}
+      propertyPath: m_BackGroundColor.b
+      value: .196078435
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4163322ec7496b34083caa29ab863968, type: 2}
