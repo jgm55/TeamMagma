@@ -46,5 +46,4 @@ public class DevotionTracker : MonoBehaviour {
 		GameObject.FindGameObjectWithTag("volcano").GetComponent<VolcanoController>().instantiated = false;
 		GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraControl>().Reset();
 	}
-
 }
