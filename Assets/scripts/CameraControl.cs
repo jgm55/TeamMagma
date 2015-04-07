@@ -28,7 +28,7 @@ public class CameraControl : MonoBehaviour {
 		
 		// zoom in and follow the lava head
 		if(GameObject.FindGameObjectWithTag("volcano").GetComponent<VolcanoController>().instantiated){
-			camera.orthographicSize = 5;
+			GetComponent<Camera>().orthographicSize = 5;
 			transform.position = myPlay.transform.position + myPos;
 			state = CameraState.FOLLOWING;
 		} else {
@@ -82,7 +82,7 @@ public class CameraControl : MonoBehaviour {
 		//this.transform.position = GameObject.FindGameObjectWithTag("volcano").transform.position + myPos;
 		myPlay = null;
 		state = CameraState.NUETRAL;
-		camera.orthographicSize = 15;
+		GetComponent<Camera>().orthographicSize = 15;
 		transform.position = new Vector3(-.96f,-.12f,-15);
 	}
 }

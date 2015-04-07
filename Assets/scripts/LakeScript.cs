@@ -39,7 +39,7 @@ public class LakeScript : MonoBehaviour {
 
 	void OnTriggerExit2D(Collider2D other){
 		isFilling = false;
-		other.gameObject.rigidbody2D.drag = startDrag;
+		other.gameObject.GetComponent<Rigidbody2D>().drag = startDrag;
 		AccelControl script = other.GetComponent<AccelControl>();
 		script.maxVelocity = startVelocity;
 	}
@@ -47,7 +47,7 @@ public class LakeScript : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other){
 		if(!isFilled){
 			isFilling = true;
-			other.gameObject.rigidbody2D.drag = lakeDrag;
+			other.gameObject.GetComponent<Rigidbody2D>().drag = lakeDrag;
 			AccelControl script = other.GetComponent<AccelControl>();
 			startVelocity = script.maxVelocity;
 			script.maxVelocity = startVelocity / 2;

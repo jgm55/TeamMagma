@@ -66,37 +66,37 @@ public class VillageController : MonoBehaviour {
 			devotionCounter += Time.deltaTime;
 			forgetCounter += Time.deltaTime;
 		} //else {
-		positiveWorship.renderer.enabled = false;
-		negativeWorship.renderer.enabled = false;
-		doublePositiveWorship.renderer.enabled = false;
-		doubleNegativeWorship.renderer.enabled = false;
+		positiveWorship.GetComponent<Renderer>().enabled = false;
+		negativeWorship.GetComponent<Renderer>().enabled = false;
+		doublePositiveWorship.GetComponent<Renderer>().enabled = false;
+		doubleNegativeWorship.GetComponent<Renderer>().enabled = false;
 			
 		//}
-		alertBubble.renderer.enabled = false;
+		alertBubble.GetComponent<Renderer>().enabled = false;
 
 		if(state == VillageState.BURNING){
 			if(timesEncounter > 1){
-				doubleNegativeWorship.renderer.enabled = true;
-				Color c = doubleNegativeWorship.renderer.material.color;
+				doubleNegativeWorship.GetComponent<Renderer>().enabled = true;
+				Color c = doubleNegativeWorship.GetComponent<Renderer>().material.color;
 				c.a = devotionCounter / devotionIncrement;
-				doubleNegativeWorship.renderer.material.color = c;
+				doubleNegativeWorship.GetComponent<Renderer>().material.color = c;
 			} else {
-				negativeWorship.renderer.enabled = true;
-				Color c = negativeWorship.renderer.material.color;
+				negativeWorship.GetComponent<Renderer>().enabled = true;
+				Color c = negativeWorship.GetComponent<Renderer>().material.color;
 				c.a = devotionCounter / devotionIncrement;
-				negativeWorship.renderer.material.color = c;
+				negativeWorship.GetComponent<Renderer>().material.color = c;
 			}
 		} else if(state == VillageState.WORSHIPPING){
 			if(timesEncounter > 1){
-				doublePositiveWorship.renderer.enabled = true;
-				Color c = doublePositiveWorship.renderer.material.color;
+				doublePositiveWorship.GetComponent<Renderer>().enabled = true;
+				Color c = doublePositiveWorship.GetComponent<Renderer>().material.color;
 				c.a = devotionCounter / devotionIncrement;
-				doublePositiveWorship.renderer.material.color = c;
+				doublePositiveWorship.GetComponent<Renderer>().material.color = c;
 			} else {
-				positiveWorship.renderer.enabled = true;
-				Color c = positiveWorship.renderer.material.color;
+				positiveWorship.GetComponent<Renderer>().enabled = true;
+				Color c = positiveWorship.GetComponent<Renderer>().material.color;
 				c.a = devotionCounter / devotionIncrement;
-				positiveWorship.renderer.material.color = c;
+				positiveWorship.GetComponent<Renderer>().material.color = c;
 			}
 		}
 		int houseCount = 0;
@@ -190,7 +190,7 @@ public class VillageController : MonoBehaviour {
 		if(lavaHead != null){
 			if(nearby(lavaHead.transform.position, radiusNear)){
 				if(state != VillageState.NUETRAL){
-					alertBubble.renderer.enabled = true;
+					alertBubble.GetComponent<Renderer>().enabled = true;
 					timesEncounter++;
 					timesEncounter = Mathf.Min(timesEncounter, MAX_ENCOUNTER);
 					forgetCounter = 0;

@@ -30,18 +30,18 @@ public class AccelControl : MonoBehaviour {
 			dir.y = 0;
 		}
 		//TODO Make this actually limit by the maxVelocity vector, not both individually
-		if(rigidbody2D.velocity.x > maxVelocity && dir.x > 0){
+		if(GetComponent<Rigidbody2D>().velocity.x > maxVelocity && dir.x > 0){
 			dir.x = 0;
-		} else if(rigidbody2D.velocity.x < -1*maxVelocity && dir.x < 0){
+		} else if(GetComponent<Rigidbody2D>().velocity.x < -1*maxVelocity && dir.x < 0){
 			dir.x = 0;
 		}
-		if(rigidbody2D.velocity.y > maxVelocity && dir.y > 0){
+		if(GetComponent<Rigidbody2D>().velocity.y > maxVelocity && dir.y > 0){
 			dir.y = 0;
-		} else if(rigidbody2D.velocity.y < -1*maxVelocity && dir.y < 0){
+		} else if(GetComponent<Rigidbody2D>().velocity.y < -1*maxVelocity && dir.y < 0){
 			dir.y = 0;
 		}
 		dir *= scaler;
-		rigidbody2D.AddForce(dir);
+		GetComponent<Rigidbody2D>().AddForce(dir);
 
 		timeLava -= Time.deltaTime;
 		if ( timeLava < 0 )
