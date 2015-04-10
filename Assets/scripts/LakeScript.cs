@@ -11,7 +11,7 @@ public class LakeScript : MonoBehaviour {
 	public Sprite[] lakeFills;
 	private int lakeIndex = 0;
 
-	float startVelocity = 1.2f;
+	float startVelocity;
 
 	float startDrag = 1;
 	float lakeDrag = 2;

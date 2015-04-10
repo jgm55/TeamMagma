@@ -14,6 +14,13 @@ public class VolcanoController : MonoBehaviour {
 	float lavaUsage = 15f;
 	float decreasePercentage = .01f;
 
+    float maxSpeed;
+    float maxSpeedStart = 1.2f;
+    float maxSpeedBad = 2f;
+    float timeLava;
+    float timeLavaStart = 8f;
+    float timeGoodLava = 15f;
+
 	public Sprite mehVolcano;
 	public Sprite happyVolcano;
 	public Sprite angryVolcano;
@@ -52,6 +59,8 @@ public class VolcanoController : MonoBehaviour {
 		devotionBarRect = new Rect(devotionBarPos.x*resx,devotionBarPos.y*resy,devotionBarSize.x*resx,devotionBarSize.y*resy);
 
         barLevelWorship = worship + startingWorship;
+        maxSpeed = maxSpeedStart;
+        timeLava = timeLavaStart;
 	}
 	
 	// Update is called once per frame
@@ -109,10 +118,17 @@ public class VolcanoController : MonoBehaviour {
 		SpriteRenderer spriteRender = GetComponent<SpriteRenderer>();
 		if(goodDevotion - badDevotion > goodDevotionLower){
 			spriteRender.sprite = happyVolcano;
+            maxSpeed = maxSpeedStart;
+            timeLava = timeGoodLava;
+
 		} else if(badDevotion - goodDevotion > badDevotionLower){
 			spriteRender.sprite = angryVolcano;
+            maxSpeed = maxSpeedBad;
+            timeLava = timeLavaStart;
 		} else {
 			spriteRender.sprite = mehVolcano;
+            maxSpeed = maxSpeedStart;
+            timeLava = timeLavaStart;
 		}
 
 		//TODO look at this later
@@ -132,6 +148,8 @@ public class VolcanoController : MonoBehaviour {
 			lava.transform.parent = level.transform;
 			instantiated = true;
 			startingWorship -= lavaPercent * barLevelWorship;
+            lava.GetComponent<AccelControl>().maxVelocity = maxSpeed;
+            lava.GetComponent<AccelControl>().timeLava = timeLava;
 			draining = true;
 		}
 	}
