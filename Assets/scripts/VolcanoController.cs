@@ -8,10 +8,11 @@ public class VolcanoController : MonoBehaviour {
 
 	float startingWorship = 50.0f;
 	float worship = 0;
+    float barLevelWorship = 0f;
 	public float goodDevotion = 0f;
 	public float badDevotion = 0f;
 	float lavaUsage = 15f;
-	float decreaseDevotion = 1.0f;
+	float decreasePercentage = .01f;
 
 	public Sprite mehVolcano;
 	public Sprite happyVolcano;
@@ -22,7 +23,8 @@ public class VolcanoController : MonoBehaviour {
 	float badDevotionLower = 50f;
 	float goodDevotionLower = 50f;
 
-	int DecreaseCount = 10;
+    float lavaPercent = .1f;
+	int DecreaseCount = 5;
 	private float counter = 0;
 	int MAX_WORSHIP = 200;
 //	float drainTime = 1f;
@@ -36,6 +38,9 @@ public class VolcanoController : MonoBehaviour {
 	Vector2 devotionBarPos = new Vector2(20,40);
 	Vector2 devotionBarSize;
 
+    enum TierLevel{LOW, MEDIUM,HIGH};
+    TierLevel tierLevel = TierLevel.LOW;
+
 	Rect devotionBarRect;
 	Rect devotionBarCurrentRect;
 	// Use this for initialization
@@ -45,13 +50,34 @@ public class VolcanoController : MonoBehaviour {
 		resx = resolution.x/1280.0f; // 1280 is the x value of the working resolution
 		resy = resolution.y/800.0f; // 800 is the y value of the working resolution
 		devotionBarRect = new Rect(devotionBarPos.x*resx,devotionBarPos.y*resy,devotionBarSize.x*resx,devotionBarSize.y*resy);
+
+        barLevelWorship = worship + startingWorship;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        barLevelWorship = worship + startingWorship;
 		if(!draining){
-//			drainCounter = 0;
+            //drainCounter = 0;
 		}
+
+        int third = MAX_WORSHIP / 3;
+        if(barLevelWorship < third){
+            tierLevel = TierLevel.LOW;
+            lavaPercent = .1f;
+            decreasePercentage = .01f;
+        }
+        else if (barLevelWorship < 2 * third)
+        {
+            tierLevel = TierLevel.MEDIUM;
+            lavaPercent = .2f;
+            decreasePercentage = .02f;
+
+        } else {
+            tierLevel = TierLevel.HIGH;
+            lavaPercent = .3f;
+            decreasePercentage = .03f;
+        }
 
 		goodDevotion = 0;
 		badDevotion = 0;
@@ -62,22 +88,21 @@ public class VolcanoController : MonoBehaviour {
 			badDevotion += village.badDevotion;
 		}
 		if(counter >= DecreaseCount){
-			//startingWorship -= decreaseDevotion;
+			startingWorship -= barLevelWorship*decreasePercentage;
 			counter = 0;
 		}
 		if(!instantiated){
 			counter += Time.deltaTime;
 			// Game Over
-			if(worship + startingWorship <= 0f){
+			if(barLevelWorship <= 0f){
 				//Application.Quit();
 				Application.LoadLevel("LoseScreen");
 			}
 		}
 		worship = goodDevotion + badDevotion + startingWorship;
 
-
 		//Game Win
-		if(MAX_WORSHIP < worship + startingWorship){
+		if(MAX_WORSHIP < barLevelWorship){
 			Application.LoadLevel("WinScreen");
 		}
 
@@ -90,23 +115,10 @@ public class VolcanoController : MonoBehaviour {
 			spriteRender.sprite = mehVolcano;
 		}
 
-		/*if(draining){
-			drainCounter+=Time.deltaTime;
-			if(drainCounter >= drainTime){
-				drainCounter = drainTime;
-				draining = false;
-			}
-			float barHeight = devotionBarRect.height - (devotionBarRect.height * (worship / MAX_WORSHIP)
-			                                            + Mathf.Min((int)(lavaUsage * 1/drainCounter), worship + lavaUsage));
-			devotionBarCurrentRect = new Rect(devotionBarRect.x,barHeight,
-			                                  devotionBarRect.width, devotionBarRect.height);
-		//} else {
-		*/
 		//TODO look at this later
 		float barHeight = (devotionBarRect.height - (devotionBarRect.height * ((worship) / MAX_WORSHIP))) *resy;
 		devotionBarCurrentRect = new Rect(devotionBarRect.x,barHeight,
 		                                  devotionBarRect.width, devotionBarRect.height);
-		//}
 	}
 
 	void OnMouseDown(){
@@ -119,13 +131,13 @@ public class VolcanoController : MonoBehaviour {
 			GameObject level = GameObject.FindGameObjectWithTag ("level");
 			lava.transform.parent = level.transform;
 			instantiated = true;
-			startingWorship -= lavaUsage;
+			startingWorship -= lavaPercent * barLevelWorship;
 			draining = true;
 		}
 	}
 
 	void OnGUI(){
-
+        //TODO Josh, hook Devotion Bar to here using var worship
 		GUI.BeginGroup (devotionBarRect);
 		GUI.DrawTexture(devotionBarCurrentRect,devotionTexture);
 		GUI.EndGroup();
