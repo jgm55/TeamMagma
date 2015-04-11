@@ -214,9 +214,11 @@ public class VillageController : MonoBehaviour {
 
 		while(generate){
 			//Vector3 lakePos = lake.transform.position;
-			float x = Random.Range (0f, lake.transform.localScale.x);
-			float y = Random.Range (0f, lake.transform.localScale.y);
-			Vector2 newPos = new Vector2(lake.transform.position.x + x, lake.transform.position.y + y);
+            float xBound = lake.GetComponent<SpriteRenderer>().bounds.size.x;
+            float yBound = lake.GetComponent<SpriteRenderer>().bounds.size.y;
+			float x = Random.Range (0f, xBound);
+            float y = Random.Range(0f, yBound);
+			Vector2 newPos = new Vector2(lake.transform.position.x -xBound / 2+ x, lake.transform.position.y - yBound / 2 + y);
 			house.transform.position = newPos;
 			generate = false;
 			Debug.Log("Trying to generate");
@@ -227,10 +229,12 @@ public class VillageController : MonoBehaviour {
 				}
 			}*/
 		}
-		GameObject newHouse = (GameObject)Instantiate (house);
+		GameObject newHouse = Instantiate (house) as GameObject;
 		Debug.Log ("Done making house");
 
 		newHouse.transform.parent = this.transform;
+        //TODO: This only works if houses only spawn when there exists a lake
+        newHouse.transform.rotation = lake.transform.rotation;
 		GameObject[] moreHouses = new GameObject[houses.Length + 1];
 		houses.CopyTo(moreHouses,0);
 		houses = moreHouses;
@@ -239,20 +243,25 @@ public class VillageController : MonoBehaviour {
 	}
 
 	private bool testPoint(GameObject house, GameObject existingHouse){
+        Vector3 sizeHouse = existingHouse.GetComponent<SpriteRenderer>().bounds.size;
 		//right of it
-		if(house.transform.position.x > existingHouse.transform.position.x + existingHouse.transform.localScale.x){
+        if (house.transform.position.x > existingHouse.transform.position.x + sizeHouse.x)
+        {
 			return true;
 		}
 		// Below it
-		if(house.transform.position.y < existingHouse.transform.position.y - existingHouse.transform.localScale.y){
+        if (house.transform.position.y < existingHouse.transform.position.y - sizeHouse.y)
+        {
 			return true;
 		}
 		//to the left of it
-		if(house.transform.position.x + existingHouse.transform.localScale.x > existingHouse.transform.position.x){
+        if (house.transform.position.x + sizeHouse.x > existingHouse.transform.position.x)
+        {
 			return true;
 		}
 		// Above it
-		if(house.transform.position.y - existingHouse.transform.localScale.y > existingHouse.transform.position.y){
+        if (house.transform.position.y - sizeHouse.y > existingHouse.transform.position.y)
+        {
 			return true;
 		}
 		return false;
