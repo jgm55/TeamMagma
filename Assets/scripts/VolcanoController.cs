@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class VolcanoController : MonoBehaviour {
 
@@ -13,6 +14,7 @@ public class VolcanoController : MonoBehaviour {
 	public float badDevotion = 0f;
 	float lavaUsage = 15f;
 	float decreasePercentage = .01f;
+	private float magmaFillScaler = .04f;
 
     float maxSpeed;
     float maxSpeedStart = 1.2f;
@@ -33,7 +35,7 @@ public class VolcanoController : MonoBehaviour {
     float lavaPercent = .1f;
 	int DecreaseCount = 5;
 	private float counter = 0;
-	int MAX_WORSHIP = 200;
+	float MAX_WORSHIP = 200;
 //	float drainTime = 1f;
 //	float drainCounter = 0;
 	bool draining = false;
@@ -61,6 +63,7 @@ public class VolcanoController : MonoBehaviour {
         barLevelWorship = worship + startingWorship;
         maxSpeed = maxSpeedStart;
         timeLava = timeLavaStart;
+		FindObjectOfType<Image>().fillAmount = barLevelWorship/MAX_WORSHIP;
 	}
 	
 	// Update is called once per frame
@@ -70,7 +73,7 @@ public class VolcanoController : MonoBehaviour {
             //drainCounter = 0;
 		}
 
-        int third = MAX_WORSHIP / 3;
+        float third = MAX_WORSHIP / 3;
         if(barLevelWorship < third){
             tierLevel = TierLevel.LOW;
             lavaPercent = .1f;
@@ -155,9 +158,9 @@ public class VolcanoController : MonoBehaviour {
 	}
 
 	void OnGUI(){
-        //TODO Josh, hook Devotion Bar to here using var worship
-		GUI.BeginGroup (devotionBarRect);
-		GUI.DrawTexture(devotionBarCurrentRect,devotionTexture);
-		GUI.EndGroup();
+		Image Image  = FindObjectOfType<Image> ();
+		Debug.Log (barLevelWorship);
+		
+		Image.fillAmount = Mathf.MoveTowards (Image.fillAmount, barLevelWorship/MAX_WORSHIP, Time.deltaTime * magmaFillScaler);
 	}
 }
