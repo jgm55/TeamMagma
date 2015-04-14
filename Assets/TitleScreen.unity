@@ -315,7 +315,7 @@ GameObject:
   - 212: {fileID: 1988669945}
   - 61: {fileID: 1988669944}
   m_Layer: 0
-  m_Name: Tutorial 1
+  m_Name: About
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -395,6 +395,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2066328461}
   - 212: {fileID: 2066328460}
+  - 114: {fileID: 2066328462}
   m_Layer: 0
   m_Name: neutralBackground
   m_TagString: Untagged
@@ -440,3 +441,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!114 &2066328462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2066328459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af6375afe9892574dbe88d41cf925e93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  good: {fileID: 21300000, guid: 7e34f3f853848ff4385baa1f4b69309f, type: 3}
+  bad: {fileID: 21300000, guid: f9cd5079bf6c75548a527c9f7ac41d95, type: 3}
+  sceneName: 

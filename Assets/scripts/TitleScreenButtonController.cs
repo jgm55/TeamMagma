@@ -10,10 +10,11 @@ public class TitleScreenButtonController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	    if(Properties.lastWin == Properties.PlayStyle.BAD){
+        if (Properties.lastPlayedStyle == Properties.PlayStyle.BAD)
+        {
             GetComponent<SpriteRenderer>().sprite = bad;
         }
-        else if (Properties.lastWin == Properties.PlayStyle.GOOD)
+        else if (Properties.lastPlayedStyle == Properties.PlayStyle.GOOD)
         {
             GetComponent<SpriteRenderer>().sprite = good;
         }

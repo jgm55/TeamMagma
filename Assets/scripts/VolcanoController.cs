@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using Assets.scripts;
 
 public class VolcanoController : MonoBehaviour {
 
@@ -36,30 +37,13 @@ public class VolcanoController : MonoBehaviour {
 	int DecreaseCount = 5;
 	private float counter = 0;
 	float MAX_WORSHIP = 200;
-//	float drainTime = 1f;
-//	float drainCounter = 0;
 	bool draining = false;
-
-	public Texture devotionTexture;
-	Vector2 resolution;
-	float resx;
-	float resy;
-	Vector2 devotionBarPos = new Vector2(20,40);
-	Vector2 devotionBarSize;
 
     enum TierLevel{LOW, MEDIUM,HIGH};
     TierLevel tierLevel = TierLevel.LOW;
 
-	Rect devotionBarRect;
-	Rect devotionBarCurrentRect;
 	// Use this for initialization
 	void Start () {
-		devotionBarSize = new Vector2(40f,800 - devotionBarPos.y * 2);//max size
-		resolution = new Vector2(Screen.width, Screen.height);
-		resx = resolution.x/1280.0f; // 1280 is the x value of the working resolution
-		resy = resolution.y/800.0f; // 800 is the y value of the working resolution
-		devotionBarRect = new Rect(devotionBarPos.x*resx,devotionBarPos.y*resy,devotionBarSize.x*resx,devotionBarSize.y*resy);
-
         barLevelWorship = worship + startingWorship;
         maxSpeed = maxSpeedStart;
         timeLava = timeLavaStart;
@@ -69,9 +53,6 @@ public class VolcanoController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         barLevelWorship = worship + startingWorship;
-		if(!draining){
-            //drainCounter = 0;
-		}
 
         float third = MAX_WORSHIP / 3;
         if(barLevelWorship < third){
@@ -123,21 +104,18 @@ public class VolcanoController : MonoBehaviour {
 			spriteRender.sprite = happyVolcano;
             maxSpeed = maxSpeedStart;
             timeLava = timeGoodLava;
-
+            Properties.lastPlayedStyle = Properties.PlayStyle.GOOD;
 		} else if(badDevotion - goodDevotion > badDevotionLower){
 			spriteRender.sprite = angryVolcano;
             maxSpeed = maxSpeedBad;
             timeLava = timeLavaStart;
+            Properties.lastPlayedStyle = Properties.PlayStyle.BAD;
 		} else {
 			spriteRender.sprite = mehVolcano;
             maxSpeed = maxSpeedStart;
             timeLava = timeLavaStart;
+            Properties.lastPlayedStyle = Properties.PlayStyle.NUETRAL;
 		}
-
-		//TODO look at this later
-		float barHeight = (devotionBarRect.height - (devotionBarRect.height * ((worship) / MAX_WORSHIP))) *resy;
-		devotionBarCurrentRect = new Rect(devotionBarRect.x,barHeight,
-		                                  devotionBarRect.width, devotionBarRect.height);
 	}
 
 	void OnMouseDown(){
