@@ -10,11 +10,12 @@ public class VolcanoController : MonoBehaviour {
 
 	float startingWorship = 50.0f;
 	float worship = 0;
-    float barLevelWorship = 0f;
 	public float goodDevotion = 0f;
 	public float badDevotion = 0f;
 	float lavaUsage = 15f;
-	float decreasePercentage = .01f;
+	float decreasePercentage = .02f;
+    float decreaseMin = 5f;
+
 	private float magmaFillScaler = .04f;
 
     float maxSpeed;
@@ -23,6 +24,8 @@ public class VolcanoController : MonoBehaviour {
     float timeLava;
     float timeLavaStart = 8f;
     float timeGoodLava = 15f;
+    float lavaPercent = .3f;
+    float lavaPercentMin = 15f;
 
 	public Sprite mehVolcano;
 	public Sprite happyVolcano;
@@ -33,7 +36,6 @@ public class VolcanoController : MonoBehaviour {
 	float badDevotionLower = 50f;
 	float goodDevotionLower = 50f;
 
-    float lavaPercent = .1f;
 	int DecreaseCount = 5;
 	private float counter = 0;
 	float MAX_WORSHIP = 200;
@@ -44,32 +46,32 @@ public class VolcanoController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        barLevelWorship = worship + startingWorship;
         maxSpeed = maxSpeedStart;
         timeLava = timeLavaStart;
-		FindObjectOfType<Image>().fillAmount = barLevelWorship/MAX_WORSHIP;
+		FindObjectOfType<Image>().fillAmount = worship/MAX_WORSHIP;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        barLevelWorship = worship + startingWorship;
+        //barLevelWorship = worship + startingWorship;
+        worship = goodDevotion + badDevotion + startingWorship;
 
         float third = MAX_WORSHIP / 3;
-        if(barLevelWorship < third){
+        if(worship < third){
             tierLevel = TierLevel.LOW;
-            lavaPercent = .1f;
-            decreasePercentage = .01f;
+            lavaPercent = .3f;
+            decreasePercentage = .02f;
         }
-        else if (barLevelWorship < 2 * third)
+        else if (worship < 2 * third)
         {
             tierLevel = TierLevel.MEDIUM;
-            lavaPercent = .2f;
-            decreasePercentage = .02f;
+            lavaPercent = .3f;
+            decreasePercentage = .04f;
 
         } else {
             tierLevel = TierLevel.HIGH;
             lavaPercent = .3f;
-            decreasePercentage = .03f;
+            decreasePercentage = .08f;
         }
 
 		goodDevotion = 0;
@@ -81,21 +83,21 @@ public class VolcanoController : MonoBehaviour {
 			badDevotion += village.badDevotion;
 		}
 		if(counter >= DecreaseCount){
-			startingWorship -= barLevelWorship*decreasePercentage;
+            startingWorship -= Mathf.Max(worship * decreasePercentage, decreaseMin);
 			counter = 0;
 		}
 		if(!instantiated){
 			counter += Time.deltaTime;
 			// Game Over
-			if(barLevelWorship <= 0f){
+            if (worship <= 0f)
+            {
 				//Application.Quit();
 				Application.LoadLevel("LoseScreen");
 			}
 		}
-		worship = goodDevotion + badDevotion + startingWorship;
 
 		//Game Win
-		if(MAX_WORSHIP < barLevelWorship){
+		if(MAX_WORSHIP < worship){
 			Application.LoadLevel("WinScreen");
 		}
 
@@ -128,7 +130,7 @@ public class VolcanoController : MonoBehaviour {
 			GameObject level = GameObject.FindGameObjectWithTag ("level");
 			lava.transform.parent = level.transform;
 			instantiated = true;
-			startingWorship -= lavaPercent * barLevelWorship;
+			startingWorship -= Mathf.Max(lavaPercent * worship,lavaPercentMin);
             lava.GetComponent<AccelControl>().maxVelocity = maxSpeed;
             lava.GetComponent<AccelControl>().timeLava = timeLava;
 			draining = true;
@@ -137,8 +139,7 @@ public class VolcanoController : MonoBehaviour {
 
 	void OnGUI(){
 		Image Image  = FindObjectOfType<Image> ();
-		Debug.Log (barLevelWorship);
 		
-		Image.fillAmount = Mathf.MoveTowards (Image.fillAmount, barLevelWorship/MAX_WORSHIP, Time.deltaTime * magmaFillScaler);
+		Image.fillAmount = Mathf.MoveTowards (Image.fillAmount, worship/MAX_WORSHIP, Time.deltaTime * magmaFillScaler);
 	}
 }
