@@ -9,8 +9,8 @@ public class AccelControl : MonoBehaviour {
 	//public Vector3 friction = new Vector3 (.5,.5,0);
 	public Vector3 dir;
 	public GUIStyle style;
-
-	public float timeLava = 10;
+    //TODO fix this
+	public float timeLava = 10000;
 	// Use this for initialization
 	void Start () {
 
