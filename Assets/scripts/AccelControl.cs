@@ -50,13 +50,23 @@ public class AccelControl : MonoBehaviour {
 			GameObject.FindGameObjectWithTag("volcano").GetComponent<VolcanoController>().instantiated = false;
 			GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraControl>().Reset();
 			Component[] components = this.GetComponents<Component>();
-			//for(int i=0; i< components.Length;i++){
-			//	if(!(components[i] is TrailRenderer)){
-			//		Destroy(components[i]);
-			//	}
-			//}
-			Destroy(this.gameObject);
+			
+            //Do raytracing to see if inside a lake
+            Vector2 pos = Camera.main.ScreenToWorldPoint(this.transform.position);
+            RaycastHit2D[] hits = Physics2D.RaycastAll(this.transform.position, pos);
+            Debug.Log("hits: " + hits);
+            foreach(RaycastHit2D hit in hits){
+                Debug.Log("hit" + hit.collider.gameObject);
+                LakeScript lake = hit.collider.gameObject.GetComponent<LakeScript>();
+                Debug.Log(lake);
+                if (lake != null)
+                {
+                    lake.OnTriggerExit2D(this.GetComponent<Collider2D>());
+                    Debug.Log("called exit");
+                }
+            }
 
+			Destroy(this.gameObject);
 		}
 
 	}

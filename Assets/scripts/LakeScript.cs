@@ -29,7 +29,7 @@ public class LakeScript : MonoBehaviour {
 				isFilling = false;
 			}
 			lakeIndex = (int)(counter / lakeChangeSeconds);
-			Debug.Log (lakeIndex);
+//			Debug.Log (lakeIndex);
 			if(lakeFills.Length > lakeIndex){
 				GetComponent<SpriteRenderer>().sprite = lakeFills[lakeIndex];
 			}
@@ -37,7 +37,8 @@ public class LakeScript : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerExit2D(Collider2D other){
+    public void OnTriggerExit2D(Collider2D other)
+    {
 		isFilling = false;
 		other.gameObject.GetComponent<Rigidbody2D>().drag = startDrag;
 		AccelControl script = other.GetComponent<AccelControl>();
