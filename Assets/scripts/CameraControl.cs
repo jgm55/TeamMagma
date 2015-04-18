@@ -26,7 +26,7 @@ public class CameraControl : MonoBehaviour {
 	public CameraState state = CameraState.NUETRAL;
 
 	void Start () {
-        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;  
 		Reset ();
 	}
 	
@@ -44,7 +44,9 @@ public class CameraControl : MonoBehaviour {
 
 
 		if(myPlay == null && Input.GetMouseButtonUp(0) && !lastTouchPos.Equals(new Vector3(0,0,0))){
-			angle = Vector3.Angle(lastTouchPos, Input.mousePosition);
+			angle = Vector2.Angle(lastTouchPos, Input.mousePosition);
+                        Debug.Log(angle);
+
 			if(lastTouchPos.x > Input.mousePosition.x){
 				angle *= -1;
 			}
