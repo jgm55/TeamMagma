@@ -43,6 +43,7 @@ public class LakeScript : MonoBehaviour {
 		other.gameObject.GetComponent<Rigidbody2D>().drag = startDrag;
 		AccelControl script = other.GetComponent<AccelControl>();
 		script.maxVelocity = startVelocity;
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraControl>().startShakingCamera(.01f);
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
@@ -52,6 +53,7 @@ public class LakeScript : MonoBehaviour {
 			AccelControl script = other.GetComponent<AccelControl>();
 			startVelocity = script.maxVelocity;
 			script.maxVelocity = startVelocity / 2;
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraControl>().startShakingCamera(.01f);
 		}
 	}
 }

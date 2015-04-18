@@ -13,7 +13,7 @@ public class AccelControl : MonoBehaviour {
 	public float timeLava = 10000;
 	// Use this for initialization
 	void Start () {
-
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraControl>().startShakingCamera();
 	}
 
 	void awake(){

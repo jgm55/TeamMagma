@@ -47,5 +47,6 @@ public class HouseScript : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		isburning = true;
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraControl>().startShakingCamera();
 	}
 }
