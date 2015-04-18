@@ -26,6 +26,7 @@ public class CameraControl : MonoBehaviour {
 	public CameraState state = CameraState.NUETRAL;
 
 	void Start () {
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
 		Reset ();
 	}
 	
