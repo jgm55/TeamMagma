@@ -10,7 +10,7 @@ public class AccelControl : MonoBehaviour {
 	public Vector3 dir;
 	public GUIStyle style;
     //TODO fix this
-	public float timeLava = 10000;
+	public float timeLava;
 	// Use this for initialization
 	void Start () {
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraControl>().startShakingCamera();

@@ -58,7 +58,7 @@ public class CameraControl : MonoBehaviour {
 				angle = 0f;
 			} else {
 				GameObject level = GameObject.FindGameObjectWithTag("level");
-				level.transform.RotateAround(level.transform.position,new Vector3(0,0,1), Time.deltaTime * angle * 1/SPIN_TIME);
+				level.transform.RotateAround(level.transform.position,new Vector3(0,0,10), Time.deltaTime * angle * 1/SPIN_TIME);
 				spinCount += Time.deltaTime;
 			}
 		}
