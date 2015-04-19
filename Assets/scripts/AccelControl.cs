@@ -58,11 +58,9 @@ public class AccelControl : MonoBehaviour {
             foreach(RaycastHit2D hit in hits){
                 Debug.Log("hit" + hit.collider.gameObject);
                 LakeScript lake = hit.collider.gameObject.GetComponent<LakeScript>();
-                Debug.Log(lake);
                 if (lake != null)
                 {
                     lake.OnTriggerExit2D(this.GetComponent<Collider2D>());
-                    Debug.Log("called exit");
                 }
             }
 

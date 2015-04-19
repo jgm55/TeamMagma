@@ -17,7 +17,7 @@ public class VillageController : MonoBehaviour {
 	public int badDevotion = 0;
 	int devotionRateBad = 1;
 	int devotionRateGood = 1;
-	int forgetDevotion = 30;
+	int forgetDevotion = 15;
 	int maxHouses = 6;
 	float radiusNear = 6.0f;
 	int MAX_ENCOUNTER = 2;
@@ -31,7 +31,7 @@ public class VillageController : MonoBehaviour {
 	public VillageState state = VillageState.NUETRAL;
 
 	int devotionIncrement = 5;
-	int makeHouseSeconds = 15;
+	int makeHouseSeconds = 12;
 
 
 	public float textCounter = 0f;
@@ -70,8 +70,6 @@ public class VillageController : MonoBehaviour {
 		negativeWorship.GetComponent<Renderer>().enabled = false;
 		doublePositiveWorship.GetComponent<Renderer>().enabled = false;
 		doubleNegativeWorship.GetComponent<Renderer>().enabled = false;
-			
-		//}
 		alertBubble.GetComponent<Renderer>().enabled = false;
 
 		if(state == VillageState.BURNING){
@@ -80,7 +78,7 @@ public class VillageController : MonoBehaviour {
 				Color c = doubleNegativeWorship.GetComponent<Renderer>().material.color;
 				c.a = devotionCounter / devotionIncrement;
 				doubleNegativeWorship.GetComponent<Renderer>().material.color = c;
-			} else {
+			} else if(timesEncounter == 1){
 				negativeWorship.GetComponent<Renderer>().enabled = true;
 				Color c = negativeWorship.GetComponent<Renderer>().material.color;
 				c.a = devotionCounter / devotionIncrement;
@@ -92,7 +90,7 @@ public class VillageController : MonoBehaviour {
 				Color c = doublePositiveWorship.GetComponent<Renderer>().material.color;
 				c.a = devotionCounter / devotionIncrement;
 				doublePositiveWorship.GetComponent<Renderer>().material.color = c;
-			} else {
+			} else if(timesEncounter == 1) {
 				positiveWorship.GetComponent<Renderer>().enabled = true;
 				Color c = positiveWorship.GetComponent<Renderer>().material.color;
 				c.a = devotionCounter / devotionIncrement;
@@ -128,14 +126,15 @@ public class VillageController : MonoBehaviour {
 		if(lake != null){
 			if(lake.GetComponent<LakeScript>().isFilled){
 				houseCounter += Time.deltaTime;
-				if(state == VillageState.NUETRAL && houseCount > 0){
+				/*if(state == VillageState.NUETRAL && houseCount > 0){
 					state = VillageState.WORSHIPPING;
 					timesEncounter = 1;
 					forgetCounter = 0;
-				} else if(state == VillageState.NUETRAL && wasFilling){
+				} else */if(state == VillageState.NUETRAL && wasFilling){
 					state = VillageState.WORSHIPPING;
 					timesEncounter = 1;
 					forgetCounter = 0;
+                    wasFilling = false;
 				}
 				if(houseCount < maxHouses && houseCounter > makeHouseSeconds && state == VillageState.WORSHIPPING){
 					houseCounter = 0;
@@ -152,10 +151,14 @@ public class VillageController : MonoBehaviour {
 
 
 		if(updatedDevotion){
+            //Pop up text here
+
 			textCounter+=Time.deltaTime;
 		}
 		if(textCounter > textSeconds){
 			textCounter = 0;
+            updatedDevotion = false;
+
 		}
 
 		if(devotionCounter > devotionIncrement ){
@@ -194,7 +197,13 @@ public class VillageController : MonoBehaviour {
 					timesEncounter++;
 					timesEncounter = Mathf.Min(timesEncounter, MAX_ENCOUNTER);
 					forgetCounter = 0;
-				}
+                }
+                else if(lake != null && lake.GetComponent<LakeScript>().isFilled)
+                {
+                    /*state = VillageState.WORSHIPPING;
+                    timesEncounter = 1;
+                    forgetCounter = 0;*/
+                }
 			}
 		}
 	}
@@ -285,15 +294,16 @@ public class VillageController : MonoBehaviour {
 		houses = newHouses;
 	}
 
-	/*void OnGUI(){
-		if(textCounter <= textSeconds && textCounter!=0){
-			updatedDevotion = false;
-			GUIStyle style = new GUIStyle();
-			style.fontSize = 18;
-			GUIText text = new GUIText();
-			text.text = pointsGained.ToString();
-			text.transform.position = new Vector2(pointsRect.x, pointsRect.y);
-			//(pointsRect, pointsGained.ToString(), style);
-		}
-	}*/
+    /*void OnGUI(){
+        if(textCounter <= textSeconds && textCounter!=0){
+            updatedDevotion = false;
+            GUIStyle style = new GUIStyle();
+            style.fontSize = 18;
+            GUIText text = new GUIText();
+            text.text = pointsGained.ToString();
+            text.transform.position = FindObjectOfType<Camera>().WorldToScreenPoint(new Vector2(transform.position.x, transform.position.y + textCounter));
+            //(pointsRect, pointsGained.ToString(), style);
+
+        }
+    }*/
 }
