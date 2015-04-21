@@ -12,17 +12,15 @@ namespace Assets.scripts
      * */
     class Properties : MonoBehaviour
     {
+        public static string PLAY_STYLE = "play_style";
         public enum PlayStyle{GOOD,BAD,NUETRAL};
         public static PlayStyle lastPlayedStyle = PlayStyle.NUETRAL;
         public static float lastScore = 0f;
         public static string fileName = "test";
-        public static string lastPlayedStyleKey = "lastPlayed";
 
         void OnDestroy()
         {
-            string filePath = Application.persistentDataPath + fileName;
-            string[] lines = { lastPlayedStyleKey + "=" + lastPlayedStyle.ToString() };
-            System.IO.File.WriteAllLines(filePath, lines);
+            PlayerPrefs.SetString(PLAY_STYLE, lastPlayedStyle.ToString());
         }
     }
 }
