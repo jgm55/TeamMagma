@@ -168,27 +168,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22432858, guid: adab92a075f9a4011a60edeb146018fa, type: 2}
       propertyPath: m_LocalScale.x
-      value: .449999988
+      value: .800000012
       objectReference: {fileID: 0}
     - target: {fileID: 22432858, guid: adab92a075f9a4011a60edeb146018fa, type: 2}
       propertyPath: m_LocalScale.y
-      value: .449999988
+      value: .800000012
       objectReference: {fileID: 0}
     - target: {fileID: 22432858, guid: adab92a075f9a4011a60edeb146018fa, type: 2}
       propertyPath: m_LocalScale.z
-      value: .449999988
+      value: .800000012
       objectReference: {fileID: 0}
     - target: {fileID: 22424566, guid: adab92a075f9a4011a60edeb146018fa, type: 2}
       propertyPath: m_LocalScale.x
-      value: .449999988
+      value: .800000012
       objectReference: {fileID: 0}
     - target: {fileID: 22424566, guid: adab92a075f9a4011a60edeb146018fa, type: 2}
       propertyPath: m_LocalScale.y
-      value: .449999988
+      value: .800000012
       objectReference: {fileID: 0}
     - target: {fileID: 22424566, guid: adab92a075f9a4011a60edeb146018fa, type: 2}
       propertyPath: m_LocalScale.z
-      value: .449999988
+      value: .800000012
       objectReference: {fileID: 0}
     - target: {fileID: 22432858, guid: adab92a075f9a4011a60edeb146018fa, type: 2}
       propertyPath: m_AnchoredPosition.y
