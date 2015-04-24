@@ -5,6 +5,9 @@ using System.Collections;
 public class DevotionTracker : MonoBehaviour {
 
 	private float devotion = 0;
+	public Color color;
+	public Font fontType;
+	private GUIStyle style;
 	Vector2 resolution;
 	float resx;
 	float resy;
@@ -15,7 +18,10 @@ public class DevotionTracker : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		scorePos = new Vector2(1280 - scoreSize.x, 20);
-
+		style = new GUIStyle();
+		style.fontSize = 50;
+		style.font = fontType;
+		style.normal.textColor = color;
 		resolution = new Vector2(Screen.width, Screen.height);
 		resx = resolution.x/1280.0f; // 1280 is the x value of the working resolution
 		resy = resolution.y/800.0f; // 800 is the y value of the working resolution
@@ -35,9 +41,7 @@ public class DevotionTracker : MonoBehaviour {
 		//GUI.BeginGroup(scoreRect);
 		//Text text = GetComponent<Text>();
 		//text.text = "Score: " + devotion.ToString();
-		GUIStyle style = new GUIStyle();
-		style.fontSize = 20;
-		GUI.Label(scoreRect, "Score: " + devotion.ToString(), style);
+		GUI.Label(scoreRect, "Score: " + devotion, style);
 	}
 
 
