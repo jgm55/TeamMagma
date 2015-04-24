@@ -1,9 +1,42 @@
 fileFormatVersion: 2
 guid: 6a65f1cfd2b300147b65c70043daed3c
-timeCreated: 1429637004
+timeCreated: 1429896868
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: totem03_0
+    21300002: totem03_1
+    21300004: totem03_2
+    21300006: totem03_3
+    21300008: totem03_4
+    21300010: totem03_5
+    21300012: totem03_6
+    21300014: totem03_7
+    21300016: totem03_8
+    21300018: totem03_9
+    21300020: totem03_10
+    21300022: totem03_11
+    21300024: totem03_12
+    21300026: totem03_13
+    21300028: totem03_14
+    21300030: totem03_15
+    21300032: totem03_16
+    21300034: totem03_17
+    21300036: totem03_18
+    21300038: totem03_19
+    21300040: totem03_20
+    21300042: totem03_21
+    21300044: totem03_22
+    21300046: totem03_23
+    21300048: totem03_24
+    21300050: totem03_25
+    21300052: totem03_26
+    21300054: totem03_27
+    21300056: totem03_28
+    21300058: totem03_29
+    21300060: totem03_30
+    21300062: totem03_31
+    21300064: totem03_32
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -30,14 +63,14 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -48,7 +81,337 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: totem03_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 1261
+        width: 225
+        height: 240
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: totem03_1
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 1260
+        width: 226
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: totem03_2
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 1261
+        width: 225
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: totem03_3
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 1259
+        width: 226
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: totem03_4
+      rect:
+        serializedVersion: 2
+        x: 923
+        y: 1261
+        width: 225
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: totem03_5
+      rect:
+        serializedVersion: 2
+        x: 1150
+        y: 1260
+        width: 226
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: totem03_6
+      rect:
+        serializedVersion: 2
+        x: 1383
+        y: 1261
+        width: 225
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: totem03_7
+      rect:
+        serializedVersion: 2
+        x: 1613
+        y: 1259
+        width: 227
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: totem03_8
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 954
+        width: 225
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: totem03_9
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 953
+        width: 226
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: totem03_10
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 954
+        width: 225
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: totem03_11
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 953
+        width: 226
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: totem03_12
+      rect:
+        serializedVersion: 2
+        x: 923
+        y: 954
+        width: 225
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: totem03_13
+      rect:
+        serializedVersion: 2
+        x: 1151
+        y: 953
+        width: 226
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: totem03_14
+      rect:
+        serializedVersion: 2
+        x: 1383
+        y: 954
+        width: 225
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: totem03_15
+      rect:
+        serializedVersion: 2
+        x: 1614
+        y: 953
+        width: 226
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: totem03_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 646
+        width: 226
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: totem03_17
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 647
+        width: 225
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: totem03_18
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 645
+        width: 226
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: totem03_19
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 647
+        width: 225
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: totem03_20
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 646
+        width: 226
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: totem03_21
+      rect:
+        serializedVersion: 2
+        x: 1153
+        y: 647
+        width: 225
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: totem03_22
+      rect:
+        serializedVersion: 2
+        x: 1383
+        y: 645
+        width: 227
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: totem03_23
+      rect:
+        serializedVersion: 2
+        x: 1613
+        y: 647
+        width: 225
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: totem03_24
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 339
+        width: 226
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: totem03_25
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 340
+        width: 225
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: totem03_26
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 339
+        width: 226
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: totem03_27
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 340
+        width: 225
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: totem03_28
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 339
+        width: 226
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: totem03_29
+      rect:
+        serializedVersion: 2
+        x: 1153
+        y: 340
+        width: 225
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: totem03_30
+      rect:
+        serializedVersion: 2
+        x: 1380
+        y: 339
+        width: 226
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: totem03_31
+      rect:
+        serializedVersion: 2
+        x: 1613
+        y: 340
+        width: 225
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: totem03_32
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 33
+        width: 225
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
   assetBundleName: 
