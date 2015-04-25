@@ -98,7 +98,18 @@ public class VolcanoController : MonoBehaviour {
 
 		//Game Win
 		if(MAX_WORSHIP < worship){
-			Application.LoadLevel("WinScreen");
+            Debug.Log("End Game: " + Properties.lastPlayedStyle);
+            if(Properties.lastPlayedStyle == Properties.PlayStyle.BAD){
+                Application.LoadLevel("WinScreenBad");
+            }
+            else if (Properties.lastPlayedStyle == Properties.PlayStyle.GOOD)
+            {
+                Application.LoadLevel("WinScreenGood");
+            }
+            else
+            {
+                Application.LoadLevel("WinScreen");
+            }
 		}
 
 		SpriteRenderer spriteRender = GetComponent<SpriteRenderer>();
