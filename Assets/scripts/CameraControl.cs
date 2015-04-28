@@ -43,7 +43,7 @@ public class CameraControl : MonoBehaviour {
 		}
 
 
-		if(myPlay == null && Input.GetMouseButtonUp(0) && !lastTouchPos.Equals(new Vector3(0,0,0))){
+		/*if(myPlay == null && Input.GetMouseButtonUp(0) && !lastTouchPos.Equals(new Vector3(0,0,0))){
 			angle = Vector2.Angle(lastTouchPos, Input.mousePosition);
                         Debug.Log(angle);
 
@@ -61,7 +61,7 @@ public class CameraControl : MonoBehaviour {
 				level.transform.RotateAround(level.transform.position,new Vector3(0,0,10), Time.deltaTime * angle * 1/SPIN_TIME);
 				spinCount += Time.deltaTime;
 			}
-		}
+		}*/
         if (Input.GetMouseButtonDown(0))
         {
             lastTouchPos = Input.mousePosition;
