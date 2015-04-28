@@ -35,61 +35,66 @@ public class RingRotation : MonoBehaviour
 
 	void Update()
 	{
-		//Click and drag on (hidden) cylinder to ring and fish.
+        if (!FindObjectOfType<VolcanoController>().instantiated)
+        {
+            //Click and drag on (hidden) cylinder to ring and fish.
+
+            _clickDrag = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+
+            if (_isRotating)
+            {
+                // offset
+                _mouseOffset = (Input.mousePosition - _mouseReference);
+
+                // apply rotation
+                if (_clickDrag.y > 0.5) //screenpoint is top half of the screen
+                {
+                    if (_clickDrag.x > 0.5) //screenpoint it in top right quarter of the screen
+                    {
+                        _rotation.z = (_mouseOffset.y + -_mouseOffset.x) * _sensitivity;
+                    }
+                    else // screenpoint is in top left of the screen
+                    {
+                        _rotation.z = -(_mouseOffset.y + _mouseOffset.x) * _sensitivity;
+                    }
+                }
+                else if (_clickDrag.x > 0.5) //screenpoint is in the bottom right
+                {
+                    _rotation.z = (_mouseOffset.y + _mouseOffset.x) * _sensitivity;
+                }
+                else //screenpoint is in the bottom left
+                {
+                    _rotation.z = (-_mouseOffset.y + _mouseOffset.x) * _sensitivity;
+                }
+
+                // rotate
+                gameObject.transform.Rotate(_rotation);
+
+                // store mouse
+                _mouseReference = Input.mousePosition;
+
+
+            }
+
+            Vector3 ringRotation;
+            if (clockwise)
+            {
+                ringRotation = new Vector3(0f, 0f, ambientRotationSpeed);
+            }
+            else
+            {
+                ringRotation = new Vector3(0f, 0f, -ambientRotationSpeed);
+            }
+
+            transform.Rotate(ringRotation);
+
+            /*//Rotate fish in ring.
 		
-		_clickDrag = Camera.main.ScreenToViewportPoint (Input.mousePosition);
-		
-		if(_isRotating)
-		{
-			// offset
-			_mouseOffset = (Input.mousePosition - _mouseReference);
-			
-			// apply rotation
-			if (_clickDrag.y > 0.5) //screenpoint is top half of the screen
-			{
-				if (_clickDrag.x > 0.5) //screenpoint it in top right quarter of the screen
-				{
-					_rotation.z = (_mouseOffset.y + -_mouseOffset.x) * _sensitivity;
-				}
-				else // screenpoint is in top left of the screen
-				{
-					_rotation.z = - (_mouseOffset.y + _mouseOffset.x) * _sensitivity;
-				}
-			} else if (_clickDrag.x > 0.5) //screenpoint is in the bottom right
-			{
-				_rotation.z = (_mouseOffset.y + _mouseOffset.x) * _sensitivity;
-			}
-			else //screenpoint is in the bottom left
-			{
-				_rotation.z = (-_mouseOffset.y + _mouseOffset.x) * _sensitivity;
-			}
-
-			// rotate
-			gameObject.transform.Rotate(_rotation);
-			
-			// store mouse
-			_mouseReference = Input.mousePosition;
-
-
-		}
-
-		Vector3 ringRotation;
-		if (clockwise) 
-		{
-			ringRotation = new Vector3(0f,0f,ambientRotationSpeed);
-		} else 
-		{
-			ringRotation = new Vector3(0f,0f,-ambientRotationSpeed);
-		}
-
-		transform.Rotate(ringRotation);
-
-		/*//Rotate fish in ring.
-		
-		foreach (Transform child in parentObject.transform)
-		{
-			transform.Rotate(_rotation);
-		}*/
+            foreach (Transform child in parentObject.transform)
+            {
+                transform.Rotate(_rotation);
+            }*/
+        }
 	}
 	
 	void OnMouseDown()
