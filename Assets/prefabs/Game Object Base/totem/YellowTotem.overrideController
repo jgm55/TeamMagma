@@ -1,0 +1,14 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: YellowTotem
+  m_Controller: {fileID: 9100000, guid: e86de899908c93e46aa661b1e9342648, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 9e9aaa200d334a04b91a875b8d215c05, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 6e0c1af2d826f476d9497a0c7db81e00, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 5ac4a8b362d5152479620b5d2796760c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ab1d8bd30232a4f4bb620c6dad02fbe6, type: 2}
