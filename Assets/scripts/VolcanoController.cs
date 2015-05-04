@@ -8,6 +8,8 @@ public class VolcanoController : MonoBehaviour {
 	public GameObject toInstantiate;
 	public bool instantiated = false;
 
+    public AudioClip eruptSound;
+
 	float startingWorship = 50.0f;
 	float worship = 0;
 	public float goodDevotion = 0f;
@@ -134,6 +136,7 @@ public class VolcanoController : MonoBehaviour {
 	void OnMouseDown(){
 		if (!instantiated) {
 			Debug.Log("instantiating lava");
+            AudioSource.PlayClipAtPoint(eruptSound, this.transform.position);
 			//Transform t = ((Transform)(Instantiate (toInstantiate)));
 			GameObject lava = Instantiate (toInstantiate) as GameObject;
 			CameraControl.myPlay = lava;

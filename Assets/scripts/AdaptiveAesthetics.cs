@@ -11,12 +11,13 @@ public class AdaptiveAesthetics : MonoBehaviour {
     public AudioClip goodSound;
     public AudioClip nuetralSound;
 
+    float SOURCE_VOLUME = .35f;
+
     Properties.PlayStyle last = Properties.PlayStyle.NUETRAL;
 
 	// Use this for initialization
 	void Start () {
-        GameObject audioObj = Instantiate(audioPrefab) as GameObject;
-        audioSource = audioObj.GetComponent<AudioSource>();
+        audioSource = setUpAudioSource();
         audioSource.PlayOneShot(nuetralSound);
 	}
 	
@@ -26,28 +27,31 @@ public class AdaptiveAesthetics : MonoBehaviour {
         {
             if (Properties.lastPlayedStyle == Properties.PlayStyle.BAD)
             {
-                Destroy(audioSource);
-                GameObject audioObj = Instantiate(audioPrefab) as GameObject;
-                audioSource = audioObj.GetComponent<AudioSource>();
+                audioSource = setUpAudioSource();
                 audioSource.PlayOneShot(badSound);
                 last = Properties.lastPlayedStyle;
             }
             else if (Properties.lastPlayedStyle == Properties.PlayStyle.GOOD)
             {
-                Destroy(audioSource);
-                GameObject audioObj = Instantiate(audioPrefab) as GameObject;
-                audioSource = audioObj.GetComponent<AudioSource>();
+                audioSource = setUpAudioSource();
                 audioSource.PlayOneShot(goodSound);
                 last = Properties.lastPlayedStyle;
             }
             else
             {
-                Destroy(audioSource);
-                GameObject audioObj = Instantiate(audioPrefab) as GameObject;
-                audioSource = audioObj.GetComponent<AudioSource>();
+                audioSource = setUpAudioSource();
                 audioSource.PlayOneShot(nuetralSound);
                 last = Properties.lastPlayedStyle;
             }
         }
 	}
+
+    private AudioSource setUpAudioSource()
+    {
+        Destroy(audioSource);
+        GameObject audioObj = Instantiate(audioPrefab) as GameObject;
+        audioSource = audioObj.GetComponent<AudioSource>();
+        audioSource.volume = SOURCE_VOLUME;
+        return audioSource;
+    }
 }
