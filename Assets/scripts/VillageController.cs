@@ -12,6 +12,11 @@ public class VillageController : MonoBehaviour {
 	public GameObject alertBubble;
 	public GameObject doublePositiveWorship;
 	public GameObject doubleNegativeWorship;
+    public GameObject villageGround;
+    public Color goodColor;
+    public Color badColor;
+
+    float maxScaleGround = 5f;
 
 	public int goodDevotion = 0;
 	public int badDevotion = 0;
@@ -73,6 +78,16 @@ public class VillageController : MonoBehaviour {
 		alertBubble.GetComponent<Renderer>().enabled = false;
 
 		if(state == VillageState.BURNING){
+            //villageGround.GetComponent<SpriteRenderer>().enabled = true;
+            if (goodDevotion + badDevotion != 0)
+            {
+                villageGround.GetComponent<SpriteRenderer>().color = badColor;
+                float scaleAmount = (badDevotion - goodDevotion) / (goodDevotion + badDevotion) * maxScaleGround;
+                if (scaleAmount > 0)
+                {
+                    //villageGround.transform.localScale = new Vector3(scaleAmount, scaleAmount, 1);
+                }
+            }
 			if(timesEncounter > 1){
 				doubleNegativeWorship.GetComponent<Renderer>().enabled = true;
 				Color c = doubleNegativeWorship.GetComponent<Renderer>().material.color;
@@ -85,6 +100,17 @@ public class VillageController : MonoBehaviour {
 				negativeWorship.GetComponent<Renderer>().material.color = c;
 			}
 		} else if(state == VillageState.WORSHIPPING){
+            //villageGround.GetComponent<SpriteRenderer>().enabled = true;
+
+            if (goodDevotion + badDevotion != 0)
+            {
+                villageGround.GetComponent<SpriteRenderer>().color = goodColor;
+                float scaleAmount = (goodDevotion - badDevotion) / (goodDevotion + badDevotion) * maxScaleGround;
+                if (scaleAmount > 0)
+                {
+                    //villageGround.transform.localScale = new Vector3(scaleAmount, scaleAmount, 1);
+                }
+            }
 			if(timesEncounter > 1){
 				doublePositiveWorship.GetComponent<Renderer>().enabled = true;
 				Color c = doublePositiveWorship.GetComponent<Renderer>().material.color;
@@ -96,7 +122,11 @@ public class VillageController : MonoBehaviour {
 				c.a = devotionCounter / devotionIncrement;
 				positiveWorship.GetComponent<Renderer>().material.color = c;
 			}
-		}
+        }
+        else
+        {
+            //villageGround.GetComponent<SpriteRenderer>().enabled = false;
+        }
 		int houseCount = 0;
 		int burningHouses = 0;
 		for(int i=0; i < houses.Length; i++){
@@ -206,6 +236,8 @@ public class VillageController : MonoBehaviour {
                 }
 			}
 		}
+
+        //Color color = villageGround.GetComponent<SpriteRenderer>().color;
 	}
 
 	private bool nearby(Vector3 lavaPos, float radius){
