@@ -10,6 +10,7 @@ public class LakeScript : MonoBehaviour {
 	private float lakeChangeSeconds;
 	public Sprite[] lakeFills;
 	private int lakeIndex = 0;
+    public AudioSource audioSource;
 
 	float startVelocity;
 
@@ -44,10 +45,12 @@ public class LakeScript : MonoBehaviour {
 		AccelControl script = other.GetComponent<AccelControl>();
 		script.maxVelocity = startVelocity;
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraControl>().startShakingCamera(.01f);
+        audioSource.Stop();
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
 		if(!isFilled){
+            audioSource.Play();
 			isFilling = true;
 			other.gameObject.GetComponent<Rigidbody2D>().drag = lakeDrag;
 			AccelControl script = other.GetComponent<AccelControl>();

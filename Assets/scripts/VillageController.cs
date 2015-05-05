@@ -15,6 +15,7 @@ public class VillageController : MonoBehaviour {
     public GameObject villageGround;
     public Color goodColor;
     public Color badColor;
+    public AudioSource audioSource;
 
     float maxScaleGround = 5f;
 
@@ -77,7 +78,8 @@ public class VillageController : MonoBehaviour {
 		doubleNegativeWorship.GetComponent<Renderer>().enabled = false;
 		alertBubble.GetComponent<Renderer>().enabled = false;
 
-		if(state == VillageState.BURNING){
+        if(state == VillageState.BURNING){
+            audioSource.Play();
             //villageGround.GetComponent<SpriteRenderer>().enabled = true;
             if (goodDevotion + badDevotion != 0)
             {
@@ -100,6 +102,7 @@ public class VillageController : MonoBehaviour {
 				negativeWorship.GetComponent<Renderer>().material.color = c;
 			}
 		} else if(state == VillageState.WORSHIPPING){
+            audioSource.Stop();
             //villageGround.GetComponent<SpriteRenderer>().enabled = true;
 
             if (goodDevotion + badDevotion != 0)
@@ -125,6 +128,7 @@ public class VillageController : MonoBehaviour {
         }
         else
         {
+            audioSource.Stop();
             //villageGround.GetComponent<SpriteRenderer>().enabled = false;
         }
 		int houseCount = 0;
