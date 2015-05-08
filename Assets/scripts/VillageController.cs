@@ -83,11 +83,13 @@ public class VillageController : MonoBehaviour {
             //villageGround.GetComponent<SpriteRenderer>().enabled = true;
             if (goodDevotion + badDevotion != 0)
             {
-                villageGround.GetComponent<SpriteRenderer>().color = badColor;
+                //villageGround.GetComponent<SpriteRenderer>().color = badColor;
                 float scaleAmount = (badDevotion - goodDevotion) / (goodDevotion + badDevotion) * maxScaleGround;
+                scaleAmount = (1 - ((MAX_ENCOUNTER - timesEncounter) * forgetDevotion + forgetCounter) /
+                    (forgetDevotion * MAX_ENCOUNTER)) * maxScaleGround;
                 if (scaleAmount > 0)
                 {
-                    //villageGround.transform.localScale = new Vector3(scaleAmount, scaleAmount, 1);
+                    villageGround.transform.localScale = new Vector3(scaleAmount, scaleAmount, 1);
                 }
             }
 			if(timesEncounter > 1){
@@ -107,11 +109,13 @@ public class VillageController : MonoBehaviour {
 
             if (goodDevotion + badDevotion != 0)
             {
-                villageGround.GetComponent<SpriteRenderer>().color = goodColor;
+                //villageGround.GetComponent<SpriteRenderer>().color = goodColor;
                 float scaleAmount = (goodDevotion - badDevotion) / (goodDevotion + badDevotion) * maxScaleGround;
+                scaleAmount = (1 - ((MAX_ENCOUNTER - timesEncounter) * forgetDevotion + forgetCounter) / 
+                    (forgetDevotion * MAX_ENCOUNTER)) * maxScaleGround;
                 if (scaleAmount > 0)
                 {
-                    //villageGround.transform.localScale = new Vector3(scaleAmount, scaleAmount, 1);
+                    villageGround.transform.localScale = new Vector3(scaleAmount, scaleAmount, 1);
                 }
             }
 			if(timesEncounter > 1){
