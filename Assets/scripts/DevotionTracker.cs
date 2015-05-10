@@ -17,7 +17,7 @@ public class DevotionTracker : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		scorePos = new Vector2(1280 - scoreSize.x, 45);
+		scorePos = new Vector2(1280 - scoreSize.x, 25);
 		style = new GUIStyle();
 		style.fontSize = 25;
 		style.font = fontType;
