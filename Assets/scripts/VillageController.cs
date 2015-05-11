@@ -12,12 +12,14 @@ public class VillageController : MonoBehaviour {
 	public GameObject alertBubble;
 	public GameObject doublePositiveWorship;
 	public GameObject doubleNegativeWorship;
-    public GameObject villageGround;
-    public Color goodColor;
-    public Color badColor;
+    private GameObject villageGround;
     public AudioSource audioSource;
 
-    float maxScaleGround = 5f;
+    public GameObject[] goodCircles;
+    public GameObject[] badCircles;
+    private int circleIndex;
+
+    float maxScaleGround = 4f;
 
 	public int goodDevotion = 0;
 	public int badDevotion = 0;
@@ -54,6 +56,14 @@ public class VillageController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        circleIndex = Random.Range(0, badCircles.Length);
+        /*villageGround = new GameObject();
+        villageGround.transform.SetParent(this.transform);
+        villageGround.transform.position = this.transform.position;
+        villageGround.transform.rotation = this.transform.rotation;
+        SpriteRenderer renderer = villageGround.AddComponent<SpriteRenderer>();
+        renderer.sortingLayerID = -1;*/
+
 		pointsPos = new Vector2(this.transform.position.x + 2.1f, this.transform.position.y + 2.1f);
 		resolution = new Vector2(Screen.width, Screen.height);
 		resx = resolution.x/1280.0f; // 1280 is the x value of the working resolution
@@ -80,10 +90,11 @@ public class VillageController : MonoBehaviour {
 
         if(state == VillageState.BURNING){
             audioSource.Play();
-            //villageGround.GetComponent<SpriteRenderer>().enabled = true;
+            Destroy(villageGround);
+            villageGround = Instantiate(badCircles[circleIndex], transform.position, transform.rotation) as GameObject;
+            villageGround.transform.SetParent(this.transform);
             if (goodDevotion + badDevotion != 0)
             {
-                //villageGround.GetComponent<SpriteRenderer>().color = badColor;
                 float scaleAmount = (badDevotion - goodDevotion) / (goodDevotion + badDevotion) * maxScaleGround;
                 scaleAmount = (1 - ((MAX_ENCOUNTER - timesEncounter) * forgetDevotion + forgetCounter) /
                     (forgetDevotion * MAX_ENCOUNTER)) * maxScaleGround;
@@ -105,11 +116,11 @@ public class VillageController : MonoBehaviour {
 			}
 		} else if(state == VillageState.WORSHIPPING){
             audioSource.Stop();
-            //villageGround.GetComponent<SpriteRenderer>().enabled = true;
-
+            Destroy(villageGround);
+            villageGround = Instantiate(goodCircles[circleIndex], transform.position, transform.rotation) as GameObject;
+            villageGround.transform.SetParent(this.transform);
             if (goodDevotion + badDevotion != 0)
             {
-                //villageGround.GetComponent<SpriteRenderer>().color = goodColor;
                 float scaleAmount = (goodDevotion - badDevotion) / (goodDevotion + badDevotion) * maxScaleGround;
                 scaleAmount = (1 - ((MAX_ENCOUNTER - timesEncounter) * forgetDevotion + forgetCounter) / 
                     (forgetDevotion * MAX_ENCOUNTER)) * maxScaleGround;
@@ -133,7 +144,7 @@ public class VillageController : MonoBehaviour {
         else
         {
             audioSource.Stop();
-            //villageGround.GetComponent<SpriteRenderer>().enabled = false;
+            Destroy(villageGround);
         }
 		int houseCount = 0;
 		int burningHouses = 0;

@@ -1,21 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &122142
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 404464}
-  - 212: {fileID: 21201956}
-  m_Layer: 0
-  m_Name: solidFillCircle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &141728
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,18 +152,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &404464
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 122142}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.63999999, y: -.170000002, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: -1}
-  m_Children: []
-  m_Father: {fileID: 441730}
-  m_RootOrder: 8
 --- !u!4 &441728
 Transform:
   m_ObjectHideFlags: 1
@@ -210,7 +182,6 @@ Transform:
   - {fileID: 441738}
   - {fileID: 441744}
   - {fileID: 441742}
-  - {fileID: 404464}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &441732
@@ -565,10 +536,15 @@ MonoBehaviour:
   alertBubble: {fileID: 141728}
   doublePositiveWorship: {fileID: 141738}
   doubleNegativeWorship: {fileID: 141740}
-  villageGround: {fileID: 122142}
-  goodColor: {r: 0, g: 0, b: 1, a: 0}
-  badColor: {r: 1, g: .227450982, b: 0, a: 0}
   audioSource: {fileID: 8220350}
+  goodCircles:
+  - {fileID: 197508, guid: b7163a70f373bb1448aa1b4c758c0420, type: 2}
+  - {fileID: 160142, guid: 50aafc2e2372db648bf2205039f20eb5, type: 2}
+  - {fileID: 110898, guid: c48f9a60c30a50b4c8500a3182df14cf, type: 2}
+  badCircles:
+  - {fileID: 195428, guid: 4ed3e9f3e0a22e6438193c963e0bad22, type: 2}
+  - {fileID: 166330, guid: 7d9253cb8c1609a4f8d866e8e5810b1f, type: 2}
+  - {fileID: 112924, guid: b7f32aa20f171f54cabca2f4ad0a6a58, type: 2}
   goodDevotion: 0
   badDevotion: 0
   state: 1
@@ -723,32 +699,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ad9d26e476a3a4b499719b5bcedb709e, type: 3}
   - {fileID: 21300000, guid: 7318ec080d94dd94e9357fa855422c0b, type: 3}
   - {fileID: 21300000, guid: 43358512e69405a49b608e77a74e13b3, type: 3}
---- !u!212 &21201956
-SpriteRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 122142}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: -2
-  m_Sprite: {fileID: 21300000, guid: 330b25241eae4d74fb1b2579e9c26669, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21241730
 SpriteRenderer:
   m_ObjectHideFlags: 1
