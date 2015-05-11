@@ -152,8 +152,10 @@ public class VolcanoController : MonoBehaviour {
 	}
 
 	void OnGUI(){
-		Image Image  = FindObjectOfType<Image> ();
-		
-		Image.fillAmount = Mathf.MoveTowards (Image.fillAmount, worship/MAX_WORSHIP, Time.deltaTime * magmaFillScaler);
+		Image[] images  = FindObjectsOfType<Image> ();
+        foreach (Image image in images)
+        {
+            image.fillAmount = Mathf.MoveTowards(image.fillAmount, worship / MAX_WORSHIP, Time.deltaTime * magmaFillScaler);
+        }
 	}
 }
