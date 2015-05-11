@@ -2270,6 +2270,11 @@ Prefab:
       propertyPath: nuetralSound
       value: 
       objectReference: {fileID: 8300000, guid: ba7ff410797d7fa41951839fb6812028, type: 3}
+    - target: {fileID: 11406558, guid: 5a9704866c468e0468caec56358db285, type: 2}
+      propertyPath: fontType
+      value: 
+      objectReference: {fileID: 12800000, guid: 530504b22f4e69e44bc26042853b498f,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5a9704866c468e0468caec56358db285, type: 2}
   m_IsPrefabParent: 0
