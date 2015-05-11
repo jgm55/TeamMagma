@@ -12,8 +12,8 @@ public class GUIController : MonoBehaviour {
 
 
 	void OnGUI () {
-		if(Properties.lastPlayedStyle == Properties.PlayStyle.BAD){
-			GUI.DrawTexture(Rect(1,1,0,.934), badGUI, ScaleMode.ScaleToFit, true, 10.0f);
+		/*if(Properties.lastPlayedStyle == Properties.PlayStyle.BAD){
+			GUI.DrawTexture(new Rect(1,1,0,.934), badGUI, ScaleMode.ScaleToFit, true, 10.0f);
 			Debug.Log("updating bad GUI");
 			("isAngry", true);
 		} else if(Properties.lastPlayedStyle == Properties.PlayStyle.GOOD){
@@ -23,6 +23,6 @@ public class GUIController : MonoBehaviour {
 		} else {
 			Debug.Log("updating nuetral GUI");
 			("isNuetral", true);
-		}
+		}*/
 	}
 }
