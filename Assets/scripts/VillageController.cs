@@ -25,7 +25,7 @@ public class VillageController : MonoBehaviour {
 	public int badDevotion = 0;
 	int devotionRateBad = 1;
 	int devotionRateGood = 1;
-	int forgetDevotion = 15;
+	int forgetDevotion = 20;
 	int maxHouses = 6;
 	float radiusNear = 6.0f;
 	int MAX_ENCOUNTER = 2;
