@@ -550,6 +550,10 @@ Prefab:
       propertyPath: goodBloom
       value: 
       objectReference: {fileID: 1183727482}
+    - target: {fileID: 105238, guid: a6387eca07eb449b0b8be023a2e92ecd, type: 2}
+      propertyPath: m_TagString
+      value: barOverlay
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a6387eca07eb449b0b8be023a2e92ecd, type: 2}
   m_IsPrefabParent: 0

@@ -178,7 +178,7 @@ public class VolcanoController : MonoBehaviour {
                 }
                 else
                 {
-                    image.fillAmount = Mathf.MoveTowards(image.fillAmount, target - getLavaDecreaseAmount(), Time.deltaTime * magmaFillScaler);
+                    image.fillAmount = Mathf.MoveTowards(image.fillAmount, target - getLavaDecreaseAmount() / MAX_WORSHIP, Time.deltaTime * magmaFillScaler);
                 }
             }
             
