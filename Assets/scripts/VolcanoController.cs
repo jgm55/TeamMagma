@@ -153,18 +153,35 @@ public class VolcanoController : MonoBehaviour {
 			GameObject level = GameObject.FindGameObjectWithTag ("level");
 			lava.transform.parent = level.transform;
 			instantiated = true;
-			changeInWorship -= Mathf.Max(lavaPercent * worship,lavaPercentMin);
+            changeInWorship -= getLavaDecreaseAmount();
             lava.GetComponent<AccelControl>().maxVelocity = maxSpeed;
             lava.GetComponent<AccelControl>().timeLava = timeLava;
 			draining = true;
 		}
 	}
 
+    private float getLavaDecreaseAmount()
+    {
+        return Mathf.Max(lavaPercent * worship, lavaPercentMin);
+    }
+
 	void OnGUI(){
 		Image[] images  = FindObjectsOfType<Image> ();
         foreach (Image image in images)
         {
-            image.fillAmount = Mathf.MoveTowards(image.fillAmount, worship / MAX_WORSHIP, Time.deltaTime * magmaFillScaler);
+            if (image.type == Image.Type.Filled)
+            {
+                float target = worship / MAX_WORSHIP;
+                if (image.tag == "barOverlay")
+                {
+                    image.fillAmount = Mathf.MoveTowards(image.fillAmount, target, Time.deltaTime * magmaFillScaler);
+                }
+                else
+                {
+                    image.fillAmount = Mathf.MoveTowards(image.fillAmount, target - getLavaDecreaseAmount(), Time.deltaTime * magmaFillScaler);
+                }
+            }
+            
         }
 	}
 }
