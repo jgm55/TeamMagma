@@ -172,8 +172,8 @@ GameObject:
   - 81: {fileID: 1183727475}
   - 114: {fileID: 1183727480}
   - 114: {fileID: 1183727481}
-  - 114: {fileID: 1183727483}
   - 114: {fileID: 1183727482}
+  - 114: {fileID: 1697592249}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -275,39 +275,36 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1183727474}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7fceaeb339b971b429c4cc600acabd13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levels:
-  - {fileID: 100548, guid: 54a2abf31047e4e43bc3ff5741995278, type: 2}
-  - {fileID: 189294, guid: 385f4315e7276884c8d942ad4836d9dd, type: 2}
-  - {fileID: 165556, guid: 7f6d88de8ddbc914793c8db96b87e933, type: 2}
-  goodVillagePrefabs: []
-  badVillagePrefabs: []
-  currentLevel: {fileID: 389735428}
---- !u!1 &1600674484 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 136452, guid: a6387eca07eb449b0b8be023a2e92ecd, type: 2}
-  m_PrefabInternal: {fileID: 1997986823}
---- !u!114 &1600674489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1600674484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0417173589d18464491bc3e9d443e910, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goodGUI: {fileID: 1997986825}
-  badGUI: {fileID: 1997986824}
---- !u!1 &1697592242 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 106556, guid: 5a9704866c468e0468caec56358db285, type: 2}
-  m_PrefabInternal: {fileID: 1861063638}
+  tweakMode: 0
+  screenBlendMode: 1
+  hdr: 0
+  sepBlurSpread: 2.5
+  quality: 1
+  bloomIntensity: .5
+  bloomThreshold: .5
+  bloomThresholdColor: {r: 1, g: 1, b: 1, a: 1}
+  bloomBlurIterations: 2
+  hollywoodFlareBlurIterations: 2
+  flareRotation: 0
+  lensflareMode: 1
+  hollyStretchWidth: 2.5
+  lensflareIntensity: 0
+  lensflareThreshold: .300000012
+  lensFlareSaturation: .75
+  flareColorA: {r: .400000006, g: .400000006, b: .800000012, a: .75}
+  flareColorB: {r: .400000006, g: .800000012, b: .800000012, a: .75}
+  flareColorC: {r: .800000012, g: .400000006, b: .800000012, a: .75}
+  flareColorD: {r: .800000012, g: .400000006, b: 0, a: .75}
+  lensFlareVignetteMask: {fileID: 0}
+  lensFlareShader: {fileID: 0}
+  screenBlendShader: {fileID: 0}
+  blurAndFlaresShader: {fileID: 0}
+  brightPassFilterShader: {fileID: 0}
 --- !u!114 &1697592249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,6 +320,8 @@ MonoBehaviour:
   - {fileID: 100548, guid: 54a2abf31047e4e43bc3ff5741995278, type: 2}
   - {fileID: 189294, guid: 385f4315e7276884c8d942ad4836d9dd, type: 2}
   - {fileID: 165556, guid: 7f6d88de8ddbc914793c8db96b87e933, type: 2}
+  goodVillagePrefabs: []
+  badVillagePrefabs: []
   currentLevel: {fileID: 389735428}
 --- !u!1001 &1861063638
 Prefab:
@@ -547,18 +546,10 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11425644, guid: a6387eca07eb449b0b8be023a2e92ecd, type: 2}
+      propertyPath: goodBloom
+      value: 
+      objectReference: {fileID: 1183727482}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a6387eca07eb449b0b8be023a2e92ecd, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &1997986824 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11437174, guid: a6387eca07eb449b0b8be023a2e92ecd,
-    type: 2}
-  m_PrefabInternal: {fileID: 1997986823}
-  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
---- !u!114 &1997986825 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11475326, guid: a6387eca07eb449b0b8be023a2e92ecd,
-    type: 2}
-  m_PrefabInternal: {fileID: 1997986823}
-  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
