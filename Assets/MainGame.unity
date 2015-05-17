@@ -173,6 +173,7 @@ GameObject:
   - 114: {fileID: 1183727480}
   - 114: {fileID: 1183727481}
   - 114: {fileID: 1183727483}
+  - 114: {fileID: 1183727482}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -268,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 323b21e7a00d2dd4da958558c595cb71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1183727483
+--- !u!114 &1183727482
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -276,7 +277,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1183727474}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a59fcb3035112545bda2b7bdecf0795, type: 3}
+  m_Script: {fileID: 11500000, guid: 7fceaeb339b971b429c4cc600acabd13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   levels:
@@ -312,14 +313,17 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1697592242}
+  m_GameObject: {fileID: 1183727474}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0417173589d18464491bc3e9d443e910, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a59fcb3035112545bda2b7bdecf0795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goodGUI: {fileID: 0}
-  badGUI: {fileID: 0}
+  levels:
+  - {fileID: 100548, guid: 54a2abf31047e4e43bc3ff5741995278, type: 2}
+  - {fileID: 189294, guid: 385f4315e7276884c8d942ad4836d9dd, type: 2}
+  - {fileID: 165556, guid: 7f6d88de8ddbc914793c8db96b87e933, type: 2}
+  currentLevel: {fileID: 389735428}
 --- !u!1001 &1861063638
 Prefab:
   m_ObjectHideFlags: 0
