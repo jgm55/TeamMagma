@@ -1,28 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Assets.scripts;
+using UnityEngine.UI;
 
 
 public class GUIController : MonoBehaviour {
 
-	public Texture2D goodGUI;
-	public Texture2D badGUI;
-
-	Properties.PlayStyle last = Properties.PlayStyle.NUETRAL;
-
+	public Image goodGUI;
+	public Image badGUI;
+	
 
 	void OnGUI () {
-		/*if(Properties.lastPlayedStyle == Properties.PlayStyle.BAD){
-			GUI.DrawTexture(new Rect(1,1,0,.934), badGUI, ScaleMode.ScaleToFit, true, 10.0f);
+		if(Properties.lastPlayedStyle == Properties.PlayStyle.BAD){
+			badGUI.enabled = true;
+			goodGUI.enabled = false;
 			Debug.Log("updating bad GUI");
-			("isAngry", true);
 		} else if(Properties.lastPlayedStyle == Properties.PlayStyle.GOOD){
-			GUI.DrawTexture(Rect(1,1,0,.934), goodGUI, ScaleMode.ScaleToFit, true, 10.0f);
+			badGUI.enabled = false;
+			goodGUI.enabled = true;
 			Debug.Log("updating good GUI");
-			("isHappy", true);
 		} else {
+			badGUI.enabled = false;
+			goodGUI.enabled = false;
 			Debug.Log("updating nuetral GUI");
-			("isNuetral", true);
-		}*/
+		}
 	}
 }
