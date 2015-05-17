@@ -9,8 +9,8 @@ public class VolcanoController : MonoBehaviour {
 	public bool instantiated = false;
 
     public AudioClip eruptSound;
-
-	float startingWorship = 50.0f;
+    float startingWorship = 50.0f;
+    float changeInWorship;
 	float worship = 0;
 	public float goodDevotion = 0f;
 	public float badDevotion = 0f;
@@ -40,7 +40,7 @@ public class VolcanoController : MonoBehaviour {
 
 	int DecreaseCount = 5;
 	private float counter = 0;
-	float MAX_WORSHIP = 200;
+	float MAX_WORSHIP = 75;
 	bool draining = false;
 
     enum TierLevel{LOW, MEDIUM,HIGH};
@@ -48,6 +48,7 @@ public class VolcanoController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        changeInWorship = startingWorship;
         maxSpeed = maxSpeedStart;
         timeLava = timeLavaStart;
 		FindObjectOfType<Image>().fillAmount = worship/MAX_WORSHIP;
@@ -56,7 +57,7 @@ public class VolcanoController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //barLevelWorship = worship + startingWorship;
-        worship = goodDevotion + badDevotion + startingWorship;
+        worship = goodDevotion + badDevotion + changeInWorship;
 
         float third = MAX_WORSHIP / 3;
         if(worship < third){
@@ -85,7 +86,7 @@ public class VolcanoController : MonoBehaviour {
 			badDevotion += village.badDevotion;
 		}
 		if(counter >= DecreaseCount){
-            startingWorship -= Mathf.Max(worship * decreasePercentage, decreaseMin);
+            changeInWorship -= Mathf.Max(worship * decreasePercentage, decreaseMin);
 			counter = 0;
 		}
 		if(!instantiated){
@@ -99,18 +100,26 @@ public class VolcanoController : MonoBehaviour {
 		}
 
 		//Game Win
-		if(MAX_WORSHIP < worship){
-            Debug.Log("End Game: " + Properties.lastPlayedStyle);
-            if(Properties.lastPlayedStyle == Properties.PlayStyle.BAD){
-                Application.LoadLevel("WinScreenBad");
+		if(MAX_WORSHIP <= worship){
+            if (FindObjectOfType<LevelController>().erupt()) {
+                Debug.Log("End Game: " + Properties.lastPlayedStyle);
+                if(Properties.lastPlayedStyle == Properties.PlayStyle.BAD){
+                    Application.LoadLevel("WinScreenBad");
+                }
+                else if (Properties.lastPlayedStyle == Properties.PlayStyle.GOOD)
+                {
+                    Application.LoadLevel("WinScreenGood");
+                }
+                else
+                {
+                    Application.LoadLevel("WinScreen");
+                }
             }
-            else if (Properties.lastPlayedStyle == Properties.PlayStyle.GOOD)
+            //worship = startingWorship;
+            MAX_WORSHIP += MAX_WORSHIP;
+            if (instantiated)
             {
-                Application.LoadLevel("WinScreenGood");
-            }
-            else
-            {
-                Application.LoadLevel("WinScreen");
+                //Destroy(FindObjectOfType<AccelControl>().gameObject);
             }
 		}
 
@@ -144,7 +153,7 @@ public class VolcanoController : MonoBehaviour {
 			GameObject level = GameObject.FindGameObjectWithTag ("level");
 			lava.transform.parent = level.transform;
 			instantiated = true;
-			startingWorship -= Mathf.Max(lavaPercent * worship,lavaPercentMin);
+			changeInWorship -= Mathf.Max(lavaPercent * worship,lavaPercentMin);
             lava.GetComponent<AccelControl>().maxVelocity = maxSpeed;
             lava.GetComponent<AccelControl>().timeLava = timeLava;
 			draining = true;
