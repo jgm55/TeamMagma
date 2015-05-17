@@ -10,12 +10,6 @@ public class LevelController : MonoBehaviour {
     int levelNumber = 0;
     public GameObject currentLevel;
 
-	// Update is called once per frame
-	void Update () {
-	    
-	}
-
-
     /**
      * Returns true if the game is out of levels. False otherwise
      * */
