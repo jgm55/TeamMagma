@@ -124,11 +124,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 476782, guid: 54a2abf31047e4e43bc3ff5741995278, type: 2}
       propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6061814, guid: 54a2abf31047e4e43bc3ff5741995278, type: 2}
-      propertyPath: m_IsTrigger
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 54a2abf31047e4e43bc3ff5741995278, type: 2}
@@ -137,27 +133,6 @@ Prefab:
 GameObject:
   m_PrefabParentObject: {fileID: 100548, guid: 54a2abf31047e4e43bc3ff5741995278, type: 2}
   m_PrefabInternal: {fileID: 389735427}
---- !u!114 &389735429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 389735428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a59fcb3035112545bda2b7bdecf0795, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levels:
-  - {fileID: 100548, guid: 54a2abf31047e4e43bc3ff5741995278, type: 2}
-  - {fileID: 189294, guid: 385f4315e7276884c8d942ad4836d9dd, type: 2}
-  - {fileID: 165556, guid: 7f6d88de8ddbc914793c8db96b87e933, type: 2}
-  goodVillagePrefabs:
-  - {fileID: 141730, guid: a782bb5df5cdd9948a6ceca55799c1e6, type: 2}
-  badVillagePrefabs:
-  - {fileID: 135898, guid: fb1d50fb1c6364b42ab8f6dbd69b86a3, type: 2}
-  - {fileID: 111388, guid: 926a75d006fa57741a4ad1f50969a5f3, type: 2}
-  currentLevel: {fileID: 389735428}
 --- !u!1 &1183727474
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,9 +295,9 @@ MonoBehaviour:
   - {fileID: 100548, guid: 54a2abf31047e4e43bc3ff5741995278, type: 2}
   - {fileID: 189294, guid: 385f4315e7276884c8d942ad4836d9dd, type: 2}
   - {fileID: 165556, guid: 7f6d88de8ddbc914793c8db96b87e933, type: 2}
-  goodVillagePrefabs: []
-  badVillagePrefabs: []
+  baseVillage: {fileID: 0}
   currentLevel: {fileID: 389735428}
+  targetDifficulty: 1
 --- !u!1001 &1861063638
 Prefab:
   m_ObjectHideFlags: 0
@@ -561,6 +536,10 @@ Prefab:
     - target: {fileID: 11440912, guid: a6387eca07eb449b0b8be023a2e92ecd, type: 2}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22452364, guid: a6387eca07eb449b0b8be023a2e92ecd, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a6387eca07eb449b0b8be023a2e92ecd, type: 2}

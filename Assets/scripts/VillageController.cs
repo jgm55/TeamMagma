@@ -259,6 +259,15 @@ public class VillageController : MonoBehaviour {
         //Color color = villageGround.GetComponent<SpriteRenderer>().color;
 	}
 
+    public void removeRandomHouse()
+    {
+        int num = Random.Range(0, houses.Length);
+        Destroy(houses[num]);
+        houses[num] = null;
+        //Debug.Log("Destroyed house: " + num + " of " + houses.Length);
+        cleanUpHouses();
+    }
+
 	private bool nearby(Vector3 lavaPos, float radius){
 		if(transform.position.x + radius > lavaPos.x && transform.position.x - radius < lavaPos.x){
 			if(transform.position.y + radius > lavaPos.y && transform.position.y - radius < lavaPos.y){
@@ -336,11 +345,10 @@ public class VillageController : MonoBehaviour {
 		GameObject[] newHouses = new GameObject[houses.Length-1];
 		for(int i=0; i < houses.Length; i++){
 			if(houses[i] != null){
-				newHouses[houseCount] = houses[i];
-			} else { 
-				houseCount--;
+                //Debug.Log("houseCount " + houseCount);
+                newHouses[houseCount] = houses[i];
+                houseCount++;
 			}
-			houseCount++;
 		}
 		houses = newHouses;
 	}
