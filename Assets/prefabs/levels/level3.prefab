@@ -146,6 +146,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 453038}
   - 212: {fileID: 21290636}
+  - 114: {fileID: 11408744}
   m_Layer: 0
   m_Name: VillagePosition 6
   m_TagString: villagePosition
@@ -666,6 +667,18 @@ PolygonCollider2D:
       - {x: 1.58203137, y: -10.9716806}
       - {x: 1.84570324, y: -10.9423838}
       - {x: 2.18261743, y: -10.8691416}
+--- !u!114 &11408744
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9e5d3fc1de1eb54fb9468b7a56578db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: 0
 --- !u!114 &11430412
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -54,7 +54,7 @@ public class AccelControl : MonoBehaviour {
             //Do raytracing to see if inside a lake
             Vector2 pos = Camera.main.ScreenToWorldPoint(this.transform.position);
             RaycastHit2D[] hits = Physics2D.RaycastAll(this.transform.position, pos);
-            Debug.Log("hits: " + hits);
+//            Debug.Log("hits: " + hits);
             foreach(RaycastHit2D hit in hits){
                 Debug.Log("hit" + hit.collider.gameObject);
                 LakeScript lake = hit.collider.gameObject.GetComponent<LakeScript>();

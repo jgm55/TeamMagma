@@ -15,6 +15,7 @@ public class LevelController : MonoBehaviour {
 
     System.DateTime startTime = System.DateTime.Now;
     System.DateTime endTime;
+    bool erupting = false;
 
     const int DIFFICULTY_SWING = 5;
 
@@ -22,10 +23,10 @@ public class LevelController : MonoBehaviour {
     {
         //TODO make this not just 60 seconds for each
         timeSpans = new System.TimeSpan[levels.Length];
-        System.TimeSpan span0 = new System.TimeSpan(0, 0, 60);
-        System.TimeSpan span1 = new System.TimeSpan(0, 0, 60);
-        System.TimeSpan span2 = new System.TimeSpan(0, 0, 60);
-        System.TimeSpan span3 = new System.TimeSpan(0, 0, 60);
+        System.TimeSpan span0 = new System.TimeSpan(0, 0, 50);
+        System.TimeSpan span1 = new System.TimeSpan(0, 0, 45);
+        System.TimeSpan span2 = new System.TimeSpan(0, 0, 50);
+        System.TimeSpan span3 = new System.TimeSpan(0, 0, 40);
         System.TimeSpan span4 = new System.TimeSpan(0, 0, 60);
 
         timeSpans[0] = span0;
@@ -40,6 +41,11 @@ public class LevelController : MonoBehaviour {
      * Returns true if the game is out of levels. False otherwise
      * */
     public bool erupt(){
+        if (erupting)
+        {
+            return false;
+        }
+        erupting = true;
         endTime = System.DateTime.Now;
         System.TimeSpan difference = endTime - startTime;
         //expected time - their time
@@ -47,15 +53,16 @@ public class LevelController : MonoBehaviour {
         targetDifficulty += timeDifferenceSeconds / (int)((timeSpans[levelNumber].TotalSeconds / DIFFICULTY_SWING));
         levelNumber++;
         Debug.Log("ERUPT: " + levelNumber);
+        Debug.Log("ERUPTION: " + levels.Length);
         if (levelNumber == levels.Length)
         {
             //GAME IS OVER
+            Debug.Log("GAME IS OVER");
             return true;
         }
         
         //Make new level and update reference
         GameObject nextLevel = Instantiate(levels[levelNumber]) as GameObject;
-        Debug.Log("child " + currentLevel.transform.childCount);
         for (int i = 0; i < currentLevel.transform.childCount;i++)
         {
             Transform trans = currentLevel.transform.GetChild(i);
@@ -107,6 +114,7 @@ public class LevelController : MonoBehaviour {
         }
         Debug.Log("DoneErupt");
         startTime = System.DateTime.Now;
+        erupting = false;
         return false;
     }
 

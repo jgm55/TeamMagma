@@ -46,6 +46,8 @@ public class VolcanoController : MonoBehaviour {
     enum TierLevel{LOW, MEDIUM,HIGH};
     TierLevel tierLevel = TierLevel.LOW;
 
+    int eruptCount = 0;
+
 	// Use this for initialization
 	void Start () {
         changeInWorship = startingWorship;
@@ -101,7 +103,11 @@ public class VolcanoController : MonoBehaviour {
 
 		//Game Win
 		if(MAX_WORSHIP <= worship){
-            if (FindObjectOfType<LevelController>().erupt()) {
+            MAX_WORSHIP += MAX_WORSHIP;
+            Debug.Log("ERUPTING TO NEXT LEVEL OMG SO DANK");
+            FindObjectOfType<LevelController>().erupt();
+            eruptCount++;
+            if (GetComponent<LevelController>().levels.Length == eruptCount) {
                 Debug.Log("End Game: " + Properties.lastPlayedStyle);
                 if(Properties.lastPlayedStyle == Properties.PlayStyle.BAD){
                     Application.LoadLevel("WinScreenBad");
@@ -116,7 +122,6 @@ public class VolcanoController : MonoBehaviour {
                 }
             }
             //worship = startingWorship;
-            MAX_WORSHIP += MAX_WORSHIP;
             if (instantiated)
             {
                 //Destroy(FindObjectOfType<AccelControl>().gameObject);
@@ -145,6 +150,7 @@ public class VolcanoController : MonoBehaviour {
 	void OnMouseDown(){
 		if (!instantiated) {
 			Debug.Log("instantiating lava");
+            instantiated = true;
             AudioSource.PlayClipAtPoint(eruptSound, this.transform.position);
 			//Transform t = ((Transform)(Instantiate (toInstantiate)));
 			GameObject lava = Instantiate (toInstantiate) as GameObject;
@@ -152,7 +158,6 @@ public class VolcanoController : MonoBehaviour {
 			//TODO Add this to heirarchy
 			GameObject level = GameObject.FindGameObjectWithTag ("level");
 			lava.transform.parent = level.transform;
-			instantiated = true;
             changeInWorship -= getLavaDecreaseAmount();
             lava.GetComponent<AccelControl>().maxVelocity = maxSpeed;
             lava.GetComponent<AccelControl>().timeLava = timeLava;

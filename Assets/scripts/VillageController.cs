@@ -213,7 +213,6 @@ public class VillageController : MonoBehaviour {
 		if(devotionCounter > devotionIncrement ){
 			devotionCounter = 0;
 			updatedDevotion = true;
-			Debug.Log("OMG ITS DEVOTION UPDATE");
 			if(state == VillageState.BURNING){
 				pointsGained = devotionRateBad * houseCount * timesEncounter * burningHouses;
 				badDevotion += (int)pointsGained;
