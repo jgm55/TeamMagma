@@ -56,7 +56,7 @@ public class AccelControl : MonoBehaviour {
             RaycastHit2D[] hits = Physics2D.RaycastAll(this.transform.position, pos);
 //            Debug.Log("hits: " + hits);
             foreach(RaycastHit2D hit in hits){
-                Debug.Log("hit" + hit.collider.gameObject);
+                //Debug.Log("hit" + hit.collider.gameObject);
                 LakeScript lake = hit.collider.gameObject.GetComponent<LakeScript>();
                 if (lake != null)
                 {

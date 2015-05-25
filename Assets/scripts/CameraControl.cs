@@ -98,7 +98,8 @@ public class CameraControl : MonoBehaviour {
     public void startShakingCamera(float maxTime=.2f, float shakeAmount = .05f)
     {
         shaking = true;
-        shakeTime = maxTime;
+        this.shakeTime = maxTime;
+        this.shakeAmt = shakeAmount;
     }
 
     public void stopShakingCamera()

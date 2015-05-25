@@ -58,6 +58,7 @@ public class VolcanoController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        fixBugHack();
         //barLevelWorship = worship + startingWorship;
         worship = goodDevotion + badDevotion + changeInWorship;
 
@@ -107,7 +108,8 @@ public class VolcanoController : MonoBehaviour {
             Debug.Log("ERUPTING TO NEXT LEVEL OMG SO DANK");
             FindObjectOfType<LevelController>().erupt();
             eruptCount++;
-            if (GetComponent<LevelController>().levels.Length == eruptCount) {
+            if (FindObjectOfType<LevelController>().levels.Length == eruptCount) {
+                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraControl>().startShakingCamera(.8f, .1f);
                 Debug.Log("End Game: " + Properties.lastPlayedStyle);
                 if(Properties.lastPlayedStyle == Properties.PlayStyle.BAD){
                     Application.LoadLevel("WinScreenBad");
@@ -186,7 +188,23 @@ public class VolcanoController : MonoBehaviour {
                     image.fillAmount = Mathf.MoveTowards(image.fillAmount, target - getLavaDecreaseAmount() / MAX_WORSHIP, Time.deltaTime * magmaFillScaler);
                 }
             }
-            
         }
 	}
+
+    private void fixBugHack(){
+        if (Input.GetMouseButtonDown(0)) {
+            Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 pos2 = new Vector3(pos.x, pos.y,-20);
+            RaycastHit2D[] hits = Physics2D.RaycastAll(pos, pos2);
+            Debug.Log("hits: " + hits);
+            foreach(RaycastHit2D hit in hits){
+                Debug.Log("hit" + hit.collider.gameObject);
+                VolcanoController volcano = hit.collider.gameObject.GetComponent<VolcanoController>();
+                if (volcano != null)
+                {
+                    volcano.OnMouseDown();
+                }
+            }
+        }
+    }
 }
