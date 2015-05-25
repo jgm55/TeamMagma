@@ -126,7 +126,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11466890, guid: 54a2abf31047e4e43bc3ff5741995278, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 54a2abf31047e4e43bc3ff5741995278, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &389735428 stripped
@@ -295,9 +296,8 @@ MonoBehaviour:
   - {fileID: 100548, guid: 54a2abf31047e4e43bc3ff5741995278, type: 2}
   - {fileID: 189294, guid: 385f4315e7276884c8d942ad4836d9dd, type: 2}
   - {fileID: 165556, guid: 7f6d88de8ddbc914793c8db96b87e933, type: 2}
-  baseVillage: {fileID: 0}
+  baseVillage: {fileID: 141730, guid: a782bb5df5cdd9948a6ceca55799c1e6, type: 2}
   currentLevel: {fileID: 389735428}
-  targetDifficulty: 1
 --- !u!1001 &1861063638
 Prefab:
   m_ObjectHideFlags: 0

@@ -48,6 +48,8 @@ public class LevelController : MonoBehaviour {
             //GAME IS OVER
             return true;
         }
+        
+        //Make new level and update reference
         GameObject nextLevel = Instantiate(levels[levelNumber]) as GameObject;
         Debug.Log("child " + currentLevel.transform.childCount);
         for (int i = 0; i < currentLevel.transform.childCount;i++)
@@ -58,6 +60,7 @@ public class LevelController : MonoBehaviour {
         Destroy(currentLevel);
         currentLevel = nextLevel;
 
+        //Get all positions in new Level
         GameObject[] villages = GameObject.FindGameObjectsWithTag("villagePosition");
         
         float toSpawn = levelNumber + 2;
