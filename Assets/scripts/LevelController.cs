@@ -20,15 +20,19 @@ public class LevelController : MonoBehaviour {
 
     void Start()
     {
-        timeSpans = new System.TimeSpan[levels.Length];//-1
+        //TODO make this not just 60 seconds for each
+        timeSpans = new System.TimeSpan[levels.Length];
         System.TimeSpan span0 = new System.TimeSpan(0, 0, 60);
         System.TimeSpan span1 = new System.TimeSpan(0, 0, 60);
         System.TimeSpan span2 = new System.TimeSpan(0, 0, 60);
-        //System.TimeSpan span3 = new System.TimeSpan(0, 0, 60);
+        System.TimeSpan span3 = new System.TimeSpan(0, 0, 60);
+        System.TimeSpan span4 = new System.TimeSpan(0, 0, 60);
 
         timeSpans[0] = span0;
         timeSpans[1] = span1;
         timeSpans[2] = span2;
+        timeSpans[3] = span3;
+        timeSpans[4] = span4;
     }
 
 
