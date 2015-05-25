@@ -554,6 +554,14 @@ Prefab:
       propertyPath: m_TagString
       value: barOverlay
       objectReference: {fileID: 0}
+    - target: {fileID: 11440912, guid: a6387eca07eb449b0b8be023a2e92ecd, type: 2}
+      propertyPath: goodBloom
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11440912, guid: a6387eca07eb449b0b8be023a2e92ecd, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a6387eca07eb449b0b8be023a2e92ecd, type: 2}
   m_IsPrefabParent: 0
