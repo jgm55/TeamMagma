@@ -111,5 +111,12 @@ public class RingRotation : MonoBehaviour
 		// rotating flag
 		_isRotating = false;
 	}
-	
+
+    void OnTriggerExit2D(Collider2D collider)
+    {
+        AccelControl script = collider.gameObject.GetComponent<AccelControl>();
+        if(script != null){
+            script.timeLava = 0;
+        }
+    }
 }

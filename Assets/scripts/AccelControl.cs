@@ -54,9 +54,7 @@ public class AccelControl : MonoBehaviour {
             //Do raytracing to see if inside a lake
             Vector2 pos = Camera.main.ScreenToWorldPoint(this.transform.position);
             RaycastHit2D[] hits = Physics2D.RaycastAll(this.transform.position, pos);
-//            Debug.Log("hits: " + hits);
             foreach(RaycastHit2D hit in hits){
-                //Debug.Log("hit" + hit.collider.gameObject);
                 LakeScript lake = hit.collider.gameObject.GetComponent<LakeScript>();
                 if (lake != null)
                 {
@@ -66,25 +64,5 @@ public class AccelControl : MonoBehaviour {
 
 			Destroy(this.gameObject);
 		}
-
-	}
-
-	/*void OnCollisionEnter2D(Collision2D collision) {
-		HouseScript houseScript = collision.collider.gameObject.GetComponent<HouseScript> ();
-		if(houseScript != null){
-			houseScript.Burn();
-		}
-		LakeScript lakeScript = collision.collider.gameObject.GetComponent<LakeScript> ();
-		if(lakeScript != null){
-			lakeScript.Fill();
-		}
-		Destroy(collision.collider);
-	}*/
-
-	void OnGUI()
-	{
-		//GUI.Label(new Rect(Screen.width/2-100,Screen.height/2-100,200,200),dir.ToString(),style);
-		//GUI.Label(new Rect(Screen.width/2-100,Screen.height/2-100,220,210),rigidbody2D.velocity.ToString(),style);
-
 	}
 }
