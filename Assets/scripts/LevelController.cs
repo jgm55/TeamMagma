@@ -122,10 +122,11 @@ public class LevelController : MonoBehaviour {
     private void increaseStats(int targetDifficulty)
     {
         VolcanoController volcano = FindObjectOfType<VolcanoController>();
-        volcano.maxSpeedStart *= targetDifficulty / (float)(targetDifficulty - 1);
-        volcano.maxSpeedBad *= targetDifficulty / (float)(targetDifficulty - 1);
-        volcano.timeLavaStart *= targetDifficulty / (float)(targetDifficulty - 1);
-        volcano.timeGoodLava *= targetDifficulty / (float)(targetDifficulty - 1);
+        float amountToScale = Mathf.Max(1,targetDifficulty / (float)(targetDifficulty - 1));
+        volcano.maxSpeedStart *= amountToScale;
+        volcano.maxSpeedBad *= amountToScale;
+        volcano.timeLavaStart *= amountToScale;
+        volcano.timeGoodLava *= amountToScale;
     }
 
 }
