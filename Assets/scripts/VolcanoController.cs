@@ -65,7 +65,6 @@ public class VolcanoController : MonoBehaviour {
 	void Update () {
         fixBugHack();
         //barLevelWorship = worship + startingWorship;
-        worship = goodDevotion + badDevotion + changeInWorship;
 
         float third = MAX_WORSHIP / 3;
         if(worship < third){
@@ -93,6 +92,9 @@ public class VolcanoController : MonoBehaviour {
 			goodDevotion += village.goodDevotion;
 			badDevotion += village.badDevotion;
 		}
+
+        worship = goodDevotion + badDevotion + changeInWorship;
+
 		if(counter >= DecreaseCount){
             changeInWorship -= Mathf.Max(worship * decreasePercentage, decreaseMin);
 			counter = 0;
