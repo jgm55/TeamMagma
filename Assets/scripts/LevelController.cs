@@ -90,7 +90,7 @@ public class LevelController : MonoBehaviour {
                 GameObject newVillage = Instantiate(baseVillage, village.transform.position, village.transform.rotation) as GameObject;
                 newVillage.transform.SetParent(currentLevel.transform);
                 //Then choose if lake or note factoring in average village expected size with some variance
-                if (currentVillageLevel + 3 < targetDifficulty + Random.Range(-1 * variance, variance))
+                if (currentVillageLevel + 3 < targetDifficulty + Random.Range(-1 * variance, variance+1))
                 {
                     // remove lake
                     Destroy(newVillage.GetComponent<VillageController>().lake);
@@ -99,7 +99,7 @@ public class LevelController : MonoBehaviour {
                 }
 
                 //finally finish with number of houses to get close to number
-                int housesToRemove = targetDifficulty - currentVillageLevel + Random.Range(-1 * variance, variance);
+                int housesToRemove = targetDifficulty - currentVillageLevel + Random.Range(-1 * variance, variance+1);
                 if (housesToRemove > 5)
                 {
                     housesToRemove = 5;// set min to be one house
