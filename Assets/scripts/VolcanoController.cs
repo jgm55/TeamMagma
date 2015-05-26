@@ -21,11 +21,11 @@ public class VolcanoController : MonoBehaviour {
 	private float magmaFillScaler = .04f;
 
     float maxSpeed;
-    public float maxSpeedStart = 1.2f;
-    public float maxSpeedBad = 2.2f;
+    public float maxSpeedStart;
+    public float maxSpeedBad;
     float timeLava;
-    public float timeLavaStart = 8f;
-    public float timeGoodLava = 13f;
+    public float timeLavaStart;
+    public float timeGoodLava;
     float lavaPercent = .3f;
     float lavaPercentMin = 15f;
 
@@ -58,7 +58,7 @@ public class VolcanoController : MonoBehaviour {
         maxSpeedStart = 1.2f;
         maxSpeedBad = 2.0f;
         timeLavaStart = 8f;
-        timeGoodLava = 15f;
+        timeGoodLava = 12f;
 	}
 	
 	// Update is called once per frame
