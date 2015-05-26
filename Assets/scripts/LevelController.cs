@@ -51,6 +51,7 @@ public class LevelController : MonoBehaviour {
         //expected time - their time
         int timeDifferenceSeconds = (int)(timeSpans[levelNumber].TotalSeconds - difference.TotalSeconds);
         targetDifficulty += timeDifferenceSeconds / (int)((timeSpans[levelNumber].TotalSeconds / DIFFICULTY_SWING));
+        increaseStats(targetDifficulty);
         levelNumber++;
         Debug.Log("ERUPT: " + levelNumber);
         Debug.Log("ERUPTION: " + levels.Length);
@@ -116,6 +117,15 @@ public class LevelController : MonoBehaviour {
         startTime = System.DateTime.Now;
         erupting = false;
         return false;
+    }
+
+    private void increaseStats(int targetDifficulty)
+    {
+        VolcanoController volcano = FindObjectOfType<VolcanoController>();
+        volcano.maxSpeedStart *= targetDifficulty / (float)(targetDifficulty - 1);
+        volcano.maxSpeedBad *= targetDifficulty / (float)(targetDifficulty - 1);
+        volcano.timeLavaStart *= targetDifficulty / (float)(targetDifficulty - 1);
+        volcano.timeGoodLava *= targetDifficulty / (float)(targetDifficulty - 1);
     }
 
 }

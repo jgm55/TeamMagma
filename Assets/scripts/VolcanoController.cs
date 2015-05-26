@@ -21,11 +21,11 @@ public class VolcanoController : MonoBehaviour {
 	private float magmaFillScaler = .04f;
 
     float maxSpeed;
-    float maxSpeedStart = 1.2f;
-    float maxSpeedBad = 2f;
+    public float maxSpeedStart = 1.2f;
+    public float maxSpeedBad = 2.2f;
     float timeLava;
-    float timeLavaStart = 8f;
-    float timeGoodLava = 15f;
+    public float timeLavaStart = 8f;
+    public float timeGoodLava = 13f;
     float lavaPercent = .3f;
     float lavaPercentMin = 15f;
 
@@ -54,6 +54,11 @@ public class VolcanoController : MonoBehaviour {
         maxSpeed = maxSpeedStart;
         timeLava = timeLavaStart;
 		FindObjectOfType<Image>().fillAmount = worship/MAX_WORSHIP;
+
+        maxSpeedStart = 1.2f;
+        maxSpeedBad = 2.0f;
+        timeLavaStart = 8f;
+        timeGoodLava = 15f;
 	}
 	
 	// Update is called once per frame
@@ -77,7 +82,7 @@ public class VolcanoController : MonoBehaviour {
         } else {
             tierLevel = TierLevel.HIGH;
             lavaPercent = .3f;
-            decreasePercentage = .08f;
+            decreasePercentage = .06f;
         }
 
 		goodDevotion = 0;
