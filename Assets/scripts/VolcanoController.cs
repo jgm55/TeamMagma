@@ -106,10 +106,10 @@ public class VolcanoController : MonoBehaviour {
 		if(MAX_WORSHIP <= worship){
             MAX_WORSHIP += MAX_WORSHIP;
             Debug.Log("ERUPTING TO NEXT LEVEL OMG SO DANK");
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraControl>().startShakingCamera(1f, .5f);
             FindObjectOfType<LevelController>().erupt();
             eruptCount++;
             if (FindObjectOfType<LevelController>().levels.Length == eruptCount) {
-                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraControl>().startShakingCamera(.8f, .1f);
                 Debug.Log("End Game: " + Properties.lastPlayedStyle);
                 if(Properties.lastPlayedStyle == Properties.PlayStyle.BAD){
                     Application.LoadLevel("WinScreenBad");
