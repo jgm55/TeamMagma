@@ -442,6 +442,10 @@ Prefab:
       value: 
       objectReference: {fileID: 12800000, guid: 530504b22f4e69e44bc26042853b498f,
         type: 3}
+    - target: {fileID: 11472564, guid: 5a9704866c468e0468caec56358db285, type: 2}
+      propertyPath: badSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 33a5ca1bcaa92004784e7ff8273d84ce, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5a9704866c468e0468caec56358db285, type: 2}
   m_IsPrefabParent: 0
