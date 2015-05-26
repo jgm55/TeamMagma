@@ -40,7 +40,7 @@ public class VolcanoController : MonoBehaviour {
 
 	int DecreaseCount = 5;
 	private float counter = 0;
-	float MAX_WORSHIP = 75;
+	float MAX_WORSHIP = 60;
 	bool draining = false;
 
     enum TierLevel{LOW, MEDIUM,HIGH};
