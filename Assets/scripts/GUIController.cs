@@ -19,7 +19,7 @@ public class GUIController : MonoBehaviour {
 		} else if(Properties.lastPlayedStyle == Properties.PlayStyle.GOOD){
 			badGUI.enabled = false;
 			goodGUI.enabled = true;
-			goodBloom.enabled = true;
+			//goodBloom.enabled = true;
 		} else {
 			badGUI.enabled = false;
 			goodGUI.enabled = false;
