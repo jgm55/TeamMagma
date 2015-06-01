@@ -1,15 +1,15 @@
 fileFormatVersion: 2
-guid: 97031a7e66c7d514e87366d69290cb9b
-timeCreated: 1432676090
+guid: 9491cee3819613f4095e17ce262fcd94
+timeCreated: 1433182063
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: 6 frames_1500x852px_loading_0
-    21300002: 6 frames_1500x852px_loading_1
-    21300004: 6 frames_1500x852px_loading_2
-    21300006: 6 frames_1500x852px_loading_3
-    21300008: 6 frames_1500x852px_loading_4
-    21300010: 6 frames_1500x852px_loading_5
+    21300000: 6 frames_1500x852px_loading 1_0
+    21300002: 6 frames_1500x852px_loading 1_1
+    21300004: 6 frames_1500x852px_loading 1_2
+    21300006: 6 frames_1500x852px_loading 1_3
+    21300008: 6 frames_1500x852px_loading 1_4
+    21300010: 6 frames_1500x852px_loading 1_5
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -55,7 +55,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: 6 frames_1500x852px_loading_0
+    - name: 6 frames_1500x852px_loading 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -65,7 +65,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: 6 frames_1500x852px_loading_1
+    - name: 6 frames_1500x852px_loading 1_1
       rect:
         serializedVersion: 2
         x: 1500
@@ -75,7 +75,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: 6 frames_1500x852px_loading_2
+    - name: 6 frames_1500x852px_loading 1_2
       rect:
         serializedVersion: 2
         x: 3000
@@ -85,7 +85,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: 6 frames_1500x852px_loading_3
+    - name: 6 frames_1500x852px_loading 1_3
       rect:
         serializedVersion: 2
         x: 4500
@@ -95,7 +95,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: 6 frames_1500x852px_loading_4
+    - name: 6 frames_1500x852px_loading 1_4
       rect:
         serializedVersion: 2
         x: 6000
@@ -105,7 +105,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: 6 frames_1500x852px_loading_5
+    - name: 6 frames_1500x852px_loading 1_5
       rect:
         serializedVersion: 2
         x: 7500
