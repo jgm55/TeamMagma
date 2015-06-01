@@ -88,6 +88,7 @@ public class VillageController : MonoBehaviour {
 		doubleNegativeWorship.GetComponent<Renderer>().enabled = false;
 		alertBubble.GetComponent<Renderer>().enabled = false;
 
+
         if(state == VillageState.BURNING){
             audioSource.Play();
             Destroy(villageGround);
@@ -148,6 +149,7 @@ public class VillageController : MonoBehaviour {
         }
 		int houseCount = 0;
 		int burningHouses = 0;
+
 		for(int i=0; i < houses.Length; i++){
 			houseCount++;
 			if(houses[i] == null){
@@ -171,6 +173,7 @@ public class VillageController : MonoBehaviour {
 				houses[i].GetComponent<HouseScript>().isWorshipping = false;
 			}
 		}
+
 		// Interacting with the lake
 		if(lake != null){
 			if(lake.GetComponent<LakeScript>().isFilled){
@@ -210,20 +213,25 @@ public class VillageController : MonoBehaviour {
 
 		}
 
-		if(devotionCounter > devotionIncrement ){
-			devotionCounter = 0;
-			updatedDevotion = true;
-			if(state == VillageState.BURNING){
-				pointsGained = devotionRateBad * houseCount * timesEncounter * burningHouses;
-				badDevotion += (int)pointsGained;
-			}
-			else if(state == VillageState.WORSHIPPING){
-				pointsGained = devotionRateGood * houseCount * timesEncounter;
-				goodDevotion += (int)pointsGained;
-			} else{
-				Debug.Log("ERROR: THIS IS BAD");
-			}
-		}
+        if (devotionCounter > devotionIncrement)
+        {
+            devotionCounter = 0;
+            updatedDevotion = true;
+            if (state == VillageState.BURNING)
+            {
+                pointsGained = devotionRateBad * houses.Length * timesEncounter * burningHouses;
+                badDevotion += (int)pointsGained;
+            }
+            else if (state == VillageState.WORSHIPPING)
+            {
+                pointsGained = devotionRateGood * houses.Length * timesEncounter;
+                goodDevotion += (int)pointsGained;
+            }
+            else
+            {
+                Debug.Log("ERROR: THIS IS BAD");
+            }
+        }
 
 		if(forgetCounter > forgetDevotion){
 			timesEncounter-- ;

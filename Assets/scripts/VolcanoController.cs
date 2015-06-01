@@ -91,8 +91,11 @@ public class VolcanoController : MonoBehaviour {
 
 		VillageController[] villages = FindObjectsOfType<VillageController> ();
 		foreach(VillageController village in villages){
-			goodDevotion += village.goodDevotion;
-			badDevotion += village.badDevotion;
+            if (village != null)
+            {
+                goodDevotion += village.goodDevotion;
+                badDevotion += village.badDevotion;
+            }
 		}
 
         worship = goodDevotion + badDevotion + changeInWorship;
