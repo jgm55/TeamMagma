@@ -50,6 +50,8 @@ public class VolcanoController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraControl>().startShakingCamera(1f, .5f);
+
         changeInWorship = startingWorship;
         maxSpeed = maxSpeedStart;
         timeLava = timeLavaStart;

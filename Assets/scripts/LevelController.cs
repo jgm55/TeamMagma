@@ -7,7 +7,7 @@ public class LevelController : MonoBehaviour {
     public GameObject baseVillage;
     System.TimeSpan[] timeSpans;
 
-    int levelNumber = 0;
+    public int levelNumber = 0;
     int variance = 1;
     public GameObject currentLevel;
 

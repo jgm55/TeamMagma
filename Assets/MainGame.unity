@@ -393,6 +393,7 @@ MonoBehaviour:
   - {fileID: 166238, guid: f409be03162d22944987bf5409cc0731, type: 2}
   - {fileID: 115696, guid: 73313a5223782b14e8432b295cf8a31b, type: 2}
   baseVillage: {fileID: 141730, guid: a782bb5df5cdd9948a6ceca55799c1e6, type: 2}
+  levelNumber: 0
   currentLevel: {fileID: 389735428}
 --- !u!1001 &1861063638
 Prefab:
