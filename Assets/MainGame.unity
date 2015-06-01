@@ -87,6 +87,10 @@ NavMeshSettings:
     cellSize: .166666657
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &124431875 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 174700, guid: 422ff69c2877ede4b8ced508015ffc1e, type: 2}
+  m_PrefabInternal: {fileID: 1191803709}
 --- !u!1001 &389735427
 Prefab:
   m_ObjectHideFlags: 0
@@ -140,6 +144,10 @@ Prefab:
 --- !u!1 &389735428 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100548, guid: 54a2abf31047e4e43bc3ff5741995278, type: 2}
+  m_PrefabInternal: {fileID: 389735427}
+--- !u!4 &389735429 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 476782, guid: 54a2abf31047e4e43bc3ff5741995278, type: 2}
   m_PrefabInternal: {fileID: 389735427}
 --- !u!1001 &804076394
 Prefab:
@@ -223,7 +231,7 @@ Prefab:
     - target: {fileID: 11452258, guid: a6387eca07eb449b0b8be023a2e92ecd, type: 2}
       propertyPath: goodBloom
       value: 
-      objectReference: {fileID: 1183727482}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a6387eca07eb449b0b8be023a2e92ecd, type: 2}
   m_IsPrefabParent: 0
@@ -242,7 +250,6 @@ GameObject:
   - 114: {fileID: 1183727480}
   - 114: {fileID: 1183727481}
   - 114: {fileID: 1697592249}
-  - 114: {fileID: 1183727482}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -280,7 +287,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: .301960796, g: .392156899, b: 1, a: .0196078438}
+  m_BackGroundColor: {r: .13333334, g: .466666698, b: 1, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -338,43 +345,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 323b21e7a00d2dd4da958558c595cb71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1183727482
-MonoBehaviour:
+--- !u!1001 &1191803709
+Prefab:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1183727474}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fceaeb339b971b429c4cc600acabd13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tweakMode: 0
-  screenBlendMode: 1
-  hdr: 0
-  sepBlurSpread: 1.65999997
-  quality: 1
-  bloomIntensity: .5
-  bloomThreshold: .469999999
-  bloomThresholdColor: {r: 1, g: 1, b: 1, a: 1}
-  bloomBlurIterations: 2
-  hollywoodFlareBlurIterations: 2
-  flareRotation: 0
-  lensflareMode: 1
-  hollyStretchWidth: 2.5
-  lensflareIntensity: 0
-  lensflareThreshold: .300000012
-  lensFlareSaturation: .75
-  flareColorA: {r: .400000006, g: .400000006, b: .800000012, a: .75}
-  flareColorB: {r: .400000006, g: .800000012, b: .800000012, a: .75}
-  flareColorC: {r: .800000012, g: .400000006, b: .800000012, a: .75}
-  flareColorD: {r: .800000012, g: .400000006, b: 0, a: .75}
-  lensFlareVignetteMask: {fileID: 0}
-  lensFlareShader: {fileID: 4800000, guid: 459fe69d2f6d74ddb92f04dbf45a866b, type: 3}
-  screenBlendShader: {fileID: 4800000, guid: 7856cbff0a0ca45c787d5431eb805bb0, type: 3}
-  blurAndFlaresShader: {fileID: 4800000, guid: be6e39cf196f146d5be72fbefb18ed75, type: 3}
-  brightPassFilterShader: {fileID: 4800000, guid: 0aeaa4cb29f5d4e9c8455f04c8575c8c,
-    type: 3}
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 389735429}
+    m_Modifications:
+    - target: {fileID: 492338, guid: 422ff69c2877ede4b8ced508015ffc1e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -.569999993
+      objectReference: {fileID: 0}
+    - target: {fileID: 492338, guid: 422ff69c2877ede4b8ced508015ffc1e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -.730000019
+      objectReference: {fileID: 0}
+    - target: {fileID: 492338, guid: 422ff69c2877ede4b8ced508015ffc1e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 492338, guid: 422ff69c2877ede4b8ced508015ffc1e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 492338, guid: 422ff69c2877ede4b8ced508015ffc1e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 492338, guid: 422ff69c2877ede4b8ced508015ffc1e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 492338, guid: 422ff69c2877ede4b8ced508015ffc1e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 492338, guid: 422ff69c2877ede4b8ced508015ffc1e, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 422ff69c2877ede4b8ced508015ffc1e, type: 2}
+  m_IsPrefabParent: 0
 --- !u!114 &1697592249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,9 +404,16 @@ MonoBehaviour:
   - {fileID: 165556, guid: 7f6d88de8ddbc914793c8db96b87e933, type: 2}
   - {fileID: 166238, guid: f409be03162d22944987bf5409cc0731, type: 2}
   - {fileID: 115696, guid: 73313a5223782b14e8432b295cf8a31b, type: 2}
+  masks:
+  - {fileID: 174700, guid: 422ff69c2877ede4b8ced508015ffc1e, type: 2}
+  - {fileID: 136036, guid: b5e1cf8ad0d13174da895fbaef62a97e, type: 2}
+  - {fileID: 106570, guid: b43de6de852894543b32892311addddf, type: 2}
+  - {fileID: 132966, guid: 7dd01a96bf6f5844c82894bbbac7ef60, type: 2}
+  - {fileID: 173644, guid: 7b1c253bc20c1fc42a464b75687ae8a1, type: 2}
   baseVillage: {fileID: 141730, guid: a782bb5df5cdd9948a6ceca55799c1e6, type: 2}
   levelNumber: 0
   currentLevel: {fileID: 389735428}
+  currentMask: {fileID: 124431875}
 --- !u!1001 &1861063638
 Prefab:
   m_ObjectHideFlags: 0

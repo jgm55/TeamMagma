@@ -4,12 +4,14 @@ using System.Collections;
 public class LevelController : MonoBehaviour {
 
     public GameObject[] levels;
+    public GameObject[] masks;
     public GameObject baseVillage;
     System.TimeSpan[] timeSpans;
 
     public int levelNumber = 0;
     int variance = 1;
     public GameObject currentLevel;
+    public GameObject currentMask;
 
     int targetDifficulty = 1;
 
@@ -64,13 +66,17 @@ public class LevelController : MonoBehaviour {
         
         //Make new level and update reference
         GameObject nextLevel = Instantiate(levels[levelNumber]) as GameObject;
-        for (int i = 0; i < currentLevel.transform.childCount;i++)
+        GameObject nextMask = Instantiate(masks[levelNumber], masks[levelNumber].transform.position, nextLevel.transform.rotation) as GameObject;
+        nextMask.transform.SetParent(nextLevel.transform);
+        for (int i = 0; i < currentLevel.transform.childCount; i++)
         {
             Transform trans = currentLevel.transform.GetChild(i);
             trans.SetParent(nextLevel.transform);
         }
         Destroy(currentLevel);
+        Destroy(currentMask);
         currentLevel = nextLevel;
+        currentMask = nextMask;
 
         //Get all positions in new Level
         GameObject[] villages = GameObject.FindGameObjectsWithTag("villagePosition");
