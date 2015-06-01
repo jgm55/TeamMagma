@@ -24,10 +24,10 @@ public class LevelController : MonoBehaviour {
         //TODO make this not just 60 seconds for each
         timeSpans = new System.TimeSpan[levels.Length];
         System.TimeSpan span0 = new System.TimeSpan(0, 0, 50);
-        System.TimeSpan span1 = new System.TimeSpan(0, 0, 45);
-        System.TimeSpan span2 = new System.TimeSpan(0, 0, 50);
-        System.TimeSpan span3 = new System.TimeSpan(0, 0, 40);
-        System.TimeSpan span4 = new System.TimeSpan(0, 0, 60);
+        System.TimeSpan span1 = new System.TimeSpan(0, 0, 60);
+        System.TimeSpan span2 = new System.TimeSpan(0, 0, 65);
+        System.TimeSpan span3 = new System.TimeSpan(0, 0, 70);
+        System.TimeSpan span4 = new System.TimeSpan(0, 0, 75);
 
         timeSpans[0] = span0;
         timeSpans[1] = span1;
@@ -127,6 +127,10 @@ public class LevelController : MonoBehaviour {
         volcano.maxSpeedBad *= amountToScale;
         volcano.timeLavaStart *= amountToScale;
         volcano.timeGoodLava *= amountToScale;
+
+        //Make it harder to commit to a side
+        volcano.badDevotionLower += volcano.badDevotionLower / 2;
+        volcano.goodDevotionLower += volcano.goodDevotionLower / 2;
     }
 
 }

@@ -35,8 +35,8 @@ public class VolcanoController : MonoBehaviour {
 
 	//float goodRatio = 1.2f;
 	//float badRatio = 1.2f;
-	float badDevotionLower = 50f;
-	float goodDevotionLower = 50f;
+	public float badDevotionLower = 50f;
+	public float goodDevotionLower = 50f;
 
 	int DecreaseCount = 5;
 	private float counter = 0;
@@ -106,13 +106,12 @@ public class VolcanoController : MonoBehaviour {
 			// Game Over
             if (worship <= 0f)
             {
-				//Application.Quit();
 				Application.LoadLevel("LoseScreen");
 			}
 		}
 
 		//Game Win
-		if(MAX_WORSHIP <= worship){
+		if(MAX_WORSHIP <= worship && !instantiated){
             MAX_WORSHIP += MAX_WORSHIP;
             Debug.Log("ERUPTING TO NEXT LEVEL OMG SO DANK");
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraControl>().startShakingCamera(1f, .5f);
