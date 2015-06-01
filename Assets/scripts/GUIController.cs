@@ -9,13 +9,13 @@ public class GUIController : MonoBehaviour {
 	
 	public Image goodGUI;
 	public Image badGUI;
-	public Bloom goodBloom;
+	//public Bloom goodBloom;
 	
 	void OnGUI () {
 		if(Properties.lastPlayedStyle == Properties.PlayStyle.BAD){
 			badGUI.enabled = true;
 			goodGUI.enabled = false;
-			goodBloom.enabled = false;
+			//goodBloom.enabled = false;
 		} else if(Properties.lastPlayedStyle == Properties.PlayStyle.GOOD){
 			badGUI.enabled = false;
 			goodGUI.enabled = true;
@@ -23,7 +23,7 @@ public class GUIController : MonoBehaviour {
 		} else {
 			badGUI.enabled = false;
 			goodGUI.enabled = false;
-			goodBloom.enabled = false;
+			//goodBloom.enabled = false;
 		}
 	}
 }

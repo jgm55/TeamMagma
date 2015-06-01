@@ -57,12 +57,6 @@ public class VillageController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         circleIndex = Random.Range(0, badCircles.Length);
-        /*villageGround = new GameObject();
-        villageGround.transform.SetParent(this.transform);
-        villageGround.transform.position = this.transform.position;
-        villageGround.transform.rotation = this.transform.rotation;
-        SpriteRenderer renderer = villageGround.AddComponent<SpriteRenderer>();
-        renderer.sortingLayerID = -1;*/
 
 		pointsPos = new Vector2(this.transform.position.x + 2.1f, this.transform.position.y + 2.1f);
 		resolution = new Vector2(Screen.width, Screen.height);
@@ -158,8 +152,8 @@ public class VillageController : MonoBehaviour {
 				if(houses.Length != 0){
 					houses[Random.Range(0,houses.Length)].GetComponent<HouseScript>().isburning = true;
 				}
-				Update();
-				return;
+				//Update();
+				//return;
 			}
 			else if(timesEncounter < 1 && houses[i].GetComponent<HouseScript>().isburning){
 				state = VillageState.BURNING;

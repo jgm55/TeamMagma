@@ -118,6 +118,7 @@ public class VolcanoController : MonoBehaviour {
             MAX_WORSHIP += MAX_WORSHIP;
             Debug.Log("ERUPTING TO NEXT LEVEL OMG SO DANK");
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraControl>().startShakingCamera(1f, .5f);
+            //Handheld.Vibrate();
             FindObjectOfType<LevelController>().erupt();
             eruptCount++;
             if (FindObjectOfType<LevelController>().levels.Length == eruptCount) {
