@@ -3,23 +3,23 @@ using System.Collections;
 
 public class LakeScript : MonoBehaviour {
 
-	public float fillTime = 10;
+	float fillTime = 4.4f;
 	public bool isFilling = false;
 	public bool isFilled = false;
 	private float counter = 0f;
 	private float lakeChangeSeconds;
-	public Sprite[] lakeFills;
 	private int lakeIndex = 0;
     public AudioSource audioSource;
-
-	float startVelocity;
+    Animator animator;
+   
+    float startVelocity;
 
 	float startDrag = 1;
 	float lakeDrag = 2;
 
 	// Use this for initialization
 	void Start () {
-		lakeChangeSeconds = fillTime / (float)lakeFills.Length ;
+        animator = this.GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -29,17 +29,20 @@ public class LakeScript : MonoBehaviour {
 				isFilled = true;
 				isFilling = false;
 			}
-			lakeIndex = (int)(counter / lakeChangeSeconds);
-//			Debug.Log (lakeIndex);
-			if(lakeFills.Length > lakeIndex){
-				GetComponent<SpriteRenderer>().sprite = lakeFills[lakeIndex];
-			}
+
+            animator.SetBool("isFilling",true);
+
 			counter += Time.deltaTime;
-		}
+        }
+        else
+        {
+            //animator.SetBool("isFilling", false);
+        }
 	}
 
     public void OnTriggerExit2D(Collider2D other)
     {
+        animator.SetBool("isFilling", false);
 		isFilling = false;
 		other.gameObject.GetComponent<Rigidbody2D>().drag = startDrag;
 		AccelControl script = other.GetComponent<AccelControl>();
@@ -50,6 +53,7 @@ public class LakeScript : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		if(!isFilled){
+            animator.SetBool("isFilling", true);
             audioSource.Play();
 			isFilling = true;
 			other.gameObject.GetComponent<Rigidbody2D>().drag = lakeDrag;
