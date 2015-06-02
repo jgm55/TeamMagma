@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RingRotation : MonoBehaviour 
+public class RingRotation2 : MonoBehaviour 
 {
 	
 	public float _sensitivity;

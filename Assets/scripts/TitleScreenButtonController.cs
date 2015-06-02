@@ -30,6 +30,10 @@ public class TitleScreenButtonController : MonoBehaviour {
         {
             //GetComponent<SpriteRenderer>().sprite = matsya;
             Instantiate(matsya);
+        } if (count >= 6)
+        {
+            Application.LoadLevel("StartScreen");
+
         }
     }
 }
