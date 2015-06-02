@@ -129,7 +129,7 @@ Prefab:
     - target: {fileID: 21264738, guid: 3768dc183279f09458d335fb5a6923c7, type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 204b855614e9ff94a889867b944b96b8,
+      objectReference: {fileID: 21300000, guid: 001af2e667fc7344f86084d7b3d7b5b5,
         type: 3}
     - target: {fileID: 9579524, guid: 3768dc183279f09458d335fb5a6923c7, type: 2}
       propertyPath: m_Enabled
@@ -180,19 +180,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 2005612, guid: 4163322ec7496b34083caa29ab863968, type: 2}
       propertyPath: m_BackGroundColor.r
-      value: .725490212
+      value: .141176477
       objectReference: {fileID: 0}
     - target: {fileID: 2005612, guid: 4163322ec7496b34083caa29ab863968, type: 2}
       propertyPath: m_BackGroundColor.g
-      value: .827450991
+      value: .521568656
       objectReference: {fileID: 0}
     - target: {fileID: 2005612, guid: 4163322ec7496b34083caa29ab863968, type: 2}
       propertyPath: m_BackGroundColor.b
-      value: .192156866
+      value: .913725555
       objectReference: {fileID: 0}
     - target: {fileID: 2005612, guid: 4163322ec7496b34083caa29ab863968, type: 2}
       propertyPath: orthographic size
-      value: 1.14227855
+      value: 6.00162554
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4163322ec7496b34083caa29ab863968, type: 2}

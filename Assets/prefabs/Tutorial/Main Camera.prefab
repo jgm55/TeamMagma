@@ -40,7 +40,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BackGroundColor: {r: .141176477, g: .521568656, b: .913725555, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -51,7 +51,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2.50508595
+  orthographic size: 6.01355886
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -95,4 +95,3 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 105612}
   m_IsPrefabParent: 1
-  m_IsExploded: 1

@@ -18,6 +18,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Tutorial5.unity
   - enabled: 1
+    path: Assets/Tutorial6.unity
+  - enabled: 1
+    path: Assets/Tutorial7.unity
+  - enabled: 1
+    path: Assets/Tutorial8.unity
+  - enabled: 1
+    path: Assets/Tutorial9.unity
+  - enabled: 1
+    path: Assets/Tutorial10.unity
+  - enabled: 1
+    path: Assets/Tutorial11.unity
+  - enabled: 1
     path: Assets/MainGame.unity
   - enabled: 1
     path: Assets/LoseScreen.unity
