@@ -158,6 +158,7 @@ MonoBehaviour:
   good: {fileID: 21300000, guid: 88e971803e0dbec46aad008d0874dcf5, type: 3}
   bad: {fileID: 21300000, guid: 1fe9e07d028ee7548875911eca30ac2f, type: 3}
   sceneName: Tutorial1
+  matsya: {fileID: 0}
 --- !u!4 &232099560
 Transform:
   m_ObjectHideFlags: 0
@@ -220,7 +221,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4163322ec7496b34083caa29ab863968, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1373183869
+--- !u!1 &1373183869 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 105612, guid: 4163322ec7496b34083caa29ab863968, type: 2}
   m_PrefabInternal: {fileID: 540590037}
@@ -267,6 +268,7 @@ MonoBehaviour:
   good: {fileID: 21300000, guid: a7bc7535411649a488026f8ed427251c, type: 3}
   bad: {fileID: 21300000, guid: c64a93db5bc79d947b69c88a0cb2cdfa, type: 3}
   sceneName: Tutorial1
+  matsya: {fileID: 0}
 --- !u!4 &1415537959
 Transform:
   m_ObjectHideFlags: 0
@@ -389,6 +391,7 @@ MonoBehaviour:
   good: {fileID: 21300000, guid: 332e2c6a286722a4b8ba00fdb87ce814, type: 3}
   bad: {fileID: 21300000, guid: acd6d76f40c8da54caddf67f5af5f2f2, type: 3}
   sceneName: Tutorial1
+  matsya: {fileID: 0}
 --- !u!4 &1988669947
 Transform:
   m_ObjectHideFlags: 0
@@ -411,6 +414,7 @@ GameObject:
   - 4: {fileID: 2066328461}
   - 212: {fileID: 2066328460}
   - 114: {fileID: 2066328462}
+  - 61: {fileID: 2066328463}
   m_Layer: 0
   m_Name: neutralBackground
   m_TagString: Untagged
@@ -441,7 +445,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: c6f5c1f0246f1f2488485b6c62a5df90, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &2066328461
@@ -470,3 +474,17 @@ MonoBehaviour:
   good: {fileID: 21300000, guid: 7e34f3f853848ff4385baa1f4b69309f, type: 3}
   bad: {fileID: 21300000, guid: f9cd5079bf6c75548a527c9f7ac41d95, type: 3}
   sceneName: 
+  matsya: {fileID: 189962, guid: 239c169ae3a3123479ad8d2df00f34d3, type: 2}
+--- !u!61 &2066328463
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2066328459}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: -3.85708833, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 11.4858246, y: 10.8000002}

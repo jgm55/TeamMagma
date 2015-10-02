@@ -7,7 +7,6 @@ public class CameraControl : MonoBehaviour {
 	Vector3 myPos = new Vector3(0,-2,-15);
 	public static GameObject myPlay;
 //	private bool isZoomed = false;
-	float SPIN_TIME = .5f;
 	//int zoom = 5; int normal = 10; float smooth = 5; 
 	//Vector3 zoom = new Vector3(0,0,-10), normal = new Vector3(0,0,100);
 	private Vector3 lastTouchPos = new Vector3(0,0,0);
@@ -34,7 +33,8 @@ public class CameraControl : MonoBehaviour {
 	void Update () {
 		
 		// zoom in and follow the lava head
-		if(GameObject.FindGameObjectWithTag("volcano").GetComponent<VolcanoController>().instantiated){
+        if (GameObject.FindGameObjectWithTag("volcano").GetComponent<VolcanoController>().instantiated && myPlay != null)
+        {
             GetComponent<Camera>().orthographicSize = Mathf.Max(GetComponent<Camera>().orthographicSize - zoomSpeed*Time.deltaTime,5);
 			transform.position = myPlay.transform.position + myPos;
 			state = CameraState.FOLLOWING;
@@ -98,7 +98,8 @@ public class CameraControl : MonoBehaviour {
     public void startShakingCamera(float maxTime=.2f, float shakeAmount = .05f)
     {
         shaking = true;
-        shakeTime = maxTime;
+        this.shakeTime = maxTime;
+        this.shakeAmt = shakeAmount;
     }
 
     public void stopShakingCamera()

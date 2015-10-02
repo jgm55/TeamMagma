@@ -8,7 +8,7 @@ public class HouseScript : MonoBehaviour {
 	public bool isWorshipping = false;
 
 	private float counter = 0f;
-	public Sprite[] burningSprites = new Sprite[24];
+	public Sprite[] burningSprites = new Sprite[22];
 	public Sprite[] worshippingSprites = new Sprite[24];
 
 	private Sprite original;

@@ -7,7 +7,9 @@ public class TitleScreenButtonController : MonoBehaviour {
     public Sprite good;
     public Sprite bad;
     public string sceneName;
+    public GameObject matsya;
 
+    private int count = 0;
 	// Use this for initialization
 	void Start () {
         if (Properties.lastPlayedStyle == Properties.PlayStyle.BAD)
@@ -23,5 +25,15 @@ public class TitleScreenButtonController : MonoBehaviour {
     void OnMouseDown()
     {
         Application.LoadLevel(sceneName);
+        count++;
+        if (count >= 5)
+        {
+            //GetComponent<SpriteRenderer>().sprite = matsya;
+            Instantiate(matsya);
+        } if (count >= 6)
+        {
+            Application.LoadLevel("StartScreen");
+
+        }
     }
 }

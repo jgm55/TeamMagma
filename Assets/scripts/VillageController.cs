@@ -23,8 +23,8 @@ public class VillageController : MonoBehaviour {
 
 	public int goodDevotion = 0;
 	public int badDevotion = 0;
-	int devotionRateBad = 1;
-	int devotionRateGood = 1;
+	float devotionRateBad = 1;
+	float devotionRateGood = 1.5f;
 	int forgetDevotion = 20;
 	int maxHouses = 6;
 	float radiusNear = 6.0f;
@@ -57,12 +57,6 @@ public class VillageController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         circleIndex = Random.Range(0, badCircles.Length);
-        /*villageGround = new GameObject();
-        villageGround.transform.SetParent(this.transform);
-        villageGround.transform.position = this.transform.position;
-        villageGround.transform.rotation = this.transform.rotation;
-        SpriteRenderer renderer = villageGround.AddComponent<SpriteRenderer>();
-        renderer.sortingLayerID = -1;*/
 
 		pointsPos = new Vector2(this.transform.position.x + 2.1f, this.transform.position.y + 2.1f);
 		resolution = new Vector2(Screen.width, Screen.height);
@@ -87,6 +81,7 @@ public class VillageController : MonoBehaviour {
 		doublePositiveWorship.GetComponent<Renderer>().enabled = false;
 		doubleNegativeWorship.GetComponent<Renderer>().enabled = false;
 		alertBubble.GetComponent<Renderer>().enabled = false;
+
 
         if(state == VillageState.BURNING){
             audioSource.Play();
@@ -148,6 +143,7 @@ public class VillageController : MonoBehaviour {
         }
 		int houseCount = 0;
 		int burningHouses = 0;
+
 		for(int i=0; i < houses.Length; i++){
 			houseCount++;
 			if(houses[i] == null){
@@ -156,8 +152,8 @@ public class VillageController : MonoBehaviour {
 				if(houses.Length != 0){
 					houses[Random.Range(0,houses.Length)].GetComponent<HouseScript>().isburning = true;
 				}
-				Update();
-				return;
+				//Update();
+				//return;
 			}
 			else if(timesEncounter < 1 && houses[i].GetComponent<HouseScript>().isburning){
 				state = VillageState.BURNING;
@@ -171,6 +167,7 @@ public class VillageController : MonoBehaviour {
 				houses[i].GetComponent<HouseScript>().isWorshipping = false;
 			}
 		}
+
 		// Interacting with the lake
 		if(lake != null){
 			if(lake.GetComponent<LakeScript>().isFilled){
@@ -210,21 +207,25 @@ public class VillageController : MonoBehaviour {
 
 		}
 
-		if(devotionCounter > devotionIncrement ){
-			devotionCounter = 0;
-			updatedDevotion = true;
-			Debug.Log("OMG ITS DEVOTION UPDATE");
-			if(state == VillageState.BURNING){
-				pointsGained = devotionRateBad * houseCount * timesEncounter * burningHouses;
-				badDevotion += (int)pointsGained;
-			}
-			else if(state == VillageState.WORSHIPPING){
-				pointsGained = devotionRateGood * houseCount * timesEncounter;
-				goodDevotion += (int)pointsGained;
-			} else{
-				Debug.Log("ERROR: THIS IS BAD");
-			}
-		}
+        if (devotionCounter > devotionIncrement)
+        {
+            devotionCounter = 0;
+            updatedDevotion = true;
+            if (state == VillageState.BURNING)
+            {
+                pointsGained = devotionRateBad * houses.Length * timesEncounter * burningHouses;
+                badDevotion += (int)pointsGained;
+            }
+            else if (state == VillageState.WORSHIPPING)
+            {
+                pointsGained = devotionRateGood * houses.Length * timesEncounter;
+                goodDevotion += (int)pointsGained;
+            }
+            else
+            {
+                Debug.Log("ERROR: THIS IS BAD");
+            }
+        }
 
 		if(forgetCounter > forgetDevotion){
 			timesEncounter-- ;
@@ -258,6 +259,15 @@ public class VillageController : MonoBehaviour {
 
         //Color color = villageGround.GetComponent<SpriteRenderer>().color;
 	}
+
+    public void removeRandomHouse()
+    {
+        int num = Random.Range(0, houses.Length);
+        Destroy(houses[num]);
+        houses[num] = null;
+        //Debug.Log("Destroyed house: " + num + " of " + houses.Length);
+        cleanUpHouses();
+    }
 
 	private bool nearby(Vector3 lavaPos, float radius){
 		if(transform.position.x + radius > lavaPos.x && transform.position.x - radius < lavaPos.x){
@@ -336,11 +346,10 @@ public class VillageController : MonoBehaviour {
 		GameObject[] newHouses = new GameObject[houses.Length-1];
 		for(int i=0; i < houses.Length; i++){
 			if(houses[i] != null){
-				newHouses[houseCount] = houses[i];
-			} else { 
-				houseCount--;
+                //Debug.Log("houseCount " + houseCount);
+                newHouses[houseCount] = houses[i];
+                houseCount++;
 			}
-			houseCount++;
 		}
 		houses = newHouses;
 	}

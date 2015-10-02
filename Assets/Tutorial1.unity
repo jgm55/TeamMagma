@@ -126,6 +126,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 21221872, guid: c2285e8c6ef336a4eae031d3f2a3dbf5, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 85bf13f196f7e084e8cf66e3374d0ed9,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c2285e8c6ef336a4eae031d3f2a3dbf5, type: 2}
   m_IsPrefabParent: 0
@@ -170,11 +175,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 2005612, guid: 4163322ec7496b34083caa29ab863968, type: 2}
       propertyPath: m_BackGroundColor.r
-      value: .90196079
+      value: .913725555
       objectReference: {fileID: 0}
     - target: {fileID: 2005612, guid: 4163322ec7496b34083caa29ab863968, type: 2}
       propertyPath: m_BackGroundColor.g
-      value: .380392164
+      value: .384313762
       objectReference: {fileID: 0}
     - target: {fileID: 2005612, guid: 4163322ec7496b34083caa29ab863968, type: 2}
       propertyPath: m_BackGroundColor.b

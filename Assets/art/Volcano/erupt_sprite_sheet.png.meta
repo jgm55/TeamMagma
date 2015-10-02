@@ -1,0 +1,154 @@
+fileFormatVersion: 2
+guid: 3869b41cdab5e43c5add4a229a785db5
+timeCreated: 1433187987
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: erupt_sprite_sheet_0
+    21300002: erupt_sprite_sheet_1
+    21300004: erupt_sprite_sheet_2
+    21300006: erupt_sprite_sheet_3
+    21300008: erupt_sprite_sheet_4
+    21300010: erupt_sprite_sheet_5
+    21300012: erupt_sprite_sheet_6
+    21300014: erupt_sprite_sheet_7
+    21300016: erupt_sprite_sheet_8
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: erupt_sprite_sheet_0
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 175
+        width: 475
+        height: 677
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: erupt_sprite_sheet_1
+      rect:
+        serializedVersion: 2
+        x: 498
+        y: 179
+        width: 455
+        height: 673
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: erupt_sprite_sheet_2
+      rect:
+        serializedVersion: 2
+        x: 976
+        y: 179
+        width: 455
+        height: 673
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: erupt_sprite_sheet_3
+      rect:
+        serializedVersion: 2
+        x: 1452
+        y: 179
+        width: 455
+        height: 673
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: erupt_sprite_sheet_4
+      rect:
+        serializedVersion: 2
+        x: 1933
+        y: 179
+        width: 455
+        height: 673
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: erupt_sprite_sheet_5
+      rect:
+        serializedVersion: 2
+        x: 2408
+        y: 179
+        width: 455
+        height: 673
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: erupt_sprite_sheet_6
+      rect:
+        serializedVersion: 2
+        x: 2867
+        y: 175
+        width: 486
+        height: 677
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: erupt_sprite_sheet_7
+      rect:
+        serializedVersion: 2
+        x: 3364
+        y: 179
+        width: 455
+        height: 673
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: erupt_sprite_sheet_8
+      rect:
+        serializedVersion: 2
+        x: 3838
+        y: 179
+        width: 455
+        height: 673
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

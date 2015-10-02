@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RingRotation : MonoBehaviour 
+public class RingRotation2 : MonoBehaviour 
 {
 	
 	public float _sensitivity;
@@ -111,5 +111,12 @@ public class RingRotation : MonoBehaviour
 		// rotating flag
 		_isRotating = false;
 	}
-	
+
+    void OnTriggerExit2D(Collider2D collider)
+    {
+        AccelControl script = collider.gameObject.GetComponent<AccelControl>();
+        if(script != null){
+            script.timeLava = 0;
+        }
+    }
 }
