@@ -8,6 +8,8 @@ TagManager:
   - lava
   - level
   - totem
+  - villagePosition
+  - barOverlay
   layers:
   - Default
   - TransparentFX
